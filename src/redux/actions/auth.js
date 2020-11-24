@@ -1,3 +1,7 @@
 export function login() {
-  return { type: "LOGIN", payload: "You will log in" };
+  return { type: "LOGIN" };
+}
+
+export function logout() {
+  return { type: "LOGOUT" };
 }
