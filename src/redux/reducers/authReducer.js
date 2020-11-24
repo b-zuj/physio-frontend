@@ -1,12 +1,20 @@
 const InitialState = {
-  something: "Best state ever",
+  isAuth: false,
+  accType: "Pro",
 };
 
 const authReducer = (state = InitialState, action) => {
   switch (action.type) {
     case "LOGIN":
-      console.log(action.payload);
-      return state;
+      return {
+        ...state,
+        isAuth: true,
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        isAuth: false,
+      };
     default: {
       return state;
     }
