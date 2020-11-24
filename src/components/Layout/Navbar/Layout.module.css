@@ -1,0 +1,11 @@
+.navbar ul {
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  padding: 5px;
+}
