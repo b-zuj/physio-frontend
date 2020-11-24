@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import * as actions from "./redux/actions/auth";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import * as actions from './redux/actions/auth';
 import Layout from './components/Layout/Layout';
 
-import "./App.css";
+import './App.css';
 // testing component. Change it later for real Components
 const Comp = (props) => {
   console.log(props);
@@ -44,7 +44,7 @@ const App = (props) => {
   // test
   const handleLogin = () => {
     props.login();
-    history.push("/dashboard");
+    history.push('/dashboard');
   };
 
   return (
