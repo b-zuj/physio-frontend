@@ -1,6 +1,6 @@
 const InitialState = {
   isAuth: false,
-  accType: "Pro",
+  accType: "pro",
 };
 
 const authReducer = (state = InitialState, action) => {
