@@ -42,6 +42,12 @@ const App = (props) => {
     );
   }
 
+  // test
+  const handleLogin = () => {
+    props.login();
+    history.push('/dashboard');
+  };
+
   return (
     <>
       <Switch>
