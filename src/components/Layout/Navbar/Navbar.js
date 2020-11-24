@@ -1,19 +1,23 @@
 import React from 'react';
 import styles from './Layout.module.css';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
   const { isAuth } = props;
 
   const renderAuth = () => {
-    if (props.isAuth) {
+    if (isAuth) {
       return (
         <>
           <li>
-            <a href="/dashboard">Dashboard</a>
+            <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
           <li>
-            <a href="/account">Account</a>
+            <NavLink to="/account">Account</NavLink>
+          </li>
+          <li>
+            <NavLink to="/logout">Log out</NavLink>
           </li>
         </>
       );
@@ -21,10 +25,10 @@ const Navbar = (props) => {
     return (
       <>
         <li>
-          <a href="/login">Login</a>
+          <NavLink to="/login">Login</NavLink>
         </li>
         <li>
-          <a href="/signup">Signup</a>
+          <NavLink to="/signup">Signup</NavLink>
         </li>
       </>
     );
@@ -34,9 +38,9 @@ const Navbar = (props) => {
     <div className={styles.navbarContainer}>
       <div className={styles.navbar}>
         <ul>
-          {renderAuth}
+          {renderAuth()}
           <li>
-            <a href="/about">About</a>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </div>
