@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import * as actions from "./redux/actions/auth";
+import Layout from './components/Layout/Layout';
 
 import "./App.css";
 // testing component. Change it later for real Components

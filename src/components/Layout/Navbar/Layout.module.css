@@ -1,0 +1,14 @@
+.navbar ul {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  padding-right: 20px;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  padding: 5px;
+}
