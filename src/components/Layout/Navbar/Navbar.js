@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './Layout.module.css';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
+import React from "react";
+import styles from "./Navbar.module.css";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
   const { isAuth } = props;
