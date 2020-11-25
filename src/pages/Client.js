@@ -22,8 +22,31 @@ const db = {
       comments:
         'Test ødflsk jdsflk jdsf lkjdfsøl kjdf lkj dflkjsdløkfjasdlfkjsdflk jd fslkj sølkj',
       sessions: [
-        { name: 'Lower back training', id: 'h8fa' },
-        { name: 'Everyday exercices', id: 'p98uawf' },
+        {
+          title: 'Lower back training',
+          id: 'h8fa',
+          exercices: [
+            {
+              id: 'oisuf98',
+              title: 'Bridge  - begginer level',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+            {
+              id: 'ouh8',
+              title: 'Knee-to-chest stretches',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+            {
+              id: 'ihf8',
+              title: 'Lower back stretches',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+          ],
+        },
+        { title: 'Everyday exercices', id: 'p98uawf' },
       ],
     },
     {
@@ -34,8 +57,31 @@ const db = {
       comments:
         'Test ødflsk jdsflk jdsf lkjdfsøl kjdf lkj dflkjsdløkfjasdlfkjsdflk jd fslkj sølkj',
       sessions: [
-        { name: 'Lower back training', id: 'h8fa' },
-        { name: 'Everyday exercices', id: 'p98uawf' },
+        {
+          title: 'Lower back training',
+          id: 'h8fa',
+          exercices: [
+            {
+              id: 'oisuf98',
+              title: 'Bridge  - begginer level',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+            {
+              id: 'ouh8',
+              title: 'Knee-to-chest stretches',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+            {
+              id: 'ihf8',
+              title: 'Lower back stretches',
+              desciption:
+                'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
+            },
+          ],
+        },
+        { title: 'Everyday exercices', id: 'p98uawf' },
       ],
     },
   ],
