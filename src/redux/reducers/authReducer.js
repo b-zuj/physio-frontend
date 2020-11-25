@@ -15,6 +15,11 @@ const authReducer = (state = InitialState, action) => {
         ...state,
         isAuth: false,
       };
+    case "ERROR":
+      return {
+        ...state,
+        error: action.payload,
+      };
     default: {
       return state;
     }
