@@ -1,0 +1,8 @@
+.clientList {
+  width: 200px;
+}
+
+.client {
+  display: flex;
+  justify-content: space-between;
+}
