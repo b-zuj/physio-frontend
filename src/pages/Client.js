@@ -12,12 +12,15 @@ const db = {
       name: 'Adam Kowalsk',
       email: 'asdf@sdf.no',
       status: 'Pending',
+      comments: '',
     },
     {
       id: '34r',
       name: 'Jane Doe',
       email: 'assdfdf@sdf.no',
       status: 'Active',
+      comments:
+        'Test ødflsk jdsflk jdsf lkjdfsøl kjdf lkj dflkjsdløkfjasdlfkjsdflk jd fslkj sølkj',
       sessions: [
         { name: 'Lower back training', id: 'h8fa' },
         { name: 'Everyday exercices', id: 'p98uawf' },
@@ -28,6 +31,8 @@ const db = {
       name: 'Pia Kekkajarvi',
       email: 'asdf@sdf.no',
       status: 'Active',
+      comments:
+        'Test ødflsk jdsflk jdsf lkjdfsøl kjdf lkj dflkjsdløkfjasdlfkjsdflk jd fslkj sølkj',
       sessions: [
         { name: 'Lower back training', id: 'h8fa' },
         { name: 'Everyday exercices', id: 'p98uawf' },

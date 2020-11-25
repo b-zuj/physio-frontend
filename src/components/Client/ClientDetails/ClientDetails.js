@@ -1,7 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ClientDetails = (props) => {
   const { client } = props;
+  const [editMode, setEditMode] = useState(false);
+  const [comments, setComments] = useState(client.comments);
+  const [textAreaValue, setTextAreaValue] = useState(comments);
+  const textAreaRef = React.createRef();
+
+  const onTextAreaChange = (e) => {
+    const { value } = e.target;
+    setTextAreaValue(value);
+  };
+
+  const saveComment = () => {
+    setComments(textAreaRef.current.value);
+    setEditMode(false);
+  };
+
+  const renderCommentSection = () => {
+    if (!editMode) {
+      return (
+        <>
+          <p>{comments ? comments : 'No comments'}</p>
+          <button onClick={() => setEditMode(true)}>Edit comments</button>
+        </>
+      );
+    }
+    return (
+      <>
+        <textarea
+          ref={textAreaRef}
+          value={textAreaValue}
+          onChange={onTextAreaChange}
+        />
+        <button onClick={() => setEditMode(false)}>Discard</button>{' '}
+        <button onClick={saveComment}>Save</button>
+      </>
+    );
+  };
+
   return (
     <div>
       <h1>{client.name}</h1>
@@ -16,7 +53,7 @@ const ClientDetails = (props) => {
         <p>
           <b>Comments:</b>
         </p>
-        <p>{client.comment ? client.comment : 'No comments'}</p>
+        {renderCommentSection()}
       </div>
     </div>
   );
