@@ -41,6 +41,7 @@ const Input = (props) => {
 
   return (
     <div className={classes.Input}>
+      {props.invalid && <span>{props.invalid}</span>}
       <label className={classes.Label}>{props.label}</label>
       {inputElement}
     </div>
