@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import {
   Home,
@@ -11,9 +11,15 @@ import {
   Session,
   Account,
   Client,
-} from './pages';
+} from "./pages";
+
+import * as actions from "./redux/actions/auth";
 
 const App = (props) => {
+  useEffect(() => {
+    props.tryToAutoLog();
+  }, []);
+
   const { isAuth } = props;
   let routes = (
     <Switch>
@@ -54,5 +60,10 @@ const mapStateToPros = (state) => {
     accType: state.authReducer.accType,
   };
 };
+const mapDispatchToPros = (dispatch) => {
+  return {
+    tryToAutoLog: () => dispatch(actions.tryToAutoLog()),
+  };
+};
 
-export default connect(mapStateToPros)(App);
+export default connect(mapStateToPros, mapDispatchToPros)(App);

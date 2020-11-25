@@ -58,7 +58,7 @@ const Signup = (props) => {
       formData[key] = formElements[key].value;
     }
 
-    const errors = checkValidity(formData);
+    const errors = checkValidity(formData, "signup");
 
     if (Object.keys(errors).length !== 0) {
       return props.handleError(

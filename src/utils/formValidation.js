@@ -1,4 +1,4 @@
-const validate = (values) => {
+const validate = (values, page) => {
   const errors = {};
 
   if (!values.email) {
@@ -11,12 +11,13 @@ const validate = (values) => {
   } else if (values.password.length < 5) {
     errors.password = "Password is too short";
   }
-  if (!values.confirmPassword) {
-    errors.password = "Required";
-  } else if (values.confirmPassword !== values.password) {
-    errors.password = "Password is incorrect. Please confirm Your password.";
+  if (page === "signup") {
+    if (!values.confirmPassword) {
+      errors.password = "Required";
+    } else if (values.confirmPassword !== values.password) {
+      errors.password = "Password is incorrect. Please confirm Your password.";
+    }
   }
-
   return errors;
 };
 
