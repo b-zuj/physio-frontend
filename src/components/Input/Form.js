@@ -23,28 +23,7 @@ const Form = (props) => {
   };
   return (
     <form onSubmit={props.loginHandler}>
-      {formElementsArray.length > 0 &&
-        formElementsArray.map((element) => {
-          const {
-            elementType,
-            elementConfig,
-            value,
-            valid,
-            validation,
-            touched,
-          } = element.config;
-          return (
-            <Input
-              key={element.id}
-              elementType={elementType}
-              elementConfig={elementConfig}
-              value={value}
-              invalid={!valid}
-              shouldValidate={validation}
-              touched={touched}
-            />
-          );
-        })}
+      <input type="text" name="email" value={} />
     </form>
   );
 };
