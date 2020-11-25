@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 
 import Layout from '../components/Layout/Layout';
@@ -33,7 +32,6 @@ const Login = (props) => {
       value: '',
     },
   });
-  // const history = useHistory();
 
   // Submit:
   const submitHandler = (e) => {

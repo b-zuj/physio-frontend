@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import {
   Home,
@@ -11,14 +11,15 @@ import {
   Session,
   Account,
   Client,
-} from "./pages";
+} from './pages';
 
-import * as actions from "./redux/actions/auth";
+import * as actions from './redux/actions/auth';
 
 const App = (props) => {
+  const { tryToAutoLog } = props;
   useEffect(() => {
-    props.tryToAutoLog();
-  }, []);
+    tryToAutoLog();
+  }, [tryToAutoLog]);
 
   const { isAuth } = props;
   let routes = (
@@ -46,7 +47,7 @@ const App = (props) => {
           component={(props) => <Session {...props} />}
         />
         <Route path="/client/:id" children={(props) => <Client {...props} />} />
-        <Redirect to="/" />
+        <Redirect to="/dashboard" />
       </Switch>
     );
   }
