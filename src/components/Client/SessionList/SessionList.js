@@ -11,7 +11,7 @@ const SessionList = (props) => {
     }
     return sessions.map((session) => (
       <div key={session.id} className={styles.session}>
-        <span>{session.name}</span>
+        <span>{session.title}</span>
         <Link to={`/session/${session.id}`}>
           <button type="button">Details</button>
         </Link>
