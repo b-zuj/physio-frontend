@@ -34,12 +34,11 @@ const App = (props) => {
           component={(props) => <Dashboard {...props} />}
         />
         <Route path="/account" component={(props) => <Account {...props} />} />
-        <Route
-          exact
-          path="/session"
-          component={(props) => <Session {...props} />}
-        />
         <Route path="/client/:id" children={(props) => <Client {...props} />} />
+        <Route
+          path="/session/:id"
+          children={(props) => <Session {...props} />}
+        />
         <Redirect to="/" />
       </Switch>
     );
