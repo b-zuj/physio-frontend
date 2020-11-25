@@ -12,7 +12,7 @@ const Session = () => {
   return (
     <div>
       <Layout>
-        <h1>Sessionpage</h1>
+        <h1>Session: {session.title}</h1>
         <ExcerciseList exercises={session.exercises} />
       </Layout>
     </div>
