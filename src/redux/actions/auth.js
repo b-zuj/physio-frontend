@@ -28,7 +28,13 @@ export function logout() {
   return { type: 'LOGOUT' };
 }
 
-export function signup() {
+export function signup(credentials) {
+  console.log('signup action', credentials);
+  return async (dispatch) => {
+    const response = await axios.post('/auth/signup', credentials);
+    const { user } = response.data.data;
+    dispatch(loadUserData(user));
+  };
   return { type: 'SIGNUP' };
 }
 
