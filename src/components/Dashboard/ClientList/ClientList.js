@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 const ClientList = (props) => {
   const { title, clients } = props;
 
-  // const clients = db.clients.filter((client) => client.status === status);
-
   const clientEntries = clients.map((client) => (
     <div key={client.id} className={styles.client}>
       <span>{client.name}</span>
