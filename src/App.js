@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import {
   Home,
@@ -10,7 +10,8 @@ import {
   Dashboard,
   Session,
   Account,
-} from "./pages";
+  Client,
+} from './pages';
 
 const App = (props) => {
   const { isAuth } = props;
@@ -38,6 +39,7 @@ const App = (props) => {
           path="/session"
           component={(props) => <Session {...props} />}
         />
+        <Route path="/client/:id" children={(props) => <Client {...props} />} />
         <Redirect to="/" />
       </Switch>
     );
