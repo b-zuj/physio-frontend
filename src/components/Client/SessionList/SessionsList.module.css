@@ -1,0 +1,8 @@
+.sessionList {
+  width: 300px;
+}
+
+.session {
+  display: flex;
+  justify-content: space-between;
+}
