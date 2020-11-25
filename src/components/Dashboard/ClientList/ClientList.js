@@ -1,27 +1,29 @@
 import React from 'react';
 import styles from './ClientList.module.css';
-
-const db = {
-  clients: [
-    { id: '213', name: 'Adam Kowalsk', status: 'Pending' },
-    { id: '34r', name: 'Jane Doe', status: 'Active' },
-    { id: '23rfv', name: 'Pia Kekkajarvi', status: 'Active' },
-  ],
-};
+import { Link } from 'react-router-dom';
 
 const ClientList = (props) => {
-  const { title, status } = props;
+  const { title, clients } = props;
 
-  const clients = db.clients.filter((client) => client.status === status);
+  // const clients = db.clients.filter((client) => client.status === status);
 
   const clientEntries = clients.map((client) => (
-    <div key={client.key}>{client.name}</div>
+    <div key={client.id} className={styles.client}>
+      <span>{client.name}</span>
+      <Link to={`/client/${client.id}`}>
+        <button type="button">Details</button>
+      </Link>
+    </div>
   ));
 
   return (
     <div>
       <h3>{title}</h3>
-      <div className={styles.clientList}>{clientEntries}</div>
+      {clients.length > 0 ? (
+        <div className={styles.clientList}>{clientEntries}</div>
+      ) : (
+        `No ${title.toLowerCase()}`
+      )}
     </div>
   );
 };
