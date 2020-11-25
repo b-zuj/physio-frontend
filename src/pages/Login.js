@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Layout from "../components/Layout/Layout";
 import Input from "../components/Input/Input";
 
-import checkValidity from "../utils/validity";
+import checkValidity from "../utils/formValidation";
 import * as actions from "../redux/actions/auth";
 
 const Login = (props) => {
@@ -20,12 +20,6 @@ const Login = (props) => {
       },
       label: "Email",
       value: "",
-      validation: {
-        required: true,
-        isEmail: true,
-      },
-      error: "",
-      touched: false,
     },
     password: {
       elementType: "input",
@@ -37,36 +31,48 @@ const Login = (props) => {
       },
       label: "Password",
       value: "",
-      validation: {
-        required: true,
-        isLength: {
-          min: 6,
-        },
-      },
-      error: "",
-      touched: false,
     },
   });
+  // const history = useHistory();
 
-  const history = useHistory();
+  // Submit:
+  //    take values,
+  //    check if values are valid to proceed,
+  //    send request
+  //    manage response
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-  const loginHandler = () => {
-    // validate
+    const formData = {};
+    for (let key in formElements) {
+      console.log(key);
+      formData[key] = formElements[key].value;
+    }
 
-    props.login();
-    history.push("/dashboard");
+    const errors = checkValidity(formData);
+
+    if (Object.keys(errors).length !== 0) {
+      return props.handleError("Invalid email or password. Please try again.");
+    }
+    props.handleError("");
   };
 
-  const changedHandler = (e) => {
+  // Handle change value
+  const updateState = (identifier, targetToUpdate, value) => {
     setFormElements((prevState) => ({
       ...prevState,
-      [e.target.name]: {
-        ...prevState[e.target.name],
-        value: e.target.value,
+      [identifier]: {
+        ...prevState[identifier],
+        [targetToUpdate]: value,
       },
     }));
   };
 
+  const changedHandler = (e) => {
+    updateState(e.target.name, "value", e.target.value);
+  };
+
+  // Map over object to create array
   const formElementsArray = [];
 
   for (let key in formElements) {
@@ -80,7 +86,8 @@ const Login = (props) => {
     <div>
       <Layout>
         <h1>Login</h1>
-        <form onSubmit={loginHandler}>
+        {props.errorMessage && <span>{props.errorMessage}</span>}
+        <form onSubmit={submitHandler}>
           {formElementsArray.map((el) => (
             <Input
               key={el.id}
@@ -98,10 +105,12 @@ const Login = (props) => {
     </div>
   );
 };
-
+const mapStateToProps = (state) => ({
+  errorMessage: state.authReducer.error,
+});
 const mapDispatchToProps = (dispatch) => ({
   login: () => dispatch(actions.login()),
-  logout: () => dispatch(actions.logout()),
+  handleError: (message) => dispatch(actions.handleError(message)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
