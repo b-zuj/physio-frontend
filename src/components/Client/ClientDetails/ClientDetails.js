@@ -33,6 +33,7 @@ const ClientDetails = (props) => {
           value={textAreaValue}
           onChange={onTextAreaChange}
         />
+        <br />
         <button onClick={() => setEditMode(false)}>Discard</button>{' '}
         <button onClick={saveComment}>Save</button>
       </>
