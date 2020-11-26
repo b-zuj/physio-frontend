@@ -1,7 +1,9 @@
-import React from "react";
-import styles from "./Navbar.module.css";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styles from './Navbar.module.css';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
+import * as actions from '../../../redux/actions/auth';
 
 const Navbar = (props) => {
   const { isAuth } = props;
@@ -15,9 +17,6 @@ const Navbar = (props) => {
           </li>
           <li>
             <NavLink to="/account">Account</NavLink>
-          </li>
-          <li>
-            <NavLink to="/logout">Log out</NavLink>
           </li>
         </>
       );
@@ -42,6 +41,11 @@ const Navbar = (props) => {
           <li>
             <NavLink to="/about">About</NavLink>
           </li>
+          {isAuth && (
+            <li>
+              <button onClick={props.logout}>Log out</button>
+            </li>
+          )}
         </ul>
       </div>
     </div>
@@ -53,5 +57,10 @@ const mapStateToPros = (state) => {
     isAuth: state.authReducer.isAuth,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(actions.logout()),
+  };
+};
 
-export default connect(mapStateToPros)(Navbar);
+export default connect(mapStateToPros, mapDispatchToProps)(Navbar);

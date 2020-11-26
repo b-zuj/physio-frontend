@@ -1,60 +1,54 @@
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-import Layout from "../components/Layout/Layout";
-import Input from "../components/Input/Input";
+import Layout from '../components/Layout/Layout';
+import Input from '../components/Input/Input';
 
-import checkValidity from "../utils/formValidation";
-import * as actions from "../redux/actions/auth";
+import checkValidity from '../utils/formValidation';
+import * as actions from '../redux/actions/auth';
 
 const Login = (props) => {
   const [formElements, setFormElements] = useState({
     email: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "email",
-        placeholder: "Your Email",
-        name: "email",
-        id: "email",
+        type: 'email',
+        placeholder: 'Your Email',
+        name: 'email',
+        id: 'email',
       },
-      label: "Email",
-      value: "",
+      label: 'Email',
+      value: '',
     },
     password: {
-      elementType: "input",
+      elementType: 'input',
       elementConfig: {
-        type: "password",
-        placeholder: "Passwrod",
-        name: "password",
-        id: "password",
+        type: 'password',
+        placeholder: 'Passwrod',
+        name: 'password',
+        id: 'password',
       },
-      label: "Password",
-      value: "",
+      label: 'Password',
+      value: '',
     },
   });
-  // const history = useHistory();
 
   // Submit:
-  //    take values,
-  //    check if values are valid to proceed,
-  //    send request
-  //    manage response
   const submitHandler = (e) => {
     e.preventDefault();
 
     const formData = {};
     for (let key in formElements) {
-      console.log(key);
       formData[key] = formElements[key].value;
     }
 
-    const errors = checkValidity(formData);
+    const errors = checkValidity(formData, 'login');
 
     if (Object.keys(errors).length !== 0) {
-      return props.handleError("Invalid email or password. Please try again.");
+      return props.handleError('Invalid email or password. Please try again.');
     }
-    props.handleError("");
+    props.handleError('');
+    props.login(formData);
   };
 
   // Handle change value
@@ -69,7 +63,7 @@ const Login = (props) => {
   };
 
   const changedHandler = (e) => {
-    updateState(e.target.name, "value", e.target.value);
+    updateState(e.target.name, 'value', e.target.value);
   };
 
   // Map over object to create array
@@ -110,7 +104,7 @@ const mapStateToProps = (state) => ({
   errorMessage: state.authReducer.error,
 });
 const mapDispatchToProps = (dispatch) => ({
-  login: () => dispatch(actions.login()),
+  login: (loginCredentials) => dispatch(actions.login(loginCredentials)),
   handleError: (message) => dispatch(actions.handleError(message)),
 });
 
