@@ -1,15 +1,54 @@
-export function login() {
-  return { type: "LOGIN" };
+import Cookies from 'js-cookie';
+import axios from '../../utils/axios';
+
+export function login(credentials) {
+  return async (dispatch) => {
+    const response = await axios.post('/auth/login', credentials);
+    const { user } = response.data.data;
+    dispatch(loadUserData(user));
+  };
+}
+
+export const tryToAutoLog = () => {
+  return async (dispatch) => {
+    if (Cookies.get('auth')) {
+      const response = await axios.get('/auth/login');
+      const { data } = response;
+      dispatch(loadUserData(data));
+    }
+  };
+};
+
+export function loadUserData(user) {
+  return { type: 'LOAD_DATA', payload: user };
 }
 
 export function logout() {
-  return { type: "LOGOUT" };
+  Cookies.remove('auth');
+  return { type: 'LOGOUT' };
 }
 
-export function signup() {
-  return { type: "SIGNUP" };
+export function signup(credentials) {
+  console.log('signup action', credentials);
+  // {email, name, password}
+  return async (dispatch) => {
+    const response = await axios.post('/auth/signup', credentials);
+    const { user } = response.data.data;
+    dispatch(loadUserData(user));
+  };
+}
+
+export function signupClient(credentials) {
+  console.log('signup Client action', credentials);
+  // {email, name, password, pro}
+  return async (dispatch) => {
+    const response = await axios.post('/auth/client/signup', credentials);
+    console.log(response);
+    const { user } = response.data.data;
+    dispatch(loadUserData(user));
+  };
 }
 
 export function handleError(errorMessage) {
-  return { type: "ERROR", payload: errorMessage };
+  return { type: 'ERROR', payload: errorMessage };
 }
