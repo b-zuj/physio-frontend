@@ -1,0 +1,19 @@
+.exerciseList {
+  width: 400px;
+}
+
+.exercise {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.exercise p {
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.exercise button {
+  margin-left: 10px;
+}
