@@ -1,29 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
-
-const db = {
-  clients: [
-    {
-      id: '213',
-      name: 'Adam Kowalsk',
-      email: 'asdf@sdf.no',
-      status: 'Pending',
-    },
-    {
-      id: '34r',
-      name: 'Jane Doe',
-      email: 'assdfdf@sdf.no',
-      status: 'Active',
-    },
-    {
-      id: '23rfv',
-      name: 'Pia Kekkajarvi',
-      email: 'asdf@sdf.no',
-      status: 'Active',
-    },
-  ],
-};
+import ClientDetails from '../components/Client/ClientDetails/ClientDetails';
+import SessionList from '../components/Client/SessionList/SessionList';
+import { Link } from 'react-router-dom';
+import { db } from '../mock/mockDB';
 
 const Client = () => {
   let { id } = useParams();
@@ -36,17 +17,12 @@ const Client = () => {
     }
     return (
       <>
-        <h1>{client.name}</h1>
-        <div>
-          <h3>Client Details</h3>
-          <p>Name: {client.name}</p>
-          <p>Email: {client.email}</p>
-          <p>Comments:</p>
-          <p>{client.comment ? client.comment : 'No comments'}</p>
-        </div>
-        <div>
-          <h3>Assigned sessions:</h3>
-        </div>
+        <ClientDetails client={client} />
+        <SessionList title="Assigned sessions:" sessions={client.sessions} />
+        <br />
+        <Link to={`/session/`}>
+          <button type="button">Create a new session</button>
+        </Link>
       </>
     );
   };
