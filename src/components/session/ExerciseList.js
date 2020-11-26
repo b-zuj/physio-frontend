@@ -9,10 +9,13 @@ const ExcerciseList = (props) => {
     if (!exercises || exercises.length < 1) {
       return 'No exercises';
     }
-    return exercises.map((excercise) => (
-      <div key={excercise.id} className={styles.excercise}>
-        <span>{excercise.title}</span>
-        <Link to={`/excercise/${excercise.id}`}>
+    return exercises.map((exercise) => (
+      <div key={exercise.id} className={styles.exercise}>
+        <div>
+          <b>{exercise.title}</b>
+          {exercise.description && <p>{exercise.description}</p>}
+        </div>
+        <Link to={`/exercise/${exercise.id}`}>
           <button type="button">Details</button>
         </Link>
       </div>
@@ -22,7 +25,7 @@ const ExcerciseList = (props) => {
   return (
     <div>
       <h3>Exercises:</h3>
-      <div className={styles.excerciseList}>{renderExercises()}</div>
+      <div className={styles.exerciseList}>{renderExercises()}</div>
     </div>
   );
 };

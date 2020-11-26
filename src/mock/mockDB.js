@@ -42,23 +42,24 @@ export const db = {
     {
       title: 'Lower back training',
       id: 'h8fa',
+      description:
+        'This training session you should do 3 times a week as discussed during our last appoitment.',
       exercises: [
         {
           id: 'oisuf98',
+
           title: 'Bridge  - begginer level',
-          desciption:
+          description:
             'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
         },
         {
           id: 'ouh8',
           title: 'Knee-to-chest stretches',
-          desciption:
-            'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
         },
         {
           id: 'ihf8',
           title: 'Lower back stretches',
-          desciption:
+          description:
             'Do 3 series of 15 repetitions. Hold 10 sec in the posision.',
         },
       ],
