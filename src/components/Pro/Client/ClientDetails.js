@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import * as clientActions from '../../../redux/actions/client';
 
 const ClientDetails = (props) => {
   const { client } = props;
@@ -14,6 +16,8 @@ const ClientDetails = (props) => {
 
   const saveComment = () => {
     setComments(textAreaRef.current.value);
+    // client.comments = textAreaRef.current.value;
+    props.updateClient(client._id, textAreaRef.current.value, props.user);
     setEditMode(false);
   };
 
@@ -60,4 +64,15 @@ const ClientDetails = (props) => {
   );
 };
 
-export default ClientDetails;
+const mapStateToProps = (state) => ({
+  user: state.authReducer.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  updateClient: (clientId, newClient, user) =>
+    dispatch(clientActions.updateClient(clientId, newClient, user)),
+  // getClient: (clientId) => dispatch(clientActions.getClient(clientId)),
+  // login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClientDetails);

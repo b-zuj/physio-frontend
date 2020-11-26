@@ -15,8 +15,6 @@ const Client = (props) => {
 
   const client = clients.find((element) => element._id.toString() === id);
 
-  props.updateClient(client);
-
   console.log('Client page = ', client);
 
   const renderClient = () => {
