@@ -8,7 +8,7 @@ const About = () => {
         <h1>About</h1>
         <b>Who we are</b>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        tempor incididunt ut labore et dolore magna aliqua. Ut npm enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.
         <b>Our mission</b>
