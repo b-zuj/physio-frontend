@@ -5,6 +5,19 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import Session from './Session';
+import Exercise from './Exercise';
+import CreateSession from './CreateSession';
 import Client from './Client';
 
-export { About, Account, Dashboard, Home, Login, Signup, Session, Client };
+export {
+  About,
+  Account,
+  Dashboard,
+  Home,
+  Login,
+  Signup,
+  Session,
+  Client,
+  Exercise,
+  CreateSession,
+};
