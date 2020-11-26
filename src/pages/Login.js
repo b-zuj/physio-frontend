@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+// import { useHistory } from "react-router-dom";
 
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
@@ -33,13 +33,13 @@ const Login = (props) => {
     },
   });
 
-  // Submit:
-  const submitHandler = (e) => {
-    e.preventDefault();
+  // const history = useHistory();
 
-    const formData = {};
-    for (let key in formElements) {
-      formData[key] = formElements[key].value;
+  // Submit:
+  //    take values,
+  //    check if values are valid to proceed,
+  //    send request
+  //    manage responseormElements[key].value;
     }
 
     const errors = checkValidity(formData, 'login');

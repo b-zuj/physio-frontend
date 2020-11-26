@@ -11,12 +11,14 @@ import {
   Session,
   Account,
   Client,
+  Exercise,
+  CreateSession,
 } from './pages';
 
 import * as actions from './redux/actions/auth';
 
 const App = (props) => {
-  const { tryToAutoLog } = props;
+  const { tryToAutoLog, userType } = props;
   useEffect(() => {
     tryToAutoLog();
   }, [tryToAutoLog]);
@@ -31,7 +33,8 @@ const App = (props) => {
       <Redirect to="/" />
     </Switch>
   );
-  if (isAuth) {
+
+  if (isAuth && userType === 'client') {
     routes = (
       <Switch>
         <Route exact path="/" component={(props) => <Home {...props} />} />
@@ -41,14 +44,43 @@ const App = (props) => {
           component={(props) => <Dashboard {...props} />}
         />
         <Route path="/account" component={(props) => <Account {...props} />} />
-        <Route path="/client/:id" children={(props) => <Client {...props} />} />
         <Route
           path="/session/:id"
           children={(props) => <Session {...props} />}
         />
+        <Route
+          path="/exercise/:id"
+          children={(props) => <Exercise {...props} />}
+        />
+        <Redirect to="/dashboard" />
+      </Switch>
+    );
+  }
+  if (isAuth && userType === 'pro') {
+    routes = (
+      <Switch>
+        <Route exact path="/" component={(props) => <Home {...props} />} />
+        <Route path="/about" component={(props) => <About {...props} />} />
+        <Route
+          path="/dashboard"
+          component={(props) => <Dashboard {...props} />}
+        />
+        <Route path="/account" component={(props) => <Account {...props} />} />
+        <Route
+          exact
+          path="/session/create"
+          children={(props) => <CreateSession {...props} />}
+        />
+        <Route
+          path="/session/:id"
+          children={(props) => <Session {...props} />}
+        />
+        <Route
+          path="/exercise/:id"
+          children={(props) => <Exercise {...props} />}
+        />
         <Route path="/client/:id" children={(props) => <Client {...props} />} />
         <Redirect to="/dashboard" />
-
       </Switch>
     );
   }
@@ -59,7 +91,7 @@ const App = (props) => {
 const mapStateToPros = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
-    accType: state.authReducer.accType,
+    userType: state.authReducer.user?.userType,
   };
 };
 const mapDispatchToPros = (dispatch) => {

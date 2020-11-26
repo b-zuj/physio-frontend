@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { useParams } from 'react-router-dom';
 import { db } from '../mock/mockDB';
-import ExcerciseList from '../components/session/ExerciseList';
+import ExcerciseList from '../components/ExerciseList/ExerciseList';
 import { Link } from 'react-router-dom';
 
 const Session = () => {
@@ -27,7 +27,7 @@ const Session = () => {
         <h1>Session: {session.title}</h1>
         {session.description && description}
         <ExcerciseList exercises={session.exercises} />
-        <Link to={`/session/${session.id}/edit`}>
+        <Link to={`/session/create?sessionId=${session.id}`}>
           <button type="button">Edit session</button>
         </Link>
       </>

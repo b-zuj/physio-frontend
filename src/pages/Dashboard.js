@@ -1,27 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
-import ClientList from '../components/Dashboard/ClientList/ClientList';
-import { db } from '../mock/mockDB';
+import ProDashboard from '../components/Pro/ProDashboard';
+import ClientDashboard from '../components/Client/ClientDashboard';
 
-const Dashboard = () => {
-  const activeClients = db.clients.filter(
-    (client) => client.status === 'Active'
-  );
-  const pendingClients = db.clients.filter(
-    (client) => client.status === 'Pending'
-  );
-
+const Dashboard = ({ userType }) => {
   return (
     <div>
       <Layout>
-        <h1>Dashboardpage</h1>
-        <ClientList title="Active Clients" clients={activeClients} />
-        <ClientList title="Pending Clients" clients={pendingClients} />
-        <br />
-        <button>Invite new clients</button>
+        {userType === 'pro' ? <ProDashboard /> : <ClientDashboard />}
       </Layout>
     </div>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  userType: state.authReducer.user.userType,
+});
+
+export default connect(mapStateToProps)(Dashboard);

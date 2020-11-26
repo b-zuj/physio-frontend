@@ -1,17 +1,13 @@
 import React from 'react';
+
 import styles from './ClientList.module.css';
-import { Link } from 'react-router-dom';
+import Client from './Client';
 
 const ClientList = (props) => {
   const { title, clients } = props;
 
   const clientEntries = clients.map((client) => (
-    <div key={client.id} className={styles.client}>
-      <span>{client.name}</span>
-      <Link to={`/client/${client.id}`}>
-        <button type="button">Details</button>
-      </Link>
-    </div>
+    <Client key={client.id} className={styles.client} client={client} />
   ));
 
   return (
