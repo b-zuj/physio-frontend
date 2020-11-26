@@ -6,7 +6,7 @@ const Client = ({ client }) => {
   return (
     <div className={styles.client}>
       <span>{client.name}</span>
-      <Link to={`/client/${client.id}`}>
+      <Link to={`/client/${client._id}`}>
         <button type="button">Details</button>
       </Link>
     </div>

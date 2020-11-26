@@ -48,7 +48,3 @@ export function signupClient(credentials) {
     dispatch(loadUserData(user));
   };
 }
-
-export function handleError(errorMessage) {
-  return { type: 'ERROR', payload: errorMessage };
-}

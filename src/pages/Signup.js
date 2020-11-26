@@ -6,7 +6,8 @@ import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 
 import checkValidity from '../utils/formValidation';
-import * as actions from '../redux/actions/auth';
+import * as authActions from '../redux/actions/auth';
+import * as errorsActions from '../redux/actions/errors';
 
 const Signup = (props) => {
   const [formElements, setFormElements] = useState({
@@ -149,9 +150,10 @@ const mapStateToProps = (state) => ({
   errorMessage: state.authReducer.error,
 });
 const mapDispatchToProps = (dispatch) => ({
-  signup: (credentials) => dispatch(actions.signup(credentials)),
-  signupClient: (credentials) => dispatch(actions.signupClient(credentials)),
-  handleError: (message) => dispatch(actions.handleError(message)),
+  signup: (credentials) => dispatch(authActions.signup(credentials)),
+  signupClient: (credentials) =>
+    dispatch(authActions.signupClient(credentials)),
+  handleError: (message) => dispatch(errorsActions.handleError(message)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

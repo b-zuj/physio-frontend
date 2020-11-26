@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-// import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 
 import checkValidity from '../utils/formValidation';
-import * as actions from '../redux/actions/auth';
+import * as authActions from '../redux/actions/auth';
+import * as errorsActions from '../redux/actions/errors';
 
 const Login = (props) => {
   const [formElements, setFormElements] = useState({
@@ -33,13 +34,13 @@ const Login = (props) => {
     },
   });
 
-  // const history = useHistory();
-
   // Submit:
-  //    take values,
-  //    check if values are valid to proceed,
-  //    send request
-  //    manage responseormElements[key].value;
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const formData = {};
+    for (let key in formElements) {
+      formData[key] = formElements[key].value;
     }
 
     const errors = checkValidity(formData, 'login');
@@ -104,8 +105,8 @@ const mapStateToProps = (state) => ({
   errorMessage: state.authReducer.error,
 });
 const mapDispatchToProps = (dispatch) => ({
-  login: (loginCredentials) => dispatch(actions.login(loginCredentials)),
-  handleError: (message) => dispatch(actions.handleError(message)),
+  login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
+  handleError: (message) => dispatch(errorsActions.handleError(message)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
