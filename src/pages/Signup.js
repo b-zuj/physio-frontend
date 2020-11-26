@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 
@@ -55,13 +56,32 @@ const Signup = (props) => {
     },
   });
 
+  const query = useQuery();
+
+  useEffect(() => {
+    if (query.get('user') === 'client' && query.get('token')) {
+      const token = query.get('token');
+      setFormElements((prevState) => ({
+        ...prevState,
+        proInput: {
+          elementType: 'input',
+          elementConfig: {
+            type: 'hidden',
+            name: 'pro',
+            id: 'pro',
+          },
+          value: token,
+        },
+      }));
+    }
+  }, []);
+
   const submitHandler = (e) => {
     e.preventDefault();
 
     const formData = {};
     for (let key in formElements) {
-      formData[key] = formElements[key].value;
-      console.log(key, formElements[key].value);
+      formData[formElements[key].elementConfig.name] = formElements[key].value;
     }
     const errors = checkValidity(formData, 'signup');
 
@@ -72,6 +92,7 @@ const Signup = (props) => {
     }
     props.handleError('');
     delete formData.confirmPassword;
+    if (formData.pro) return props.signupClient(formData);
     props.signup(formData);
   };
 
@@ -129,6 +150,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   signup: (credentials) => dispatch(actions.signup(credentials)),
+  signupClient: (credentials) => dispatch(actions.signupClient(credentials)),
   handleError: (message) => dispatch(actions.handleError(message)),
 });
 
