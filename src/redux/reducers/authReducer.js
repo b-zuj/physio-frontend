@@ -1,6 +1,5 @@
 const InitialState = {
   isAuth: false,
-  // accType: 'pro',
   error: '',
 };
 
