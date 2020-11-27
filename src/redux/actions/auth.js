@@ -29,7 +29,7 @@ export function logout() {
 }
 
 export function signup(credentials) {
-  console.log('signup action', credentials);
+  // console.log('signup action', credentials);
   // {email, name, password}
   return async (dispatch) => {
     const response = await axios.post('/auth/signup', credentials);
