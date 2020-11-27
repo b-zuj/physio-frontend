@@ -5,8 +5,8 @@ import * as clientActions from '../../../redux/actions/client';
 const ClientDetails = (props) => {
   const { client } = props;
   const [editMode, setEditMode] = useState(false);
-  const [comments, setComments] = useState(client.comments);
-  const [textAreaValue, setTextAreaValue] = useState(comments);
+  const [comment, setComment] = useState(client.comment);
+  const [textAreaValue, setTextAreaValue] = useState(comment);
   const textAreaRef = React.createRef();
 
   const onTextAreaChange = (e) => {
@@ -15,9 +15,8 @@ const ClientDetails = (props) => {
   };
 
   const saveComment = () => {
-    setComments(textAreaRef.current.value);
-    // client.comments = textAreaRef.current.value;
-    props.updateClient(client._id, textAreaRef.current.value, props.user);
+    setComment(textAreaRef.current.value);
+    props.updateClient(client, textAreaRef.current.value);
     setEditMode(false);
   };
 
@@ -25,8 +24,8 @@ const ClientDetails = (props) => {
     if (!editMode) {
       return (
         <>
-          <p>{comments ? comments : 'No comments'}</p>
-          <button onClick={() => setEditMode(true)}>Edit comments</button>
+          <p>{comment ? comment : 'No comment'}</p>
+          <button onClick={() => setEditMode(true)}>Edit comment</button>
         </>
       );
     }
@@ -56,7 +55,7 @@ const ClientDetails = (props) => {
           <b>Email:</b> {client.email}
         </p>
         <p>
-          <b>Comments:</b>
+          <b>Comment:</b>
         </p>
         {renderCommentSection()}
       </div>
@@ -64,15 +63,9 @@ const ClientDetails = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.authReducer.user,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  updateClient: (clientId, newClient, user) =>
-    dispatch(clientActions.updateClient(clientId, newClient, user)),
-  // getClient: (clientId) => dispatch(clientActions.getClient(clientId)),
-  // login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
+  updateClient: (client, comment) =>
+    dispatch(clientActions.updateClient(client, comment)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClientDetails);
+export default connect(null, mapDispatchToProps)(ClientDetails);
