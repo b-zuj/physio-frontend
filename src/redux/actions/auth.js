@@ -12,9 +12,11 @@ export function login(credentials) {
 export const tryToAutoLog = () => {
   return async (dispatch) => {
     if (Cookies.get('auth')) {
+      dispatch(isLoading(true));
       const response = await axios.get('/auth/login');
       const { data } = response;
       dispatch(loadUserData(data));
+      dispatch(isLoading(false));
     }
   };
 };
@@ -48,3 +50,5 @@ export function signupClient(credentials) {
     dispatch(loadUserData(user));
   };
 }
+
+export const isLoading = (bool) => ({ type: 'IS_LOADING', payload: bool });

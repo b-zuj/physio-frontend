@@ -1,6 +1,7 @@
 const InitialState = {
   isAuth: false,
   error: '',
+  isLoading: false,
 };
 
 const authReducer = (state = InitialState, action) => {
@@ -17,6 +18,11 @@ const authReducer = (state = InitialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case 'IS_LOADING':
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default: {
       return state;
