@@ -5,7 +5,8 @@ import checkValidity from '../utils/formValidation';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
-import EditExerciseList from '../components/EditExerciseList/EditExerciseList';
+// import EditExerciseList from '../components/EditExerciseList/EditExerciseList';
+import AllExercisesList from '../components/AllExercisesList/AllExercisesList';
 
 import * as errorsActions from '../redux/actions/errors';
 import * as sessionActions from '../redux/actions/session';
@@ -32,15 +33,6 @@ const CreateSession = (props) => {
       },
       value: '',
     },
-    // client: {
-    //   elementType: 'select',
-    //   elementConfig: {
-    //     name: 'client',
-    //     id: 'client',
-    //   },
-    //   value: '',
-    //   options: props.clients.map((c) => c.name),
-    // },
   });
   const query = useQuery();
   const sessionId = query.get('sessionId');
@@ -50,7 +42,6 @@ const CreateSession = (props) => {
   if (clientId) {
     client = props.clients.find((c) => c._id === clientId);
   }
-  // console.log({ client });
   // Submit:
   const submitHandler = (e) => {
     e.preventDefault();
@@ -113,7 +104,7 @@ const CreateSession = (props) => {
         ))}
         <input type="submit" value="Create Session" />
       </form>
-      {/* <EditExerciseList exercises={session.exercises} /> */}
+      <AllExercisesList />
     </Layout>
   );
 };
