@@ -4,18 +4,21 @@ import styles from './ExerciseList.module.css';
 
 const ExcerciseList = (props) => {
   const { exercises } = props;
-
+  console.log(exercises);
   const renderExercises = () => {
     if (!exercises || exercises.length < 1) {
       return 'No exercises';
     }
-    return exercises.map((exercise) => (
-      <div key={exercise.id} className={styles.exercise}>
+    return exercises.map((e) => (
+      <div key={e.exercise._id} className={styles.exercise}>
         <div>
-          <b>{exercise.title}</b>
-          {exercise.description && <p>{exercise.description}</p>}
+          <b>{e.exercise.title}</b>
+          {e.exercise.description && <p>{e.exercise.description}</p>}
+          <p>
+            <i>{e.comment}</i>
+          </p>
         </div>
-        <Link to={`/exercise/${exercise.id}`}>
+        <Link to={`/exercise/${e.exercise._id}`}>
           <button type="button">Details</button>
         </Link>
       </div>
