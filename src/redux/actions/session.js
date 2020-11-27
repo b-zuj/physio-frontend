@@ -1,15 +1,11 @@
-import Cookies from 'js-cookie';
 import axios from '../../utils/axios';
+import * as authActions from './auth';
 
 export const createSession = (sessionData) => {
-  console.log({ sessionData });
   return async (dispatch) => {
-    // if (Cookies.get('auth')) {
-    // title, description, client, pro
-    const response = await axios.post('/sessions');
-    console.log(response);
-    // const { data } = response;
-    //   dispatch(loadUserData(data));
-    // }
+    const response = await axios.post('/sessions', sessionData);
+    if (response.status === 200) {
+      dispatch(authActions.tryToAutoLog());
+    }
   };
 };

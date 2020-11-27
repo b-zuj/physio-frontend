@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import checkValidity from '../utils/formValidation';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
-import { db } from '../mock/mockDB';
 import Input from '../components/Input/Input';
 import EditExerciseList from '../components/EditExerciseList/EditExerciseList';
 
@@ -12,14 +11,6 @@ import * as errorsActions from '../redux/actions/errors';
 import * as sessionActions from '../redux/actions/session';
 
 const CreateSession = (props) => {
-  let query = useQuery();
-  let sessionId = query.get('sessionId');
-  // console.log(sessionId);
-  let session = {};
-  if (sessionId) {
-    session = db.sessions.find((element) => element.id === sessionId);
-  }
-
   const [formElements, setFormElements] = useState({
     title: {
       elementType: 'input',
@@ -41,17 +32,25 @@ const CreateSession = (props) => {
       },
       value: '',
     },
-    client: {
-      elementType: 'select',
-      elementConfig: {
-        name: 'client',
-        id: 'client',
-      },
-      value: '',
-      options: props.clients.map((c) => c.name),
-    },
+    // client: {
+    //   elementType: 'select',
+    //   elementConfig: {
+    //     name: 'client',
+    //     id: 'client',
+    //   },
+    //   value: '',
+    //   options: props.clients.map((c) => c.name),
+    // },
   });
-
+  const query = useQuery();
+  const sessionId = query.get('sessionId');
+  const clientId = query.get('client');
+  // console.log({ sessionId, clientId });
+  let client;
+  if (clientId) {
+    client = props.clients.find((c) => c._id === clientId);
+  }
+  // console.log({ client });
   // Submit:
   const submitHandler = (e) => {
     e.preventDefault();
@@ -59,9 +58,8 @@ const CreateSession = (props) => {
     const formData = {};
     for (let key in formElements) {
       formData[key] = formElements[key].value;
-      console.log(formData);
     }
-
+    formData.client = client._id.toString();
     const errors = checkValidity(formData, 'session');
 
     if (Object.keys(errors).length !== 0) {
@@ -98,7 +96,7 @@ const CreateSession = (props) => {
   }
   return (
     <Layout>
-      <div>creating session</div>
+      <div>Creating session for {client.name}</div>
       {props.errorMessage && <span>{props.errorMessage}</span>}
       <form onSubmit={submitHandler}>
         {formElementsArray.map((el) => (
@@ -115,7 +113,7 @@ const CreateSession = (props) => {
         ))}
         <input type="submit" value="Create Session" />
       </form>
-      <EditExerciseList exercises={session.exercises} />
+      {/* <EditExerciseList exercises={session.exercises} /> */}
     </Layout>
   );
 };

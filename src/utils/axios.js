@@ -15,6 +15,7 @@ customAxios.interceptors.response.use((res) => {
   if (res.data.token) {
     Cookies.set('auth', res.data.token);
   }
+  console.log(res);
   return res;
 });
 

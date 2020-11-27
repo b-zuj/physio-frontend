@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom';
 import styles from './SessionsList.module.css';
 
 const SessionList = (props) => {
-  const { title, sessions } = props;
-
+  const { title, sessions, clientId } = props;
   const renderSessions = (sessions) => {
     if (!sessions || sessions.length < 1) {
       return 'No sessions';
     }
     return sessions.map((session) => (
-      <div key={session.id} className={styles.session}>
+      <div key={session._id} className={styles.session}>
         <span>{session.title}</span>
-        <Link to={`/session/${session.id}`}>
+        <Link to={`/session/${session._id}?client=${clientId}`}>
           <button type="button">Details</button>
         </Link>
       </div>
