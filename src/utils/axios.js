@@ -6,8 +6,8 @@ const customAxios = axios.create({
 });
 
 customAxios.interceptors.request.use((req) => {
-  const token = Cookies.get('auth');
-  req.headers.Authorization = `Bearer ${token}`;
+  // const token = Cookies.get('auth');
+  // req.headers.Authorization = `Bearer ${token}`;
   return req;
 });
 
