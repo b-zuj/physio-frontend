@@ -1,22 +1,32 @@
 import React from 'react';
-import styles from './Navbar.module.css';
+import { ExitToApp } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
+import styles from './Navbar.module.css';
 
 import * as actions from '../../../redux/actions/auth';
 
 const Navbar = (props) => {
   const { isAuth } = props;
 
+  const activeStyles = {
+    color: '#f77f00',
+  };
+
   const renderAuth = () => {
     if (isAuth) {
       return (
         <>
           <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink activeStyle={activeStyles} to="/dashboard">
+              Dashboard
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/account">Account</NavLink>
+            <NavLink activeStyle={activeStyles} to="/account">
+              Account
+            </NavLink>
           </li>
         </>
       );
@@ -24,10 +34,14 @@ const Navbar = (props) => {
     return (
       <>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink activeStyle={activeStyles} to="/login">
+            Login
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/signup">Signup</NavLink>
+          <NavLink activeStyle={activeStyles} to="/signup">
+            Signup
+          </NavLink>
         </li>
       </>
     );
@@ -35,19 +49,21 @@ const Navbar = (props) => {
 
   return (
     <div className={styles.navbarContainer}>
-      <div className={styles.navbar}>
-        <ul>
-          {renderAuth()}
+      <ul>
+        {renderAuth()}
+        <li>
+          <NavLink activeStyle={activeStyles} to="/about">
+            About
+          </NavLink>
+        </li>
+        {isAuth && (
           <li>
-            <NavLink to="/about">About</NavLink>
+            <button className={styles.exitToApp} onClick={props.logout}>
+              {<ExitToApp />}
+            </button>
           </li>
-          {isAuth && (
-            <li>
-              <button onClick={props.logout}>Log out</button>
-            </li>
-          )}
-        </ul>
-      </div>
+        )}
+      </ul>
     </div>
   );
 };
