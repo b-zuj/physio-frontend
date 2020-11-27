@@ -24,7 +24,11 @@ const Client = (props) => {
     return (
       <>
         <ClientDetails client={client} />
-        <SessionList title="Assigned sessions:" sessions={client.sessions} />
+        <SessionList
+          title="Assigned sessions:"
+          sessions={client.sessions}
+          clientId={client._id}
+        />
         <br />
         <Link to={`/session/create?client=${client._id}`}>
           <button type="button">Create a new session</button>

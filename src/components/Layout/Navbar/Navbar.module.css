@@ -1,14 +1,42 @@
-.navbar ul {
+.colors {
+  color: #003049;
+  color: #d62828;
+  color: #f77f00;
+  color: #fcbf49;
+  color: #eae2b7;
+}
+.navbarContainer {
+  height: 60px;
+  background-color: #003049;
+}
+.navbarContainer ul {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  max-width: 800px;
   padding: 0;
+  margin: 0 auto;
   padding-right: 20px;
 }
 
-.navbar li {
-  display: inline;
+.navbarContainer li {
+  list-style: none;
 }
 
-.navbar a {
-  padding: 5px;
+.navbarContainer a {
+  padding: 5px 10px;
+  color: #eae2b7;
+  text-decoration: none;
+}
+.active {
+  color: #f77f00;
+}
+
+.exitToApp {
+  border: none;
+  background-color: transparent;
+  color: #fcbf49;
+  padding: 10px 5px 10px 10px;
+  cursor: pointer;
 }
