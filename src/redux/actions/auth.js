@@ -13,10 +13,14 @@ export const tryToAutoLog = () => {
   return async (dispatch) => {
     if (Cookies.get('auth')) {
       dispatch(isLoading(true));
-      const response = await axios.get('/auth/login');
-      const { data } = response;
-      dispatch(loadUserData(data));
-      dispatch(isLoading(false));
+      try {
+        const response = await axios.get('/auth/login');
+        const { data } = response;
+        dispatch(loadUserData(data));
+        dispatch(isLoading(false));
+      } catch (error) {
+        dispatch(isLoading(false));
+      }
     }
   };
 };
