@@ -9,6 +9,7 @@ import ExcerciseList from '../components/ExerciseList/ExerciseList';
 import { Link } from 'react-router-dom';
 
 const Session = ({ clients }) => {
+  // to verify who owns session we need clientId and sessionId
   const { id } = useParams();
   const query = useQuery();
   const clientId = query.get('client');
