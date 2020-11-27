@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 
 import {
   Home,
@@ -20,7 +20,12 @@ import * as actions from './redux/actions/auth';
 const App = (props) => {
   const { tryToAutoLog, userType } = props;
   useEffect(() => {
-    tryToAutoLog();
+    const refreshedPage = async () => {
+      await tryToAutoLog();
+      props.history.goBack();
+      console.log(props);
+    };
+    refreshedPage();
   }, [tryToAutoLog]);
 
   const { isAuth } = props;
@@ -100,4 +105,4 @@ const mapDispatchToPros = (dispatch) => {
   };
 };
 
-export default connect(mapStateToPros, mapDispatchToPros)(App);
+export default withRouter(connect(mapStateToPros, mapDispatchToPros)(App));
