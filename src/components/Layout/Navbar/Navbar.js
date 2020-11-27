@@ -48,11 +48,17 @@ const Navbar = (props) => {
     );
   };
   const goToPrevPage = () => history.goBack();
+  const handleLogout = () => {
+    props.logout();
+    history.push('/');
+  };
   return (
     <div className={styles.navbarContainer}>
-      <button className={styles.goBack} onClick={goToPrevPage}>
-        <ArrowBack />
-      </button>
+      {isAuth && (
+        <button className={styles.goBack} onClick={goToPrevPage}>
+          <ArrowBack />
+        </button>
+      )}
       <ul>
         {renderAuth()}
         <li>
@@ -62,7 +68,7 @@ const Navbar = (props) => {
         </li>
         {isAuth && (
           <li>
-            <button className={styles.exitToApp} onClick={props.logout}>
+            <button className={styles.exitToApp} onClick={handleLogout}>
               {<ExitToApp />}
             </button>
           </li>
