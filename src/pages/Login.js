@@ -96,7 +96,6 @@ const Login = (props) => {
           ))}
           <input type="submit" value="Login" />
         </form>
-        <button onClick={props.login}>Login test</button>
       </Layout>
     </div>
   );
