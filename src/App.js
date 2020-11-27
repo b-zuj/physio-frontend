@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import {
   Home,
@@ -21,8 +21,7 @@ const App = (props) => {
   const { tryToAutoLog, userType } = props;
   useEffect(() => {
     const refreshedPage = async () => {
-      await tryToAutoLog();
-      props.history.goBack();
+      tryToAutoLog();
       console.log(props);
     };
     refreshedPage();
@@ -35,7 +34,7 @@ const App = (props) => {
       <Route path="/about" component={(props) => <About {...props} />} />
       <Route path="/login" component={(props) => <Login {...props} />} />
       <Route path="/signup" component={(props) => <Signup {...props} />} />
-      <Redirect to="/" />
+      {/* <Redirect to="/" /> */}
     </Switch>
   );
 
@@ -105,4 +104,4 @@ const mapDispatchToPros = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToPros, mapDispatchToPros)(App));
+export default connect(mapStateToPros, mapDispatchToPros)(App);

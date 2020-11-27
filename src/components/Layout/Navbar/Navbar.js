@@ -1,7 +1,7 @@
 import React from 'react';
-import { ExitToApp } from '@material-ui/icons';
+import { ExitToApp, ArrowBack } from '@material-ui/icons';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 
@@ -9,6 +9,7 @@ import * as actions from '../../../redux/actions/auth';
 
 const Navbar = (props) => {
   const { isAuth } = props;
+  const history = useHistory();
 
   const activeStyles = {
     color: '#f77f00',
@@ -46,9 +47,12 @@ const Navbar = (props) => {
       </>
     );
   };
-
+  const goToPrevPage = () => history.goBack();
   return (
     <div className={styles.navbarContainer}>
+      <button className={styles.goBack} onClick={goToPrevPage}>
+        <ArrowBack />
+      </button>
       <ul>
         {renderAuth()}
         <li>

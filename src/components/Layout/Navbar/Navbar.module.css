@@ -6,6 +6,8 @@
   color: #eae2b7;
 }
 .navbarContainer {
+  display: flex;
+  justify-content: space-between;
   height: 60px;
   background-color: #003049;
 }
@@ -16,7 +18,7 @@
   height: 60px;
   max-width: 800px;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   padding-right: 20px;
 }
 
@@ -33,10 +35,17 @@
   color: #f77f00;
 }
 
-.exitToApp {
+.exitToApp,
+.goBack {
   border: none;
   background-color: transparent;
   color: #fcbf49;
   padding: 10px 5px 10px 10px;
   cursor: pointer;
+}
+
+.goBack {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
 }
