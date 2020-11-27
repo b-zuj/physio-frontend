@@ -15,7 +15,7 @@ const ProDashboard = (props) => {
 
   return (
     <>
-      <div>Dashboard</div>
+      <h1>Dashboard</h1>
       <ClientList title="Active Clients" clients={clients} />
       {/* <ClientList title="Pending Clients" clients={pendingClients} /> */}
       <br />
