@@ -20,12 +20,8 @@ import * as actions from './redux/actions/auth';
 const App = (props) => {
   const { tryToAutoLog, userType } = props;
   useEffect(() => {
-    const refreshedPage = async () => {
-      tryToAutoLog();
-      console.log(props);
-    };
-    refreshedPage();
-  }, [tryToAutoLog]);
+    tryToAutoLog();
+  }, [props]);
 
   const { isAuth } = props;
   let routes = (
