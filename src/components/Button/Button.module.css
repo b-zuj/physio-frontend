@@ -1,0 +1,29 @@
+/* .colors {
+  color: #003049;
+  color: #d62828;
+  color: #f77f00;
+  color: #fcbf49;
+  color: #eae2b7;
+} */
+
+.basic {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+
+.primary {
+  color: var(--primary-color);
+}
+
+.secondary {
+  color: var(--primary-secondary);
+}
+
+.edit {
+  color: var(--blue-color);
+}

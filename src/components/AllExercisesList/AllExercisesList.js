@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { Edit, AddBox } from '@material-ui/icons';
+
 import * as actions from '../../redux/actions/exercises';
+import classes from './AllExercisesList.module.css';
+import Button from '../Button/Button';
 
 const AllExercisesList = (props) => {
   const { fetchAllExercises, exercises } = props;
@@ -15,14 +19,20 @@ const AllExercisesList = (props) => {
   console.table(exercises);
 
   const exercise = exercises.map((e) => (
-    <div key={e._id}>
-      <p>{e.title}</p>
-      <button>EDIT</button>
-      <button>ADD</button>
+    <div className={classes.exercise} key={e._id}>
+      <p className={classes.title}>{e.title}</p>
+      <div className={classes.actions}>
+        <Button actionStyle="edit">
+          <Edit color="inherit" />
+        </Button>
+        <Button actionStyle="add">
+          <AddBox />
+        </Button>
+      </div>
     </div>
   ));
 
-  return <div>{exercise}</div>;
+  return <>{exercise}</>;
 };
 
 const mapStateToProps = (state) => ({

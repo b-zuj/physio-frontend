@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import classes from './styles/CreateSession.module.css';
 import checkValidity from '../utils/formValidation';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
-import Input from '../components/Input/Input';
-// import EditExerciseList from '../components/EditExerciseList/EditExerciseList';
+import Form from '../components/Form/Form';
 import AllExercisesList from '../components/AllExercisesList/AllExercisesList';
 
 import * as errorsActions from '../redux/actions/errors';
@@ -34,14 +34,16 @@ const CreateSession = (props) => {
       value: '',
     },
   });
+
   const query = useQuery();
-  const sessionId = query.get('sessionId');
   const clientId = query.get('client');
-  // console.log({ sessionId, clientId });
+
   let client;
+
   if (clientId) {
     client = props.clients.find((c) => c._id === clientId);
   }
+
   // Submit:
   const submitHandler = (e) => {
     e.preventDefault();
@@ -57,7 +59,6 @@ const CreateSession = (props) => {
       return props.handleError('Invalid email or password. Please try again.');
     }
     props.handleError('');
-    // props.login(formData);
     props.createSession(formData);
   };
 
@@ -87,27 +88,29 @@ const CreateSession = (props) => {
   }
   return (
     <Layout>
-      <div>Creating session for {client.name}</div>
-      {props.errorMessage && <span>{props.errorMessage}</span>}
-      <form onSubmit={submitHandler}>
-        {formElementsArray.map((el) => (
-          <Input
-            key={el.id}
-            elementType={el.config.elementType}
-            elementConfig={el.config.elementConfig}
-            value={el.config.value}
-            changed={changedHandler}
-            label={el.config.label}
-            invalid={el.config.error}
-            options={el.config.options}
+      <h1 className={classes.title}>
+        Creating session for <span>{client.name}</span>
+      </h1>
+
+      <div className={classes.wrapper}>
+        <div className={classes.formContainer}>
+          {props.errorMessage && (
+            <span className={classes.errorMsg}>{props.errorMessage}</span>
+          )}
+          <Form
+            submitHandler={submitHandler}
+            changedHandler={changedHandler}
+            formElementsArray={formElementsArray}
           />
-        ))}
-        <input type="submit" value="Create Session" />
-      </form>
-      <AllExercisesList />
+        </div>
+        <div className={classes.exerciseListContainer}>
+          <AllExercisesList />
+        </div>
+      </div>
     </Layout>
   );
 };
+
 const mapStateToProps = (state) => ({
   clients: state.authReducer.user.clients,
   errorMessage: state.authReducer.error,
