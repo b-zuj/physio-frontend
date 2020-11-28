@@ -13,6 +13,7 @@ import {
   Client,
   Exercise,
   CreateSession,
+  Invite,
 } from './pages';
 
 import * as actions from './redux/actions/auth';
@@ -80,6 +81,7 @@ const App = (props) => {
           children={(props) => <Exercise {...props} />}
         />
         <Route path="/client/:id" children={(props) => <Client {...props} />} />
+        <Route path="/invite" component={(props) => <Invite {...props} />} />
         <Redirect to="/dashboard" />
       </Switch>
     );
