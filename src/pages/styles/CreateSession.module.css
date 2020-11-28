@@ -21,3 +21,9 @@
 .allExercisesListContainer {
   width: 33%;
 }
+
+.actionsContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}

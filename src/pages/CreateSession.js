@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -39,13 +39,27 @@ const CreateSession = (props) => {
   });
   const history = useHistory();
   const query = useQuery();
+  const sessionId = query.get('sessionId');
   const clientId = query.get('client');
+  const editMode = query.get('edit');
 
   let client;
 
   if (clientId) {
     client = props.clients.find((c) => c._id === clientId);
   }
+  useEffect(() => {
+    // EDIT MODE
+    if (editMode) {
+      const session = client.sessions.find((s) => s._id === sessionId);
+      props.updateExercises(session.exercises);
+      const updatedFormElements = { ...formElements };
+      updatedFormElements.title.value = session.title;
+      updatedFormElements.description.value = session.description;
+      setFormElements(updatedFormElements);
+      // console.log(session);
+    }
+  }, []);
 
   // Submit:
   const submitHandler = (e) => {
@@ -62,13 +76,24 @@ const CreateSession = (props) => {
       return props.handleError('Invalid email or password. Please try again.');
     }
     props.handleError('');
+    const exercisesData = props.session.exercises.map((e) => ({
+      exercise: e.exercise._id,
+      comment: e.comment,
+    }));
+    console.log(exercisesData);
+    console.log('PROPS SESSION', props.session);
     const sessionData = {
-      ...props.session,
+      exercises: exercisesData,
       ...formData,
     };
+
+    if (editMode) {
+      props.updateSession(sessionData, sessionId);
+      return history.replace(`/client/${client._id}`);
+    }
     props.createSession(sessionData);
 
-    history.push(`/client/${client._id}`);
+    history.replace(`/client/${client._id}`);
   };
 
   // Handle change value
@@ -98,7 +123,8 @@ const CreateSession = (props) => {
   return (
     <Layout>
       <h1 className={classes.title}>
-        Creating session for <span>{client.name}</span>
+        {editMode ? 'Editing session for ' : 'Creating session for '}
+        <span>{client.name}</span>
       </h1>
 
       <div className={classes.wrapper}>
@@ -112,9 +138,14 @@ const CreateSession = (props) => {
             formElementsArray={formElementsArray}
           />
           <AssignedExercises />
-          <Button type="submit" action={submitHandler} actionStyle="create">
-            Create Session
-          </Button>
+          <div className={classes.actionsContainer}>
+            <Button action={() => history.goBack()} actionStyle={'cancel'}>
+              Cancel
+            </Button>
+            <Button type="submit" action={submitHandler} actionStyle="create">
+              {editMode ? 'Save Changes' : 'Create Session'}
+            </Button>
+          </div>
         </div>
         <aside className={classes.allExercisesListContainer}>
           <AsideExercisesList />
@@ -132,8 +163,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleError: (message) => dispatch(errorsActions.handleError(message)),
   createSession: (data) => dispatch(sessionActions.createSession(data)),
+  updateSession: (data, sessionId) =>
+    dispatch(sessionActions.updateSession(data, sessionId)),
   addDescription: (formData) =>
     dispatch(sessionActions.addDescription(formData)),
+  updateExercises: (exercisesList) =>
+    dispatch(sessionActions.updateExercises(exercisesList)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateSession);

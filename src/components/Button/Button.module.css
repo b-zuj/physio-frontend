@@ -7,7 +7,7 @@
 } */
 
 .basic {
-  padding: 5px 10px;
+  padding: 5px;
   background-color: transparent;
   border: none;
   border-radius: 3px;
@@ -16,12 +16,16 @@
   outline: none;
 }
 
+.basic svg {
+  font-size: 1.6em;
+}
+
 .primary {
   color: var(--primary-color);
 }
 
 .secondary {
-  color: var(--primary-secondary);
+  color: var(--secondary-color);
 }
 
 .edit {
@@ -31,5 +35,10 @@
 .create {
   color: white;
   background-color: var(--primary-color);
+  border: 1px solid;
+}
+
+.cancel {
+  color: var(--secondary-color);
   border: 1px solid;
 }
