@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 import checkValidity from '../utils/formValidation';
 import * as errorsActions from '../redux/actions/errors';
+import * as invitationActions from '../redux/actions/invitation';
 
 const Invite = (props) => {
   const [formElements, setFormElements] = useState({
@@ -35,7 +36,7 @@ const Invite = (props) => {
     }
     props.handleError('');
     console.log(formData);
-    // props.login(formData);
+    props.createInvitation(formData);
   };
 
   const updateState = (identifier, targetToUpdate, value) => {
@@ -86,12 +87,15 @@ const Invite = (props) => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   errorMessage: state.authReducer.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleError: (message) => dispatch(errorsActions.handleError(message)),
+  createInvitation: (data) =>
+    dispatch(invitationActions.createInvitation(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Invite);
