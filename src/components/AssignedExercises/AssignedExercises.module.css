@@ -1,0 +1,17 @@
+.addedExercises {
+  margin: 0 10px;
+}
+
+.addExerciseTitle {
+  border-bottom: 1px solid;
+}
+
+.noExercises {
+  padding-left: 10px;
+  color: var(--font-light);
+  font-style: italic;
+  font-size: 0.8em;
+}
+.errorMsg {
+  color: red;
+}
