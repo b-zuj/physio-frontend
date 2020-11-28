@@ -5,7 +5,6 @@ export const getAll = () => async (dispatch) => {
   try {
     dispatch(authActions.isLoading(true));
     const response = await axios.get('/exercises/');
-    console.log(response.data);
     dispatch(loadExercisesToState(response.data));
     dispatch(authActions.isLoading(false));
   } catch (error) {

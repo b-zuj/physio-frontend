@@ -22,7 +22,9 @@ const Button = (props) => {
       break;
   }
   return (
-    <button className={attachedClasses.join(' ')}>{props.children}</button>
+    <button className={attachedClasses.join(' ')} onClick={props.action}>
+      {props.children}
+    </button>
   );
 };
 

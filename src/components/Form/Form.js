@@ -19,7 +19,6 @@ const Form = (props) => {
           options={el.config.options}
         />
       ))}
-      <input type="submit" value="Create Session" />
     </form>
   );
 };

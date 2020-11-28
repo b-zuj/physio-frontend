@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import classes from './styles/CreateSession.module.css';
 import checkValidity from '../utils/formValidation';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
 import Form from '../components/Form/Form';
-import AllExercisesList from '../components/AllExercisesList/AllExercisesList';
+import AsideExercisesList from '../components/AsideExercisesList/AsideExercisesList';
+import AssignedExercises from '../components/AssignedExercises/AssignedExercises';
+import Button from '../components/Button/Button';
 
 import * as errorsActions from '../redux/actions/errors';
 import * as sessionActions from '../redux/actions/session';
@@ -34,7 +37,7 @@ const CreateSession = (props) => {
       value: '',
     },
   });
-
+  const history = useHistory();
   const query = useQuery();
   const clientId = query.get('client');
 
@@ -59,7 +62,13 @@ const CreateSession = (props) => {
       return props.handleError('Invalid email or password. Please try again.');
     }
     props.handleError('');
-    props.createSession(formData);
+    const sessionData = {
+      ...props.session,
+      ...formData,
+    };
+    props.createSession(sessionData);
+
+    history.push(`/client/${client._id}`);
   };
 
   // Handle change value
@@ -102,10 +111,14 @@ const CreateSession = (props) => {
             changedHandler={changedHandler}
             formElementsArray={formElementsArray}
           />
+          <AssignedExercises />
+          <Button type="submit" action={submitHandler} actionStyle="create">
+            Create Session
+          </Button>
         </div>
-        <div className={classes.exerciseListContainer}>
-          <AllExercisesList />
-        </div>
+        <aside className={classes.allExercisesListContainer}>
+          <AsideExercisesList />
+        </aside>
       </div>
     </Layout>
   );
@@ -114,10 +127,13 @@ const CreateSession = (props) => {
 const mapStateToProps = (state) => ({
   clients: state.authReducer.user.clients,
   errorMessage: state.authReducer.error,
+  session: state.sessionReducer,
 });
 const mapDispatchToProps = (dispatch) => ({
   handleError: (message) => dispatch(errorsActions.handleError(message)),
   createSession: (data) => dispatch(sessionActions.createSession(data)),
+  addDescription: (formData) =>
+    dispatch(sessionActions.addDescription(formData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateSession);
