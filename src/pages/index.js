@@ -8,6 +8,7 @@ import Session from './Session';
 import Exercise from './Exercise';
 import CreateSession from './CreateSession';
 import Client from './Client';
+import Invite from './Invite';
 
 export {
   About,
@@ -20,4 +21,5 @@ export {
   Client,
   Exercise,
   CreateSession,
+  Invite,
 };
