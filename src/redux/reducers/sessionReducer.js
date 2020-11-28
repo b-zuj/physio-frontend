@@ -24,10 +24,17 @@ const sessionReducer = (state = InitialState, action) => {
         exercises: updatedExercises,
       };
     case 'ADD_DESCRIPTION':
-      console.log(action.payload);
       return { ...state, ...action.payload };
+    case 'UPDATE_EXERCISES':
+      console.log(action.payload);
+      return { ...state, exercises: action.payload };
     case 'CLEAN':
-      return InitialState;
+      return {
+        title: '',
+        description: '',
+        client: '',
+        exercises: [],
+      };
     default:
       return state;
   }

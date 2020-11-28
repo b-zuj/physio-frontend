@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Edit, AddBox, Remove } from '@material-ui/icons';
+import { Edit, AddBox, Delete } from '@material-ui/icons';
 
 import * as actions from '../../redux/actions/session';
 
@@ -22,8 +22,8 @@ const ListedExercise = (props) => {
 
   if (flag === 'remove') {
     addOrDeleteBtn = (
-      <Button action={() => removeExercise(exercise)} actionStyle="secondary">
-        <Remove />
+      <Button action={() => removeExercise(exercise)} actionStyle="delete">
+        <Delete />
       </Button>
     );
   }

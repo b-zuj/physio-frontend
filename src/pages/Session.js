@@ -31,7 +31,9 @@ const Session = ({ clients }) => {
         <h1>Session: {session.title}</h1>
         {session.description && description}
         <ExcerciseList exercises={session.exercises} />
-        <Link to={`/session/create?sessionId=${session._id}`}>
+        <Link
+          to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}`}
+        >
           <button type="button">Edit session</button>
         </Link>
       </>

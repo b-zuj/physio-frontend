@@ -12,7 +12,7 @@ const Client = (props) => {
   let { id } = useParams();
   const { clients } = props;
   const client = clients.find((element) => element._id.toString() === id);
-  console.log('Client page = ', client);
+  // console.log('Client page = ', client);
   const renderClient = () => {
     if (!client) {
       return <h1>No maching client</h1>;
