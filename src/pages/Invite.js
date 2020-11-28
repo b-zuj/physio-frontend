@@ -21,6 +21,7 @@ const Invite = (props) => {
       value: '',
     },
   });
+  const [feedback, setFeedback] = useState('');
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,11 +33,11 @@ const Invite = (props) => {
 
     const errors = checkValidity(formData, 'invite');
     if (Object.keys(errors).length !== 0) {
-      return props.handleError('Invalid email or password. Please try again.');
+      return props.handleError('Invalid email. Please try again.');
     }
     props.handleError('');
-    console.log(formData);
     props.createInvitation(formData);
+    setFeedback(`Invitation sendt to ${formData.email} .`);
   };
 
   const updateState = (identifier, targetToUpdate, value) => {
@@ -82,6 +83,7 @@ const Invite = (props) => {
             />
           ))}
           <input type="submit" value="Send invitation" />
+          {<p>{feedback}</p>}
         </form>
       </Layout>
     </div>
