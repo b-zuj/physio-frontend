@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '../hooks/useQuery';
 import ExcerciseList from '../components/ExerciseList/ExerciseList';
 import { Link } from 'react-router-dom';
+import Button from '../components/Button/Button';
 
 const Session = ({ clients }) => {
   // to verify who owns session we need clientId and sessionId
@@ -34,7 +35,7 @@ const Session = ({ clients }) => {
         <Link
           to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}`}
         >
-          <button type="button">Edit session</button>
+          <Button actionStyle="create">Edit session</Button>
         </Link>
       </>
     );

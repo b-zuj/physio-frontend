@@ -7,7 +7,7 @@ const ClientList = (props) => {
   const { title, clients } = props;
 
   const clientEntries = clients.map((client) => (
-    <Client key={client._id} className={styles.client} client={client} />
+    <Client key={client._id} client={client} />
   ));
 
   return (

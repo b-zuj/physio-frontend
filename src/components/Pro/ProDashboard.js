@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ClientList from './Dashboard/ClientList/ClientList';
 import PendingList from './Dashboard/PendingList';
+import Button from '../Button/Button';
 
 const ProDashboard = (props) => {
   const { clients, invitations } = props;
@@ -15,7 +16,7 @@ const ProDashboard = (props) => {
       {/* <ClientList title="Pending Clients" clients={pendingClients} /> */}
       <br />
       <Link to={`/invite`}>
-        <button>Invite new clients</button>
+        <Button actionStyle="lowPriority">Invite new clients</Button>
       </Link>
     </>
   );

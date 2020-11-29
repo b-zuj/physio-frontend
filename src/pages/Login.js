@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
+import Button from '../components/Button/Button';
 
 import checkValidity from '../utils/formValidation';
 import * as authActions from '../redux/actions/auth';
@@ -94,9 +95,10 @@ const Login = (props) => {
               invalid={el.config.error}
             />
           ))}
-          <input type="submit" value="Login" />
+          <Button type="submit" action={submitHandler} actionStyle="create">
+            Login
+          </Button>
         </form>
-        <button onClick={props.login}>Login test</button>
       </Layout>
     </div>
   );

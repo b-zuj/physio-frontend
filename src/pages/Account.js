@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 import checkValidity from '../utils/formValidation';
+import Button from '../components/Button/Button';
 
 import * as errorsActions from '../redux/actions/errors';
 import * as accountActions from '../redux/actions/account';
@@ -88,7 +89,7 @@ const Account = (props) => {
       <Layout>
         <h1>Account</h1>
         {errorMessage && <span>{errorMessage}</span>}
-        <form onSubmit={submitHandler}>
+        <form>
           {formElementsArray.map((el) => (
             <Input
               key={el.id}
@@ -100,7 +101,9 @@ const Account = (props) => {
               invalid={el.config.error}
             />
           ))}
-          <input type="submit" value="Update account" />
+          <Button type="submit" action={submitHandler} actionStyle="create">
+            Update account
+          </Button>
         </form>
       </Layout>
     </div>
