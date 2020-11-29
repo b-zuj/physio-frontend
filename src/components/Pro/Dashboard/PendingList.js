@@ -5,11 +5,9 @@ const PendingList = (props) => {
   const { invitations } = props;
 
   const clientEntries = invitations.map((invitation) => (
-    <>
-      <li key={invitation._id}>
-        <a href={`mailto:${invitation.email}`}>{invitation.email}</a>
-      </li>
-    </>
+    <li key={invitation._id}>
+      <a href={`mailto:${invitation.email}`}>{invitation.email}</a>
+    </li>
   ));
 
   return (
