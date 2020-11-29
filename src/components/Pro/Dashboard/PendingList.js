@@ -10,7 +10,6 @@ const PendingList = (props) => {
         <a href={`mailto:${invitation.email}`}>{invitation.email}</a>
       </li>
     </>
-    // <Client key={client._id} className={styles.client} client={client} />
   ));
 
   return (
