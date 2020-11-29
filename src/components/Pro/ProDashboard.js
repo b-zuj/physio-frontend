@@ -5,15 +5,13 @@ import ClientList from './Dashboard/ClientList/ClientList';
 import PendingList from './Dashboard/PendingList';
 
 const ProDashboard = (props) => {
-  const { clients } = props;
-
-  const emails = ['one@gmail.com', 'two@gmail.com'];
+  const { clients, invitations } = props;
 
   return (
     <>
       <h1>Dashboard</h1>
       <ClientList title="Active Clients" clients={clients} />
-      <PendingList emails={emails} />
+      <PendingList invitations={invitations} />
       {/* <ClientList title="Pending Clients" clients={pendingClients} /> */}
       <br />
       <Link to={`/invite`}>
@@ -25,6 +23,7 @@ const ProDashboard = (props) => {
 
 const mapStateToProps = (state) => ({
   clients: state.authReducer.user.clients,
+  invitations: state.authReducer.user.invitations,
 });
 
 export default connect(mapStateToProps)(ProDashboard);
