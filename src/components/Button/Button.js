@@ -28,7 +28,11 @@ const Button = (props) => {
       break;
   }
   return (
-    <button className={attachedClasses.join(' ')} onClick={props.action}>
+    <button
+      className={attachedClasses.join(' ')}
+      onClick={props.action}
+      disabled={props.isDisabled}
+    >
       {props.children}
     </button>
   );
