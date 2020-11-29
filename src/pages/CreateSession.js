@@ -80,8 +80,6 @@ const CreateSession = (props) => {
       exercise: e.exercise._id,
       comment: e.comment,
     }));
-    console.log(exercisesData);
-    console.log('PROPS SESSION', props.session);
     const sessionData = {
       exercises: exercisesData,
       ...formData,
