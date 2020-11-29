@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import ClientList from './Dashboard/ClientList/ClientList';
-import Button from '../Button/Button';
-import classes from './ProDashboard.module.css';
+import PendingList from './Dashboard/PendingList';
 
 const ProDashboard = (props) => {
-  const { clients } = props;
+  const { clients, invitations } = props;
+
   return (
     <>
-      <h1 className={classes.heading}>Dashboard</h1>
-      <div className={classes.clientsContainer}>
-        <ClientList title="Active Clients" clients={clients} />
-        <ClientList title="Pending Clients" clients={clients} />
-      </div>
+      <h1>Dashboard</h1>
+      <ClientList title="Active Clients" clients={clients} />
+      <PendingList invitations={invitations} />
+      {/* <ClientList title="Pending Clients" clients={pendingClients} /> */}
+      <br />
+
       <Link to={`/invite`}>
         <Button actionStyle="create">Invite new clients</Button>
       </Link>
@@ -24,6 +25,7 @@ const ProDashboard = (props) => {
 
 const mapStateToProps = (state) => ({
   clients: state.authReducer.user.clients,
+  invitations: state.authReducer.user.invitations,
 });
 
 export default connect(mapStateToProps)(ProDashboard);
