@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Layout from '../components/Layout/Layout';
@@ -7,13 +7,17 @@ import { useQuery } from '../hooks/useQuery';
 import ExcerciseList from '../components/ExerciseList/ExerciseList';
 import { Link } from 'react-router-dom';
 
-const Session = ({ clients }) => {
-  // to verify who owns session we need clientId and sessionId
+import * as sessionActions from '../redux/actions/session';
+
+const Session = ({ getSession, session }) => {
   const { id } = useParams();
   const query = useQuery();
   const clientId = query.get('client');
-  const client = clients.find((c) => c._id === clientId);
-  const session = client.sessions.find((s) => s._id === id);
+
+  useEffect(() => {
+    getSession(id);
+  }, [getSession, id]);
+
   const renderSession = () => {
     if (!session) {
       return 'No matching session';
@@ -47,6 +51,10 @@ const Session = ({ clients }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  clients: state.authReducer.user.clients,
+  session: state.sessionReducer,
 });
-export default connect(mapStateToProps)(Session);
+
+const mapDispatchToProps = (dispatch) => ({
+  getSession: (id) => dispatch(sessionActions.getSession(id)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Session);

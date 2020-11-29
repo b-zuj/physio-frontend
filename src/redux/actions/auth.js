@@ -3,9 +3,14 @@ import axios from '../../utils/axios';
 
 export function login(credentials) {
   return async (dispatch) => {
-    const response = await axios.post('/auth/login', credentials);
-    const { user } = response.data.data;
-    dispatch(loadUserData(user));
+    try {
+      const response = await axios.post('/auth/login', credentials);
+      const { user } = response.data.data;
+      const userPopulatedData = await dispatch(
+        fetchUserData(user._id, user.userType)
+      );
+      dispatch(loadUserData(userPopulatedData));
+    } catch (error) {}
   };
 }
 
@@ -16,11 +21,28 @@ export const tryToAutoLog = () => {
       try {
         const response = await axios.get('/auth/login');
         const { data } = response;
-        dispatch(loadUserData(data));
+        const userPopulatedData = await dispatch(
+          fetchUserData(data._id, data.userType)
+        );
+        console.log({ userPopulatedData });
+        dispatch(loadUserData(userPopulatedData));
         dispatch(isLoading(false));
       } catch (error) {
         dispatch(isLoading(false));
       }
+    }
+  };
+};
+
+export const fetchUserData = (_id, userType) => {
+  return async () => {
+    if (userType === 'pro') {
+      const userResponse = await axios.get(`/pros/${_id}`);
+      if (userResponse.status === 200) return userResponse.data;
+    }
+    if (userType === 'client') {
+      const userResponse = await axios.get(`/clients/${_id}`);
+      if (userResponse.status === 200) return userResponse.data;
     }
   };
 };

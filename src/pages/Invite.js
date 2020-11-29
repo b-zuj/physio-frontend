@@ -33,9 +33,9 @@ const Invite = (props) => {
 
     const errors = checkValidity(formData, 'invite');
     if (Object.keys(errors).length !== 0) {
-      return props.handleError('Invalid email. Please try again.');
+      return props.addFormError('Invalid email. Please try again.');
     }
-    props.handleError('');
+    props.cleanFormError();
     props.createInvitation(formData);
     setFeedback(`Invitation sendt to ${formData.email} .`);
   };
@@ -95,7 +95,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleError: (message) => dispatch(errorsActions.handleError(message)),
+  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+  cleanFormError: () => dispatch(errorsActions.cleanFormError()),
   createInvitation: (data) =>
     dispatch(invitationActions.createInvitation(data)),
 });

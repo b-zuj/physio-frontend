@@ -1,11 +1,13 @@
-/* .colors {
-  color: #003049;
-  color: #d62828;
-  color: #f77f00;
-  color: #fcbf49;
-  color: #eae2b7;
-} */
-
+colors {
+  --primary-color: #4caf50;
+  --secondary-color: #ff5722;
+  --blue-color: #2196f3;
+  --font-super-light: #eae2b7;
+  --font-light: #4888aa;
+  --font-dark: #003049;
+  --bgc-dark: #003049;
+  --font-active: #fcbf49;
+}
 .basic {
   padding: 5px;
   background-color: transparent;
@@ -22,6 +24,10 @@
 
 .primary {
   color: var(--primary-color);
+}
+
+.primary:disabled {
+  color: grey;
 }
 
 .secondary {
@@ -41,4 +47,12 @@
 .cancel {
   color: var(--secondary-color);
   border: 1px solid;
+}
+
+.details {
+  display: flex;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: var(--blue-color);
 }

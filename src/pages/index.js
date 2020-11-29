@@ -9,6 +9,7 @@ import Exercise from './Exercise';
 import CreateSession from './CreateSession';
 import Client from './Client';
 import Invite from './Invite';
+import CreateExercise from './CreateExercise';
 
 export {
   About,
@@ -22,4 +23,5 @@ export {
   Exercise,
   CreateSession,
   Invite,
+  CreateExercise,
 };
