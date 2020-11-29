@@ -44,20 +44,21 @@ const CreateSession = (props) => {
   const editMode = query.get('edit');
 
   let client;
+  let session = props.session;
 
   if (clientId) {
     client = props.clients.find((c) => c._id === clientId);
   }
+
   useEffect(() => {
     // EDIT MODE
     if (editMode) {
-      const session = client.sessions.find((s) => s._id === sessionId);
-      props.updateExercises(session.exercises);
+      session = client.sessions.find((s) => s._id === sessionId);
+      props.storeSession(session);
       const updatedFormElements = { ...formElements };
       updatedFormElements.title.value = session.title;
       updatedFormElements.description.value = session.description;
       setFormElements(updatedFormElements);
-      // console.log(session);
     }
   }, []);
 
@@ -135,9 +136,9 @@ const CreateSession = (props) => {
             changedHandler={changedHandler}
             formElementsArray={formElementsArray}
           />
-          <AssignedExercises />
+          <AssignedExercises exercises={session.exercises} />
           <div className={classes.actionsContainer}>
-            <Button action={() => history.goBack()} actionStyle={'cancel'}>
+            <Button action={() => history.goBack()} actionStyle="cancel">
               Cancel
             </Button>
             <Button type="submit" action={submitHandler} actionStyle="create">
@@ -165,8 +166,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(sessionActions.updateSession(data, sessionId)),
   addDescription: (formData) =>
     dispatch(sessionActions.addDescription(formData)),
-  updateExercises: (exercisesList) =>
-    dispatch(sessionActions.updateExercises(exercisesList)),
+  getSession: (id) => dispatch(sessionActions.getSession(id)),
+  storeSession: (session) => dispatch(sessionActions.storeSession(session)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateSession);
