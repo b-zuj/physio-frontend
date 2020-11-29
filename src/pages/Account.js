@@ -6,8 +6,10 @@ import Input from '../components/Input/Input';
 import checkValidity from '../utils/formValidation';
 
 import * as errorsActions from '../redux/actions/errors';
+import * as accountActions from '../redux/actions/account';
 
 const Account = (props) => {
+  const { updateAccount, user, handleError, errorMessage } = props;
   const [formElements, setFormElements] = useState({
     name: {
       elementType: 'input',
@@ -18,7 +20,7 @@ const Account = (props) => {
         id: 'name',
       },
       label: 'Name ',
-      value: props.user.name,
+      value: user.name,
     },
     email: {
       elementType: 'input',
@@ -29,7 +31,7 @@ const Account = (props) => {
         id: 'email',
       },
       label: 'Email ',
-      value: props.user.email,
+      value: user.email,
     },
   });
 
@@ -45,11 +47,15 @@ const Account = (props) => {
     const errors = checkValidity(formData, 'account');
 
     if (Object.keys(errors).length !== 0) {
-      return props.handleError('Invalid email or ... something.');
+      return handleError('Invalid email or ... something.');
     }
 
-    props.handleError('');
-    // props.login(formData);
+    const accountData = JSON.parse(JSON.stringify(user));
+    accountData.name = formData.name;
+    accountData.email = formData.email;
+    updateAccount(accountData);
+
+    handleError('');
   };
 
   // Handle change value
@@ -81,7 +87,7 @@ const Account = (props) => {
     <div>
       <Layout>
         <h1>Account</h1>
-        {props.errorMessage && <span>{props.errorMessage}</span>}
+        {errorMessage && <span>{errorMessage}</span>}
         <form onSubmit={submitHandler}>
           {formElementsArray.map((el) => (
             <Input
@@ -106,8 +112,9 @@ const mapStateToProps = (state) => ({
   user: state.authReducer.user,
 });
 const mapDispatchToProps = (dispatch) => ({
-  // login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
   handleError: (message) => dispatch(errorsActions.handleError(message)),
+  updateAccount: (accountData) =>
+    dispatch(accountActions.updateAccount(accountData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);
