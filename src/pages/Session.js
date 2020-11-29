@@ -14,6 +14,7 @@ const Session = ({ clients }) => {
   const clientId = query.get('client');
   const client = clients.find((c) => c._id === clientId);
   const session = client.sessions.find((s) => s._id === id);
+  console.log(session);
   const renderSession = () => {
     if (!session) {
       return 'No matching session';
