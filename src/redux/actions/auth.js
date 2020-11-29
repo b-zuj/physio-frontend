@@ -35,7 +35,6 @@ export function logout() {
 }
 
 export function signup(credentials) {
-  // console.log('signup action', credentials);
   // {email, name, password}
   return async (dispatch) => {
     const response = await axios.post('/auth/signup', credentials);
@@ -45,11 +44,9 @@ export function signup(credentials) {
 }
 
 export function signupClient(credentials) {
-  console.log('signup Client action', credentials);
   // {email, name, password, pro}
   return async (dispatch) => {
     const response = await axios.post('/auth/client/signup', credentials);
-    console.log(response);
     const { user } = response.data.data;
     dispatch(loadUserData(user));
   };
