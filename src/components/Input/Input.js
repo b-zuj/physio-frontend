@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import classes from './Input.module.css';
 
@@ -50,13 +51,20 @@ const Input = (props) => {
       break;
   }
 
+  const error = props.errors[props.elementConfig.name];
   return (
     <div className={classes.Input}>
-      {props.invalid && <span>{props.invalid}</span>}
-      <label className={classes.Label}>{props.label}</label>
+      <div className={classes.labelsContainer}>
+        <label className={classes.Label}>{props.label}</label>
+        {error && <span className={classes.errorMessage}>{error}</span>}
+      </div>
       {inputElement}
     </div>
   );
 };
 
-export default Input;
+const mapStateToProps = (state) => ({
+  errors: state.errorReducer.formErrors,
+});
+
+export default connect(mapStateToProps)(Input);

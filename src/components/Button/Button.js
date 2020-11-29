@@ -20,12 +20,19 @@ const Button = (props) => {
     case 'cancel':
       attachedClasses = [...attachedClasses, classes.cancel];
       break;
+    case 'details':
+      attachedClasses = [...attachedClasses, classes.details];
+      break;
 
     default:
       break;
   }
   return (
-    <button className={attachedClasses.join(' ')} onClick={props.action}>
+    <button
+      className={attachedClasses.join(' ')}
+      onClick={props.action}
+      disabled={props.isDisabled}
+    >
       {props.children}
     </button>
   );

@@ -7,6 +7,8 @@ const InitialState = {
 
 const sessionReducer = (state = InitialState, action) => {
   switch (action.type) {
+    case 'STORE_SESSION':
+      return action.payload;
     case 'ADD_EXERCISE':
       return {
         ...state,
@@ -16,18 +18,20 @@ const sessionReducer = (state = InitialState, action) => {
         ],
       };
     case 'REMOVE_EXERCISE':
-      const updatedExercises = state.exercises.filter(
-        (e) => e.exercise._id !== action.payload.exercise._id
+      const updatedExercises = [...state.exercises];
+      const index = updatedExercises.findIndex(
+        (e) => e.exercise._id === action.payload.exercise._id
       );
+      updatedExercises.splice(index, 1);
       return {
         ...state,
         exercises: updatedExercises,
       };
     case 'ADD_DESCRIPTION':
       return { ...state, ...action.payload };
-    case 'UPDATE_EXERCISES':
-      console.log(action.payload);
-      return { ...state, exercises: action.payload };
+    // case 'UPDATE_EXERCISES':
+    //   console.log(action.payload);
+    //   return { ...state, exercises: action.payload };
     case 'CLEAN':
       return {
         title: '',

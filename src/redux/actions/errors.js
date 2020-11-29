@@ -1,3 +1,6 @@
-export function handleError(errorMessage) {
-  return { type: 'ERROR', payload: errorMessage };
-}
+export const addFormError = (errorObject) => ({
+  type: 'FORM_ERROR',
+  payload: errorObject,
+});
+
+export const cleanFormError = () => ({ type: 'CLEAN_FORM_ERROR' });

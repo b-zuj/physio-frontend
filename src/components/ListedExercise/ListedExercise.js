@@ -9,12 +9,25 @@ import Button from '../Button/Button';
 import classes from './ListedExercise.module.css';
 
 const ListedExercise = (props) => {
-  const { exercise, flag, addExercise, removeExercise, editHandler } = props;
+  const {
+    exercise,
+    flag,
+    addExercise,
+    removeExercise,
+    asignedExercises,
+  } = props;
   let addOrDeleteBtn;
-
+  const disabled =
+    asignedExercises.findIndex((e) => e.exercise._id === exercise._id) > -1
+      ? true
+      : false;
   if (flag === 'add') {
     addOrDeleteBtn = (
-      <Button action={() => addExercise(exercise)} actionStyle="add">
+      <Button
+        action={() => addExercise(exercise)}
+        actionStyle="add"
+        isDisabled={disabled}
+      >
         <AddBox />
       </Button>
     );
@@ -41,10 +54,12 @@ const ListedExercise = (props) => {
     </div>
   );
 };
-
+const mapStateToProps = (state) => ({
+  asignedExercises: state.sessionReducer.exercises,
+});
 const mapDispatchToProps = (dispatch) => ({
   addExercise: (exercise) => dispatch(actions.addExercise(exercise)),
   removeExercise: (exercise) => dispatch(actions.removeExercise(exercise)),
 });
 
-export default connect(null, mapDispatchToProps)(ListedExercise);
+export default connect(mapStateToProps, mapDispatchToProps)(ListedExercise);
