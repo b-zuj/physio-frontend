@@ -7,6 +7,8 @@ const InitialState = {
 
 const sessionReducer = (state = InitialState, action) => {
   switch (action.type) {
+    case 'STORE_SESSION':
+      return action.payload;
     case 'ADD_EXERCISE':
       return {
         ...state,
