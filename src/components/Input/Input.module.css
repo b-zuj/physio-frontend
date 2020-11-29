@@ -1,0 +1,35 @@
+.Input {
+  position: relative;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.Label {
+  /* position: absolute;
+  bottom: 5px; */
+  font-size: 0.9em;
+  color: var(--font-dark);
+}
+
+.InputElement {
+  padding: 5px;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid;
+  outline: none;
+}
+
+.InputElement:focus {
+  border-color: var(--blue-color);
+}
+
+.textarea {
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 3px;
+  resize: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  overflow-y: scroll;
+}

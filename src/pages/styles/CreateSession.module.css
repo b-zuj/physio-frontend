@@ -1,0 +1,29 @@
+.title {
+  text-align: center;
+  margin: 40px;
+  font-size: 1.7em;
+  font-weight: 300;
+}
+.title span {
+  font-weight: normal;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
+.formContainer {
+  width: 40%;
+}
+
+.allExercisesListContainer {
+  width: 33%;
+}
+
+.actionsContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
