@@ -20,6 +20,9 @@ const Button = (props) => {
     case 'cancel':
       attachedClasses = [...attachedClasses, classes.cancel];
       break;
+    case 'details':
+      attachedClasses = [...attachedClasses, classes.details];
+      break;
 
     default:
       break;
