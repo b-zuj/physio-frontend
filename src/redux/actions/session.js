@@ -22,7 +22,19 @@ export const updateSession = (sessionData, sessionId) => {
     }
   };
 };
+export const getSession = (sessionId) => {
+  return async (dispatch) => {
+    const response = await axios.get(`/sessions/${sessionId}`);
+    if (response.status === 200) {
+      dispatch(storeSession(response.data));
+    }
+  };
+};
 
+export const storeSession = (session) => ({
+  type: 'STORE_SESSION',
+  payload: session,
+});
 export const addExercise = (exercise) => ({
   type: 'ADD_EXERCISE',
   payload: exercise,
