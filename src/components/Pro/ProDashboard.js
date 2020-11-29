@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import ClientList from './Dashboard/ClientList/ClientList';
 import PendingList from './Dashboard/PendingList';
+import Button from '../Button/Button';
 
 const ProDashboard = (props) => {
   const { clients, invitations } = props;
@@ -13,7 +14,6 @@ const ProDashboard = (props) => {
       <h1>Dashboard</h1>
       <ClientList title="Active Clients" clients={clients} />
       <PendingList invitations={invitations} />
-      {/* <ClientList title="Pending Clients" clients={pendingClients} /> */}
       <br />
 
       <Link to={`/invite`}>
