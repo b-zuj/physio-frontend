@@ -5,7 +5,8 @@ import { NavLink, useHistory } from 'react-router-dom';
 
 import styles from './Navbar.module.css';
 
-import * as actions from '../../../redux/actions/auth';
+import * as authActions from '../../../redux/actions/auth';
+import * as errorActions from '../../../redux/actions/errors';
 
 const Navbar = (props) => {
   const { isAuth } = props;
@@ -47,7 +48,11 @@ const Navbar = (props) => {
       </>
     );
   };
-  const goToPrevPage = () => history.goBack();
+
+  const goToPrevPage = () => {
+    props.cleanFormError('');
+    history.goBack();
+  };
   const handleLogout = () => {
     props.logout();
     history.push('/');
@@ -85,7 +90,8 @@ const mapStateToPros = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(actions.logout()),
+    logout: () => dispatch(authActions.logout()),
+    cleanFormError: () => dispatch(errorActions.cleanFormError()),
   };
 };
 
