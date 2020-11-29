@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import classes from './AssignedExercises.module.css';
 import ListedExercise from '../ListedExercise/ListedExercise';
@@ -19,9 +18,5 @@ const AssignedExercises = (props) => {
     </div>
   );
 };
-
-// const mapStateToProps = (state) => ({
-//   exercises: state.sessionReducer.exercises,
-// });
 
 export default AssignedExercises;

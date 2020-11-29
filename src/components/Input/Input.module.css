@@ -33,3 +33,15 @@
     sans-serif;
   overflow-y: scroll;
 }
+
+.labelsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.errorMessage {
+  padding-right: 10px;
+  font-size: 0.6em;
+  color: var(--secondary-color);
+}
