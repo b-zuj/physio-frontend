@@ -50,7 +50,7 @@ const Navbar = (props) => {
   };
 
   const goToPrevPage = () => {
-    props.cleanFormError('');
+    Object.keys(props.formErrors).length !== 0 && props.cleanFormError('');
     history.goBack();
   };
   const handleLogout = () => {
@@ -86,6 +86,7 @@ const Navbar = (props) => {
 const mapStateToPros = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
+    formErrors: state.errorReducer.formErrors,
   };
 };
 const mapDispatchToProps = (dispatch) => {
