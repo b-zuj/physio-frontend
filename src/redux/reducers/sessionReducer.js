@@ -18,11 +18,11 @@ const sessionReducer = (state = InitialState, action) => {
         ],
       };
     case 'REMOVE_EXERCISE':
-      console.log('REMOVE_EXERCISE', action.payload);
-      console.log('REMOVE_EXERCISE', state);
-      const updatedExercises = state.exercises.filter(
-        (e) => e.exercise._id !== action.payload.exercise._id
+      const updatedExercises = [...state.exercises];
+      const index = updatedExercises.findIndex(
+        (e) => e.exercise._id === action.payload.exercise._id
       );
+      updatedExercises.splice(index, 1);
       return {
         ...state,
         exercises: updatedExercises,

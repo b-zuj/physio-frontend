@@ -26,6 +26,10 @@ colors {
   color: var(--primary-color);
 }
 
+.primary:disabled {
+  color: grey;
+}
+
 .secondary {
   color: var(--secondary-color);
 }
