@@ -18,6 +18,8 @@ const sessionReducer = (state = InitialState, action) => {
         ],
       };
     case 'REMOVE_EXERCISE':
+      console.log('REMOVE_EXERCISE', action.payload);
+      console.log('REMOVE_EXERCISE', state);
       const updatedExercises = state.exercises.filter(
         (e) => e.exercise._id !== action.payload.exercise._id
       );
@@ -27,9 +29,9 @@ const sessionReducer = (state = InitialState, action) => {
       };
     case 'ADD_DESCRIPTION':
       return { ...state, ...action.payload };
-    case 'UPDATE_EXERCISES':
-      console.log(action.payload);
-      return { ...state, exercises: action.payload };
+    // case 'UPDATE_EXERCISES':
+    //   console.log(action.payload);
+    //   return { ...state, exercises: action.payload };
     case 'CLEAN':
       return {
         title: '',

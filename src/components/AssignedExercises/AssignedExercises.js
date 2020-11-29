@@ -20,8 +20,8 @@ const AssignedExercises = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  exercises: state.sessionReducer.exercises,
-});
+// const mapStateToProps = (state) => ({
+//   exercises: state.sessionReducer.exercises,
+// });
 
-export default connect(mapStateToProps)(AssignedExercises);
+export default AssignedExercises;

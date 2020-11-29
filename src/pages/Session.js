@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 import * as sessionActions from '../redux/actions/session';
 
-const Session = ({ clients, getSession, session }) => {
+const Session = ({ getSession, session }) => {
   const { id } = useParams();
   const query = useQuery();
   const clientId = query.get('client');
@@ -51,7 +51,6 @@ const Session = ({ clients, getSession, session }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  clients: state.authReducer.user.clients,
   session: state.sessionReducer,
 });
 
