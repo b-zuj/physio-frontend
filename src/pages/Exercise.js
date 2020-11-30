@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 
 import axios from '../utils/axios';
