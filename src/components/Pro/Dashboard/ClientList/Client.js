@@ -12,12 +12,8 @@ const Client = ({ client }) => {
       <span>{client.name}</span>
       <Link to={`/client/${client._id}`}>
         <Button actionStyle="link">
-<<<<<<< HEAD
           <span>Details </span>
           <ArrowRight fontSize="inherit" />
-=======
-          Details <ArrowRight fontSize="inherit" />
->>>>>>> 8c9e40f2f54cc1d6126e6e9fbbed2b4a66b2dbd0
         </Button>
       </Link>
     </div>
