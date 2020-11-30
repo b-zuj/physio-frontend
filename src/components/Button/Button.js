@@ -11,6 +11,9 @@ const Button = (props) => {
     case 'edit':
       attachedClasses = [...attachedClasses, classes.edit];
       break;
+    case 'editSvg':
+      attachedClasses = [...attachedClasses, classes.editSvg];
+      break;
     case 'delete':
       attachedClasses = [...attachedClasses, classes.secondary];
       break;
