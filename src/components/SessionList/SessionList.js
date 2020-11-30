@@ -6,6 +6,11 @@ import { connect } from 'react-redux';
 
 const SessionList = (props) => {
   const { title, sessions, clientId, userType } = props;
+
+  const clientExersiceMode = <Button actionStyle="go">Exercise</Button>;
+
+  const proExersiceMode = <Button actionStyle="link">Preview</Button>;
+
   const renderSessions = (sessions) => {
     if (!sessions || sessions.length < 1) {
       return 'No sessions';
@@ -16,9 +21,7 @@ const SessionList = (props) => {
         <Link
           to={`/session/${session._id}?client=${clientId}&exerciseMode=true`}
         >
-          <Button actionStyle="link">
-            {userType === 'client' ? 'Exercise!' : 'Preview'}
-          </Button>
+          {userType === 'client' ? clientExersiceMode : proExersiceMode}
         </Link>
         <Link to={`/session/${session._id}?client=${clientId}`}>
           <Button actionStyle="link">Details</Button>

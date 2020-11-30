@@ -32,7 +32,9 @@ const Button = (props) => {
     case 'details':
       attachedClasses = [...attachedClasses, classes.details];
       break;
-
+    case 'go':
+      attachedClasses = [...attachedClasses, classes.create];
+      break;
     default:
       break;
   }

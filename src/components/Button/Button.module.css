@@ -18,7 +18,7 @@ colors {
   touch-action: none;
   outline: none;
   transition-duration: 0.2s;
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .basic svg {
@@ -80,10 +80,10 @@ colors {
 }
 
 .default {
-  font-size: 0.6em;
   color: black;
   background-color: var(--grey);
   vertical-align: middle;
+  border: 1px solid var(--grey);
 }
 
 .default svg {
