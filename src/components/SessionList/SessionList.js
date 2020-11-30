@@ -12,6 +12,9 @@ const SessionList = (props) => {
     return sessions.map((session) => (
       <div key={session._id} className={styles.session}>
         <span>{session.title}</span>
+        <Link to={`/session/${session._id}?client=${clientId}&exerciseMode=true`}>
+          <Button actionStyle="link">Exercise!</Button>
+        </Link>
         <Link to={`/session/${session._id}?client=${clientId}`}>
           <Button actionStyle="link">Details</Button>
         </Link>
