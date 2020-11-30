@@ -1,12 +1,21 @@
 :root {
   --primary-color: #4caf50;
+  --primary-color-darker: #3b8b3e;
+  --primary-color-transparent: rgb(76, 175, 80, 0.1);
   --secondary-color: #ff5722;
+  --secondary-color-darker: #d8491d;
+  --secondary-color-transparent: rgb(216, 73, 29, 0.1);
+
   --blue-color: #2196f3;
   --font-super-light: #eae2b7;
   --font-light: #4888aa;
   --font-dark: #003049;
   --bgc-dark: #003049;
   --font-active: #fcbf49;
+  --grey-dark: rgb(128, 128, 128);
+  --grey: rgb(230, 230, 230);
+  --grey-light: rgb(211, 211, 211);
+  --grey-transparent: rgb(128, 128, 128, 0.1);
 }
 
 /* .colors {

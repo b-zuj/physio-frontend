@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Button from '../components/Button/Button';
 
 import axios from '../utils/axios';
 import Layout from '../components/Layout/Layout';
@@ -22,7 +23,7 @@ const Exercise = () => {
     <>
       <h2>{exercise.title}</h2>
       <p>{exercise.description}</p>
-      <button>Edit</button>
+      <Button actionStyle="edit">Edit</Button>
     </>
   );
 

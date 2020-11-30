@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SessionsList.module.css';
+import Button from '../Button/Button';
 
 const SessionList = (props) => {
   const { title, sessions, clientId } = props;
@@ -12,7 +13,7 @@ const SessionList = (props) => {
       <div key={session._id} className={styles.session}>
         <span>{session.title}</span>
         <Link to={`/session/${session._id}?client=${clientId}`}>
-          <button type="button">Details</button>
+          <Button actionStyle="link">Details</Button>
         </Link>
       </div>
     ));

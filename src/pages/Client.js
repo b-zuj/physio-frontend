@@ -8,6 +8,7 @@ import SessionList from '../components/SessionList/SessionList';
 import { Link } from 'react-router-dom';
 import { db } from '../mock/mockDB';
 import * as clientActions from '../redux/actions/client';
+import Button from '../components/Button/Button';
 
 const Client = (props) => {
   let { id } = useParams();
@@ -29,7 +30,7 @@ const Client = (props) => {
         />
         <br />
         <Link to={`/session/create?client=${client._id}`}>
-          <button type="button">Create a new session</button>
+          <Button actionStyle="create">Create a new session</Button>
         </Link>
       </>
     );

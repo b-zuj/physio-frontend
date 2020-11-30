@@ -17,7 +17,7 @@ const ProDashboard = (props) => {
       <br />
 
       <Link to={`/invite`}>
-        <Button actionStyle="create">Invite new clients</Button>
+        <Button actionStyle="lowPriority">Invite new clients</Button>
       </Link>
     </>
   );

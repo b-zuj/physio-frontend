@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from '../../Button/Button';
+
 import { connect } from 'react-redux';
 import * as clientActions from '../../../redux/actions/client';
 
@@ -25,7 +27,9 @@ const ClientDetails = (props) => {
       return (
         <>
           <p>{comment ? comment : 'No comment'}</p>
-          <button onClick={() => setEditMode(true)}>Edit comment</button>
+          <Button actionStyle="edit" action={() => setEditMode(true)}>
+            Edit
+          </Button>
         </>
       );
     }
@@ -37,8 +41,12 @@ const ClientDetails = (props) => {
           onChange={onTextAreaChange}
         />
         <br />
-        <button onClick={() => setEditMode(false)}>Discard</button>{' '}
-        <button onClick={saveComment}>Save</button>
+        <Button action={() => setEditMode(false)} actionStyle="lowPriority">
+          Discard
+        </Button>
+        <Button action={saveComment} actionStyle="create">
+          Save
+        </Button>
       </>
     );
   };
