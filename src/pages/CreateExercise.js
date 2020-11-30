@@ -93,7 +93,7 @@ const CreateExercise = (props) => {
   };
   return (
     <Layout>
-      <h3>{editMode ? `You're Editing ${exercise}` : 'Create new Exercise'}</h3>
+      <h3>{editMode ? `Editing Exercise` : 'Create new Exercise'}</h3>
       <Form
         submitHandler={submitHandler}
         changedHandler={(e) => changedHandler(e, 'value', setFormElements)}
