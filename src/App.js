@@ -14,6 +14,7 @@ import {
   Exercise,
   CreateSession,
   Invite,
+  CreateExercise,
 } from './pages';
 
 import * as actions from './redux/actions/auth';
@@ -71,6 +72,11 @@ const App = (props) => {
           exact
           path="/session/create"
           children={(props) => <CreateSession {...props} />}
+        />
+        <Route
+          exact
+          path="/exercise/create"
+          children={(props) => <CreateExercise {...props} />}
         />
         <Route
           path="/session/:id"

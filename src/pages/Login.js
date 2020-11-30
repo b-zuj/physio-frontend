@@ -47,9 +47,9 @@ const Login = (props) => {
     const errors = checkValidity(formData, 'login');
 
     if (Object.keys(errors).length !== 0) {
-      return props.handleError('Invalid email or password. Please try again.');
+      return props.addFormError('Invalid email or password. Please try again.');
     }
-    props.handleError('');
+    props.cleanFormError();
     props.login(formData);
   };
 
@@ -108,7 +108,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
-  handleError: (message) => dispatch(errorsActions.handleError(message)),
+  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+  cleanFormError: () => dispatch(errorsActions.cleanFormError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

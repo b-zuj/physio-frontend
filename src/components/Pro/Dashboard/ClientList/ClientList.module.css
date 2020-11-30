@@ -1,9 +1,11 @@
 .clientList {
-  width: 200px;
+  width: 300px;
 }
 
 .client {
   display: flex;
   justify-content: space-between;
-  margin: 2px 0;
+  padding: 5px 0 5px 5px;
+  margin: 20px 0;
+  border-bottom: 1px solid;
 }

@@ -88,11 +88,11 @@ const Signup = (props) => {
     const errors = checkValidity(formData, 'signup');
 
     if (Object.keys(errors).length !== 0) {
-      return props.handleError(
+      return props.addFormError(
         'Invalid credentials. Please check email or password and try again.'
       );
     }
-    props.handleError('');
+    props.cleanFormError();
     delete formData.confirmPassword;
     if (formData.pro) return props.signupClient(formData);
     props.signup(formData);
@@ -156,7 +156,8 @@ const mapDispatchToProps = (dispatch) => ({
   signup: (credentials) => dispatch(authActions.signup(credentials)),
   signupClient: (credentials) =>
     dispatch(authActions.signupClient(credentials)),
-  handleError: (message) => dispatch(errorsActions.handleError(message)),
+  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+  cleanFormError: () => dispatch(errorsActions.cleanFormError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

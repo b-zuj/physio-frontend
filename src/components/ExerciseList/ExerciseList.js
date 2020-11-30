@@ -10,6 +10,7 @@ const ExcerciseList = (props) => {
     if (!exercises || exercises.length < 1) {
       return 'No exercises';
     }
+    console.log(exercises);
     return exercises.map((e) => (
       <div key={e.exercise._id} className={styles.exercise}>
         <div>
