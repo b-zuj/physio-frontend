@@ -6,6 +6,7 @@ import ListedExercise from '../ListedExercise/ListedExercise';
 const AssignedExercises = (props) => {
   const { exercises } = props;
   let list = <p className={classes.noExercises}>Add new exercise</p>;
+  console.log(exercises);
   if (exercises.length > 0) {
     list = exercises.map((e) => (
       <ListedExercise exercise={e} key={e.exercise._id} flag="remove" />
