@@ -8,7 +8,7 @@ import ListedExercise from '../ListedExercise/ListedExercise';
 import Button from '../Button/Button';
 
 const AsideExercisesList = (props) => {
-  const { fetchAllExercises, exercises } = props;
+  const { fetchAllExercises, exercises, dashboard } = props;
 
   useEffect(() => {
     if (exercises.length < 1) {
@@ -17,16 +17,18 @@ const AsideExercisesList = (props) => {
   }, []);
 
   const exercisesList = exercises.map((e) => (
-    <ListedExercise key={e._id} exercise={e} flag="add" />
+    <ListedExercise key={e._id} exercise={e} flag="add" dashboard />
   ));
 
   return (
     <>
-      <p className={classes.header}>Your Exercises</p>
+      <div>
+        {!dashboard && <p className={classes.header}>Your Exercises</p>}
+        <Link to="/exercise/create">
+          <Button actionStyle="create">Create New Exercise >>></Button>
+        </Link>
+      </div>
       {exercisesList}
-      <Link to="/exercise/create">
-        <Button actionStyle="create">Create New Exercise >>></Button>
-      </Link>
     </>
   );
 };

@@ -1,23 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { ArrowRight } from '@material-ui/icons';
+import { ArrowRight, Cancel } from '@material-ui/icons';
 
 import styles from './ClientList.module.css';
 import Button from '../../../Button/Button';
 
-const Client = ({ client }) => {
+import * as clientActions from '../../../../redux/actions/client';
+
+const Client = ({ client, invitation, cancelInvite }) => {
   return (
     <div className={styles.client}>
       <span>{client.name}</span>
-      <Link to={`/client/${client._id}`}>
-        <Button actionStyle="link">
-          <span>Details </span>
-          <ArrowRight fontSize="inherit" />
+      {invitation ? (
+        <Button actionStyle="cancel" action={() => cancelInvite(client._id)}>
+          Cancel
         </Button>
-      </Link>
+      ) : (
+        <Link to={`/client/${client._id}`}>
+          <Button actionStyle="link">
+            <span>Details </span>
+            <ArrowRight fontSize="inherit" />
+          </Button>
+        </Link>
+      )}
     </div>
   );
 };
 
-export default Client;
+const mapDispatchToProps = (dispatch) => ({
+  cancelInvite: (id) => dispatch(clientActions.cancelInvite(id)),
+});
+export default connect(null, mapDispatchToProps)(Client);

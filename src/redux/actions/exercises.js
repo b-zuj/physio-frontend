@@ -39,6 +39,19 @@ export const updateExercise = (exerciseData, exerciseId) => {
     }
   };
 };
+export const deleteExercise = (exerciseId) => {
+  return async (dispatch) => {
+    try {
+      console.log('delete this', exerciseId);
+      const response = await axios.delete(`/exercises/${exerciseId}`);
+      if (response.status === 200) {
+        dispatch(authActions.tryToAutoLog());
+      }
+    } catch (error) {
+      dispatch(errorActions.addCreateError({ message: error.message }));
+    }
+  };
+};
 
 export const loadExercisesToState = (exercisesList) => ({
   type: 'LOAD_NEW_DATA',

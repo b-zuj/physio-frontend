@@ -1,13 +1,17 @@
 import React from 'react';
+
+import Client from './ClientList/Client';
 import styles from './PendingList.module.css';
 
 const PendingList = (props) => {
   const { invitations } = props;
 
   const clientEntries = invitations.map((invitation) => (
-    <li key={invitation._id}>
-      <a href={`mailto:${invitation.email}`}>{invitation.email}</a>
-    </li>
+    <Client
+      key={invitation._id}
+      client={{ _id: invitation._id, name: invitation.email }}
+      invitation
+    />
   ));
 
   return (

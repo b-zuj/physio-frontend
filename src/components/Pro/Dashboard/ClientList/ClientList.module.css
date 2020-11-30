@@ -1,10 +1,21 @@
+.activeClientsContainer {
+  margin: 0 20px;
+}
+
 .clientList {
   width: 300px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .client {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   padding: 5px 0 5px 5px;
   margin: 20px 0;
   border-bottom: 1px solid;

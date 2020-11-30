@@ -1,5 +1,6 @@
 import axios from '../../utils/axios';
 import * as authActions from './auth';
+import * as errorsActions from './errors';
 
 export function updateClient(client, comment) {
   return async (dispatch) => {
@@ -9,12 +10,18 @@ export function updateClient(client, comment) {
     if (response.status === 200) {
       dispatch(authActions.tryToAutoLog());
     }
-    // const clientIndex = user.clients.findIndex(
-    //   (client) => client._id === clientId
-    // );
-    // const newUser = JSON.parse(JSON.stringify(user));
-    // newUser.clients[clientIndex].comments = comment;
-    // dispatch(loadUserData(newUser));
+  };
+}
+export function cancelInvite(id) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(`/invitations/${id}`);
+      if (response.status === 200) {
+        dispatch(authActions.tryToAutoLog());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 }
 

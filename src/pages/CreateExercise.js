@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
@@ -59,7 +59,7 @@ const CreateExercise = (props) => {
   });
 
   let exercise;
-  useEffect(() => {
+  useLayoutEffect(() => {
     // EDIT MODE - get exercise and update form
     if (editMode) {
       // eslint-disable-next-line
