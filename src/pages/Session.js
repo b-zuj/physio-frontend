@@ -32,15 +32,32 @@ const Session = ({ getSession, session, userType }) => {
       </>
     );
 
+    const proName = (
+      <>
+        <h3>Session creator</h3>
+        <p>{session.pro.name}</p>
+      </>
+    );
+
     return (
       <>
         <h1>Session: {session.title}</h1>
         {session.description && description}
-        <ExcerciseList exercises={session.exercises} exerciseMode={exerciseMode === 'true' && true} />
+        {userType === 'client' && proName}
+        <ExcerciseList
+          exercises={session.exercises}
+          exerciseMode={exerciseMode === 'true' && true}
+        />
         <Link
-          to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}${exerciseMode === 'true' ? '&exerciseMode=true' : ''}`}
+          to={`/session/create?edit=true&sessionId=${
+            session._id
+          }&client=${clientId}${
+            exerciseMode === 'true' ? '&exerciseMode=true' : ''
+          }`}
         >
-          {userType === "pro" &&  <Button actionStyle="create">Edit session</Button>}
+          {userType === 'pro' && (
+            <Button actionStyle="create">Edit session</Button>
+          )}
         </Link>
       </>
     );
