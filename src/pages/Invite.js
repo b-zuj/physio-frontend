@@ -6,6 +6,7 @@ import Input from '../components/Input/Input';
 import checkValidity from '../utils/formValidation';
 import * as errorsActions from '../redux/actions/errors';
 import * as invitationActions from '../redux/actions/invitation';
+import Button from '../components/Button/Button';
 
 const Invite = (props) => {
   const [formElements, setFormElements] = useState({
@@ -70,7 +71,7 @@ const Invite = (props) => {
         <h1>Invite</h1>
         <p>Invite a new client to join physio:</p>
         {props.errorMessage && <span>{props.errorMessage}</span>}
-        <form onSubmit={submitHandler}>
+        <form>
           {formElementsArray.map((el) => (
             <Input
               key={el.id}
@@ -82,7 +83,9 @@ const Invite = (props) => {
               invalid={el.config.error}
             />
           ))}
-          <input type="submit" value="Send invitation" />
+          <Button type="submit" action={submitHandler} actionStyle="create">
+            Send invitation
+          </Button>
           {<p>{feedback}</p>}
         </form>
       </Layout>

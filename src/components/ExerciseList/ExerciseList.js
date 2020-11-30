@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ExerciseList.module.css';
+import Button from '../Button/Button';
 
 const ExcerciseList = (props) => {
   const { exercises } = props;
@@ -20,7 +21,7 @@ const ExcerciseList = (props) => {
           </p>
         </div>
         <Link to={`/exercise/${e.exercise._id}`}>
-          <button type="button">Details</button>
+          <Button actionStyle="link">Details</Button>
         </Link>
       </div>
     ));
