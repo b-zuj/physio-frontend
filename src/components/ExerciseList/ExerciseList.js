@@ -14,7 +14,7 @@ const ExcerciseList = (props) => {
     }
     console.log(exercises);
     return exercises.map((e) => (
-      <Exercise key={e.exercise._id} exerciseData={e} />
+      <Exercise key={e.exercise._id} exerciseData={e} exerciseMode={props.exerciseMode ? true : false}/>
     ));
   };
 

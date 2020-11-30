@@ -14,7 +14,6 @@ const Session = ({ getSession, session, userType }) => {
   const { id } = useParams();
   const query = useQuery();
   const clientId = query.get('client');
-  const exerciseMode = query.get('exerciseMode');
 
   useEffect(() => {
     getSession(id);
@@ -25,23 +24,10 @@ const Session = ({ getSession, session, userType }) => {
       return 'No matching session';
     }
 
-    const description = (
-      <>
-        <h3>Description</h3>
-        <p>{session.description}</p>
-      </>
-    );
-
     return (
       <>
         <h1>Session: {session.title}</h1>
-        {session.description && description}
-        <ExcerciseList exercises={session.exercises} exerciseMode={exerciseMode === 'true' && true} />
-        <Link
-          to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}${exerciseMode === 'true' ? '&exerciseMode=true' : ''}`}
-        >
-          {userType === "pro" &&  <Button actionStyle="create">Edit session</Button>}
-        </Link>
+        <ExcerciseList exercises={session.exercises} exerciseMode={true} />
       </>
     );
   };
