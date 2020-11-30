@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
+import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 
 import axios from '../utils/axios';
@@ -7,7 +10,8 @@ import Layout from '../components/Layout/Layout';
 import Video from '../components/Video/Video';
 import classes from './styles/Exercise.module.css';
 
-const Exercise = () => {
+const Exercise = (props) => {
+  const { userType } = props;
   const [exercise, setExercise] = useState();
   const videoId = 'pHPNrrcMobE'; // change later for dynamic vidoes
   const { id } = useParams();
@@ -29,7 +33,7 @@ const Exercise = () => {
       <h2>{exercise.title}</h2>
       <p>{exercise.description}</p>
       <Link to={`/exercise/create?edit=true&exerciseId=${id}`}>
-        <Button actionStyle="edit">Edit</Button>
+        {userType === "pro" &&  <Button actionStyle="edit">Edit</Button>}
       </Link>
     </>
   );
@@ -37,4 +41,8 @@ const Exercise = () => {
   return <Layout>{exerciseJsx}</Layout>;
 };
 
-export default Exercise;
+const mapStateToProps = (state) => ({
+  userType: state.authReducer.user.userType,
+});
+
+export default connect(mapStateToProps)(Exercise);
