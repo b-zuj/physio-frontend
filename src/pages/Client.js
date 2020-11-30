@@ -6,7 +6,6 @@ import Layout from '../components/Layout/Layout';
 import ClientDetails from '../components/Pro/Client/ClientDetails';
 import SessionList from '../components/SessionList/SessionList';
 import { Link } from 'react-router-dom';
-import { db } from '../mock/mockDB';
 import * as clientActions from '../redux/actions/client';
 import Button from '../components/Button/Button';
 

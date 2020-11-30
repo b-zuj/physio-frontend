@@ -77,6 +77,7 @@ const CreateSession = (props) => {
     e.preventDefault();
     try {
       const additionalFields = { client: client._id };
+
       const formData = createFormData(
         formElements,
         additionalFields,

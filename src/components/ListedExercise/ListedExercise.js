@@ -46,7 +46,7 @@ const ListedExercise = (props) => {
         {exercise.title ? exercise.title : exercise.exercise.title}
       </p>
       <div className={classes.actions}>
-        <Button actionStyle="edit">
+        <Button actionStyle="editSvg">
           <Edit color="inherit" />
         </Button>
         {addOrDeleteBtn}
