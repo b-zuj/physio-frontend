@@ -9,7 +9,6 @@ colors {
   --font-active: #fcbf49;
 }
 .basic {
-  position: relative;
   padding: 5px;
   margin-left: 0;
   background-color: transparent;
@@ -19,6 +18,7 @@ colors {
   touch-action: none;
   outline: none;
   transition-duration: 0.2s;
+  font-size: 0.7em;
 }
 
 .basic svg {
