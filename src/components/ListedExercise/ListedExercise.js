@@ -16,11 +16,14 @@ const ListedExercise = (props) => {
     removeExercise,
     asignedExercises,
   } = props;
+
   let addOrDeleteBtn;
+
   const disabled =
     asignedExercises.findIndex((e) => e.exercise._id === exercise._id) > -1
       ? true
       : false;
+
   if (flag === 'add') {
     addOrDeleteBtn = (
       <Button
@@ -40,6 +43,7 @@ const ListedExercise = (props) => {
       </Button>
     );
   }
+
   return (
     <div className={classes.exercise}>
       <p className={classes.title}>
