@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import Video from '../Video/Video'
+import Video from '../Video/Video';
 
 import Button from '../Button/Button';
 import classes from './ExerciseList.module.css';
@@ -13,13 +13,17 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
   const exerciseDetails = (
     <div>
       <b>{exercise.title}</b>
-      {exercise.media && <div className={classes.videoContainer}>
-        <Video id={exercise.media} />
-      </div>}
+      {exercise.media && (
+        <div className={classes.videoContainer}>
+          <Video url={exercise.media} />
+        </div>
+      )}
       {exercise.description && (
         // <p>{exercise.description}</p>
         <details>
-          <summary className={classes.exerciseDescription}>{exercise.description}</summary>
+          <summary className={classes.exerciseDescription}>
+            {exercise.description}
+          </summary>
           {exercise.description}
         </details>
       )}
@@ -27,7 +31,7 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
         <i>{comment}</i>
       </p>
     </div>
-  )
+  );
 
   const exerciseSummary = (
     <div>
@@ -39,18 +43,21 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
         <i>{comment}</i>
       </p>
     </div>
-  )
+  );
 
   return (
     <div className={classes.exercise}>
       {exerciseMode ? exerciseDetails : exerciseSummary}
-      {userType === 'pro' && <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
-        <Button actionStyle="edit">Edit</Button>
-      </Link>}
-      {!exerciseMode && <Link to={`/exercise/${exercise._id}`}>
-        <Button actionStyle="link">Details</Button>
-      </Link>}
-
+      {userType === 'pro' && (
+        <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
+          <Button actionStyle="edit">Edit</Button>
+        </Link>
+      )}
+      {!exerciseMode && (
+        <Link to={`/exercise/${exercise._id}`}>
+          <Button actionStyle="link">Details</Button>
+        </Link>
+      )}
     </div>
   );
 };
