@@ -1,0 +1,10 @@
+.clientsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heading {
+  margin-top: 30px;
+  text-align: center;
+}

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import * as actions from '../../redux/actions/exercises';
 import classes from './AsideExercisesList.module.css';
 import ListedExercise from '../ListedExercise/ListedExercise';
+import Button from '../Button/Button';
 
 const AsideExercisesList = (props) => {
   const { fetchAllExercises, exercises } = props;
@@ -22,6 +24,9 @@ const AsideExercisesList = (props) => {
     <>
       <p className={classes.header}>Your Exercises</p>
       {exercisesList}
+      <Link to="/exercise/create">
+        <Button actionStyle="create">Create New Exercise >>></Button>
+      </Link>
     </>
   );
 };

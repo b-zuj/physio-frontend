@@ -25,13 +25,19 @@ const Button = (props) => {
       break;
     case 'lowPriority':
       attachedClasses = [...attachedClasses, classes.lowPriority];
+    case 'details':
+      attachedClasses = [...attachedClasses, classes.details];
       break;
 
     default:
       break;
   }
   return (
-    <button className={attachedClasses.join(' ')} onClick={props.action}>
+    <button
+      className={attachedClasses.join(' ')}
+      onClick={props.action}
+      disabled={props.isDisabled}
+    >
       {props.children}
     </button>
   );

@@ -10,7 +10,13 @@ import * as errorsActions from '../redux/actions/errors';
 import * as accountActions from '../redux/actions/account';
 
 const Account = (props) => {
-  const { updateAccount, user, handleError, errorMessage } = props;
+  const {
+    updateAccount,
+    user,
+    addFormError,
+    cleanFormError,
+    errorMessage,
+  } = props;
   const [formElements, setFormElements] = useState({
     name: {
       elementType: 'input',
@@ -48,7 +54,7 @@ const Account = (props) => {
     const errors = checkValidity(formData, 'account');
 
     if (Object.keys(errors).length !== 0) {
-      return handleError('Invalid email or ... something.');
+      return addFormError(errors);
     }
 
     const accountData = JSON.parse(JSON.stringify(user));
@@ -56,7 +62,7 @@ const Account = (props) => {
     accountData.email = formData.email;
     updateAccount(accountData);
 
-    handleError('');
+    cleanFormError();
   };
 
   // Handle change value
@@ -115,7 +121,8 @@ const mapStateToProps = (state) => ({
   user: state.authReducer.user,
 });
 const mapDispatchToProps = (dispatch) => ({
-  handleError: (message) => dispatch(errorsActions.handleError(message)),
+  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+  cleanFormError: () => dispatch(errorsActions.cleanFormError()),
   updateAccount: (accountData) =>
     dispatch(accountActions.updateAccount(accountData)),
 });
