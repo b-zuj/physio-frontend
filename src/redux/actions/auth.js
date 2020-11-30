@@ -1,6 +1,8 @@
 import Cookies from 'js-cookie';
 import axios from '../../utils/axios';
 
+import * as exercisesActions from './exercises';
+
 export function login(credentials) {
   return async (dispatch) => {
     try {
@@ -9,6 +11,7 @@ export function login(credentials) {
       const userPopulatedData = await dispatch(
         fetchUserData(user._id, user.userType)
       );
+      dispatch(exercisesActions.getAll());
       dispatch(loadUserData(userPopulatedData));
     } catch (error) {}
   };
@@ -24,7 +27,8 @@ export const tryToAutoLog = () => {
         const userPopulatedData = await dispatch(
           fetchUserData(data._id, data.userType)
         );
-        console.log({ userPopulatedData });
+        dispatch(exercisesActions.getAll());
+
         dispatch(loadUserData(userPopulatedData));
         dispatch(isLoading(false));
       } catch (error) {

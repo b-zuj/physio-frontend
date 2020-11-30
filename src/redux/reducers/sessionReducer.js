@@ -29,9 +29,6 @@ const sessionReducer = (state = InitialState, action) => {
       };
     case 'ADD_DESCRIPTION':
       return { ...state, ...action.payload };
-    // case 'UPDATE_EXERCISES':
-    //   console.log(action.payload);
-    //   return { ...state, exercises: action.payload };
     case 'CLEAN':
       return {
         title: '',

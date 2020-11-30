@@ -37,6 +37,19 @@ const validate = (values, page) => {
         'Description is too short, required minimum 5 characters';
     }
   }
+  if (page === 'exercise') {
+    if (!values.title) {
+      errors.title = 'Title is required';
+    } else if (values.title.length < 5) {
+      errors.title = 'Title is too short, required minimum 5 characters';
+    }
+    if (!values.description) {
+      errors.description = 'Description is required';
+    } else if (values.description.length < 5) {
+      errors.description =
+        'Description is too short, required minimum 5 characters';
+    }
+  }
   if (page === 'invite') {
     if (!values.email) {
       errors.email = 'Email is required';

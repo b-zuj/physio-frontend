@@ -9,13 +9,12 @@ import classes from './styles/Exercise.module.css';
 
 const Exercise = () => {
   const [exercise, setExercise] = useState();
-  const videoId = 'pHPNrrcMobE'; // change later for dynamic vidoes
+  const videoUrl = exercise?.media && exercise.media; // change later for dynamic vidoes
   const { id } = useParams();
 
   useEffect(() => {
     const fetchExercise = async () => {
       const response = await axios.get(`exercises/${id}`);
-      console.log(response);
       setExercise(response.data);
     };
     fetchExercise();
@@ -23,8 +22,8 @@ const Exercise = () => {
 
   const exerciseJsx = exercise && (
     <>
-      <div className={classes.videoContainer}>
-        <Video id={videoId} />
+      <div className={videoUrl ? classes.videoContainer : null}>
+        <Video url={videoUrl} />
       </div>
       <h2>{exercise.title}</h2>
       <p>{exercise.description}</p>
