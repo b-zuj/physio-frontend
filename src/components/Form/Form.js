@@ -3,8 +3,11 @@ import React from 'react';
 import Input from '../Input/Input';
 import classes from './Form.module.css';
 
+import { objToArray } from '../../utils/formHelpers';
+
 const Form = (props) => {
-  const { submitHandler, formElementsArray, changedHandler } = props;
+  const { submitHandler, changedHandler, formElements } = props;
+  const formElementsArray = objToArray(formElements);
   return (
     <form className={classes.Form} onSubmit={submitHandler}>
       {formElementsArray.map((el) => (
