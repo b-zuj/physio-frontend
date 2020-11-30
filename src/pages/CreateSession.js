@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import {
+  changedHandler,
+  editModeInitValues,
+  createFormData,
+  findById,
+} from '../utils';
 import classes from './styles/CreateSession.module.css';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
@@ -12,14 +18,6 @@ import Button from '../components/Button/Button';
 
 import * as errorsActions from '../redux/actions/errors';
 import * as sessionActions from '../redux/actions/session';
-
-import {
-  changeHandler,
-  objToArray,
-  editModeInitValues,
-  createFormData,
-  findById,
-} from '../utils';
 
 const CreateSession = (props) => {
   const [formElements, setFormElements] = useState({
@@ -108,9 +106,6 @@ const CreateSession = (props) => {
     }
   };
 
-  // Map over object to create array
-  const formElementsArray = objToArray(formElements);
-
   return (
     <Layout>
       <h1 className={classes.title}>
@@ -122,8 +117,8 @@ const CreateSession = (props) => {
         <div className={classes.formContainer}>
           <Form
             submitHandler={submitHandler}
-            changedHandler={(e) => changeHandler(e, 'value', setFormElements)}
-            formElementsArray={formElementsArray}
+            changedHandler={(e) => changedHandler(e, 'value', setFormElements)}
+            formElements={formElements}
           />
           <AssignedExercises exercises={session.exercises} />
           <div className={classes.actionsContainer}>

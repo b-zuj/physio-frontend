@@ -1,6 +1,6 @@
-import { formValidation } from './';
+import { formValidation } from '.';
 
-export const changeHandler = (e, changedProp, cb) => {
+export const changedHandler = (e, changedProp, cb) => {
   cb((prevState) => ({
     ...prevState,
     [e.target.name]: {

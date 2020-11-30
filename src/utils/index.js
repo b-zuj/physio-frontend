@@ -1,6 +1,6 @@
 import findById from './findById';
 import {
-  changeHandler,
+  changedHandler,
   objToArray,
   editModeInitValues,
   createFormData,
@@ -10,7 +10,7 @@ import formValidation from './formValidation';
 export {
   findById,
   formValidation,
-  changeHandler,
+  changedHandler,
   objToArray,
   editModeInitValues,
   createFormData,
