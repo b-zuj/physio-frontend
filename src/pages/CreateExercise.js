@@ -44,6 +44,7 @@ const CreateExercise = (props) => {
         name: 'media',
         id: 'media',
       },
+      label: 'Video Url',
       value: '',
     },
     description: {
