@@ -15,19 +15,6 @@ const ExcerciseList = (props) => {
     console.log(exercises);
     return exercises.map((e) => (
       <Exercise key={e.exercise._id} exerciseData={e} exerciseMode={props.exerciseMode ? true : false}/>
-      // <div key={e.exercise._id} className={styles.exercise}>
-      //   <div>
-      //     <b>{e.exercise.title}</b>
-      //     {e.exercise.description && <p>{e.exercise.description}</p>}
-      //     <p>
-      //       <i>{e.comment}</i>
-      //     </p>
-      //     {props.exerciseMode && <p>{e.exercise.media}</p>}
-      //   </div>
-      //   <Link to={`/exercise/${e.exercise._id}`}>
-      //     <Button actionStyle="link">Details</Button>
-      //   </Link>
-      // </div>
     ));
   };
 

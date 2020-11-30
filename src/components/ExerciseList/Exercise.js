@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import Video from '../Video/Video'
-
 
 import Button from '../Button/Button';
 import classes from './ExerciseList.module.css';
