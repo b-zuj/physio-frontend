@@ -19,6 +19,7 @@ const ExcerciseList = (props) => {
           <p>
             <i>{e.comment}</i>
           </p>
+          {props.exerciseMode && <p>{e.exercise.media}</p>}
         </div>
         <Link to={`/exercise/${e.exercise._id}`}>
           <Button actionStyle="link">Details</Button>
