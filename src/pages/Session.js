@@ -38,7 +38,7 @@ const Session = ({ getSession, session, userType }) => {
         {session.description && description}
         <ExcerciseList exercises={session.exercises} exerciseMode={exerciseMode === 'true' && true} />
         <Link
-          to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}${exerciseMode === 'true' && '&exerciseMode=true'}`}
+          to={`/session/create?edit=true&sessionId=${session._id}&client=${clientId}${exerciseMode === 'true' ? '&exerciseMode=true' : ''}`}
         >
           {userType === "pro" &&  <Button actionStyle="create">Edit session</Button>}
         </Link>
