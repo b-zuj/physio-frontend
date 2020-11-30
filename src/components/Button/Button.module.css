@@ -1,6 +1,6 @@
 colors {
   --primary-color: #4caf50;
-  --secondary-color: #ff5722;
+  --secondary-color: #aa2f2f;
   --blue-color: #2196f3;
   --font-super-light: #eae2b7;
   --font-light: #4888aa;
@@ -22,7 +22,9 @@ colors {
 }
 
 .basic svg {
+  display: inline-block;
   font-size: 1.6em;
+  padding: 0;
 }
 
 .primary {
@@ -38,14 +40,21 @@ colors {
 }
 
 .edit {
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  color: var(--blue-color);
+  background-color: white;
+  border: 1px solid;
 }
 
 .edit:hover {
-  color: var(--primary-color-darker);
-  background-color: var(--primary-color-transparent);
-  border: 1px solid var(--primary-color-darker);
+  color: white;
+  background-color: var(--blue-color);
+}
+.editSvg {
+  color: var(--blue-color);
+}
+
+.editSvg:hover {
+  transform: scale(0.9);
 }
 
 .create {
@@ -71,8 +80,15 @@ colors {
 }
 
 .default {
+  font-size: 0.6em;
   color: black;
   background-color: var(--grey);
+  vertical-align: middle;
+}
+
+.default svg {
+  font-size: 1.6em;
+  vertical-align: middle;
 }
 
 .default:hover {
@@ -89,9 +105,9 @@ colors {
   border: 1px solid var(--grey-dark);
   background-color: var(--grey-transparent);
 }
-
 .details {
   display: flex;
+  align-items: center;
   text-decoration: none;
   padding: 0;
   margin: 0;

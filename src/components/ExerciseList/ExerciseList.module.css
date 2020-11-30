@@ -9,9 +9,13 @@
   margin: 5px 0;
 }
 
-.exercise p {
+.exerciseDescription {
   margin: 10px;
   margin-left: 20px;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .exercise button {
