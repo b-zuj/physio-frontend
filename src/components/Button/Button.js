@@ -25,6 +25,7 @@ const Button = (props) => {
       break;
     case 'lowPriority':
       attachedClasses = [...attachedClasses, classes.lowPriority];
+      break;
     case 'details':
       attachedClasses = [...attachedClasses, classes.details];
       break;
