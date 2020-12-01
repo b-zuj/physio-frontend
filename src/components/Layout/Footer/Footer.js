@@ -6,7 +6,8 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <p>
-        &copy; 2020 Loopers | <u>Terms and conditions</u>
+        &copy; 2020 Loopers | <u>Terms and Conditions</u> |{' '}
+        <u>Privacy Policy</u>
       </p>
     </div>
   );
