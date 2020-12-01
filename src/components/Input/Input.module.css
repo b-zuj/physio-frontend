@@ -1,14 +1,16 @@
 .Input {
   position: relative;
-  margin: 5px 0;
+  margin: 10px 0;
   width: 100%;
 }
 
 .Label {
-  /* position: absolute;
-  bottom: 5px; */
+  position: absolute;
+  bottom: 5px;
+  padding-left: 5px;
   font-size: 0.9em;
   color: var(--font-dark);
+  transition: 0.2s;
 }
 
 .InputElement {
@@ -21,6 +23,15 @@
 
 .InputElement:focus {
   border-color: var(--blue-color);
+}
+.InputElement:focus + .labelsContainer .Label {
+  font-size: 0.7em;
+
+  bottom: 25px;
+}
+.LabelTop {
+  bottom: 25px;
+  font-size: 0.7em;
 }
 
 .textarea {
@@ -42,6 +53,8 @@
 
 .errorMessage {
   padding-right: 10px;
+  margin: 0;
   font-size: 0.6em;
+  text-align: right;
   color: var(--secondary-color);
 }

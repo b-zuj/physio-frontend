@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import classes from './Input.module.css';
 
-const Input = (props) => {
+const Input = props => {
   let inputElement = null;
   const inputClasses = [classes.InputElement];
 
@@ -31,7 +31,7 @@ const Input = (props) => {
     case 'select':
       inputElement = (
         <select id="client" name="client" value="" onChange={props.changed}>
-          {props.options.map((option) => (
+          {props.options.map(option => (
             <option key={option} value={option}>
               {option}
             </option>
@@ -50,20 +50,27 @@ const Input = (props) => {
       );
       break;
   }
-
   const error = props.errors[props.elementConfig.name];
   return (
     <div className={classes.Input}>
-      <div className={classes.labelsContainer}>
-        <label className={classes.Label}>{props.label}</label>
-        {error && <span className={classes.errorMessage}>{error}</span>}
-      </div>
+      {error && <p className={classes.errorMessage}>{error}</p>}
       {inputElement}
+      <div className={classes.labelsContainer}>
+        <label
+          className={
+            inputElement.props.value
+              ? [classes.Label, classes.LabelTop].join(' ')
+              : classes.Label
+          }
+        >
+          {props.label}
+        </label>
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   errors: state.errorReducer.formErrors,
 });
 

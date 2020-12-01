@@ -12,20 +12,23 @@ const Form = props => {
     changedHandler,
     formElements,
     addedClassName,
-    submitBtn,
+    heading,
+    btn,
+    children,
   } = props;
   const formElementsArray = objToArray(formElements);
-  const attachedClasses = [classes.basic];
+  let attachedClasses = [classes.basic];
   switch (addedClassName) {
     case 'login':
-      attachedClasses = [...attachedClasses, addedClassName];
+      attachedClasses = [...attachedClasses, classes['login-form']];
       break;
 
     default:
       break;
   }
   return (
-    <form className={classes.Form} onSubmit={submitHandler}>
+    <form className={attachedClasses.join(' ')} onSubmit={submitHandler}>
+      {heading && <h3>{heading}</h3>}
       {formElementsArray.map(el => (
         <Input
           key={el.id}
@@ -38,7 +41,14 @@ const Form = props => {
           options={el.config.options}
         />
       ))}
-      <Button type="submit" action={submitHandler} actionStyle="hidden" />
+      {btn ? (
+        <Button type="submit" actionStyle="create">
+          {btn}
+        </Button>
+      ) : (
+        <Button type="submit" actionStyle="hidden" />
+      )}
+      {children}
     </form>
   );
 };
