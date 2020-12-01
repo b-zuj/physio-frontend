@@ -38,10 +38,19 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
       history.goBack();
       deleteSession(id);
     };
+
+    const proName = (
+      <>
+        <h3>Session creator</h3>
+        <p>{session.pro.name}</p>
+      </>
+    );
+
     return (
       <>
         <h1>Session: {session.title}</h1>
         {session.description && description}
+        {userType === 'client' && proName}
         <ExcerciseList
           exercises={session.exercises}
           exerciseMode={exerciseMode === 'true' && true}
@@ -64,6 +73,7 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
             </Button>
           )}
         </div>
+
       </>
     );
   };
