@@ -21,13 +21,15 @@ const AsideExercisesList = props => {
 
   return (
     <>
-      <div>
-        {!dashboard && <p className={classes.header}>Your Exercises</p>}
+      {/* <div className={classes.headingContainer}> */}
+      {!dashboard && <p className={classes.headingTitle}>Your Exercises</p>}
+      {/* </div> */}
+      {exercisesList}
+      <div className={classes.actionsContainer}>
         <Link to="/exercise/create">
-          <Button actionStyle="create">Create New Exercise >>></Button>
+          <Button actionStyle="create">Create New Exercise</Button>
         </Link>
       </div>
-      {exercisesList}
     </>
   );
 };

@@ -11,10 +11,15 @@ import * as errorActions from '../../redux/actions/errors';
 const Layout = props => {
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname === '/login' || '/signup') {
+    if (
+      location.pathname === '/login' ||
+      location.pathname === '/signup' ||
+      location.pathname === '/exercise/create' ||
+      location.pathname === '/session/create'
+    ) {
       props.cleanFormError();
     }
-  });
+  }, [location.pathname]);
   return (
     <div className={styles.app}>
       <Navbar />
