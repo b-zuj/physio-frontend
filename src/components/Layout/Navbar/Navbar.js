@@ -2,7 +2,7 @@ import React from 'react';
 import { ExitToApp, ArrowBack } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import logo from '../../../images/logo_transparent.png';
+import logo from '../../../images/logo_transparent_crop2.png';
 
 import styles from './Navbar.module.css';
 
@@ -42,21 +42,6 @@ const Navbar = (props) => {
             </NavLink>
           </li>
         </>
-      );
-    }
-    return (
-      <div className={styles.frame}>
-        <img src={logo} alt="pysIO logo" />
-      </div>
-    );
-  };
-
-  const renderCenter = () => {
-    if (isAuth) {
-      return (
-        <div className={styles.frame}>
-          <img src={logo} alt="pysIO logo" />
-        </div>
       );
     }
   };
@@ -110,8 +95,10 @@ const Navbar = (props) => {
   };
   return (
     <div className={styles.navbarContainer}>
+      <div className={styles.frame}>
+        <img src={logo} alt="pysIO logo" />
+      </div>
       <ul className={styles.leftList}>{renderLeft()}</ul>
-      {renderCenter()}
       <ul className={styles.rightList}>{renderRight()}</ul>
     </div>
   );
