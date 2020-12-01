@@ -5,10 +5,10 @@ import { changedHandler, createFormData } from '../utils';
 
 import Layout from '../components/Layout/Layout';
 import Form from '../components/Form/Form';
-import Button from '../components/Button/Button';
 
 import * as authActions from '../redux/actions/auth';
 import * as errorsActions from '../redux/actions/errors';
+import classes from './styles/Login.module.css';
 
 const Login = props => {
   const [formElements, setFormElements] = useState({
@@ -16,7 +16,6 @@ const Login = props => {
       elementType: 'input',
       elementConfig: {
         type: 'email',
-        placeholder: 'Your Email',
         name: 'email',
         id: 'email',
       },
@@ -27,7 +26,6 @@ const Login = props => {
       elementType: 'input',
       elementConfig: {
         type: 'password',
-        placeholder: 'Passwrod',
         name: 'password',
         id: 'password',
       },
@@ -51,16 +49,16 @@ const Login = props => {
   return (
     <div>
       <Layout>
-        <h1>Login</h1>
         <Form
           submitHandler={submitHandler}
           changedHandler={e => changedHandler(e, 'value', setFormElements)}
           formElements={formElements}
-          submitBtn
-        />
-        <Button type="submit" action={submitHandler} actionStyle="create">
-          Login
-        </Button>
+          heading="Login"
+          addedClassName="login"
+          btn={'Login'}
+        >
+          <p className={classes.forgotPassword}>Forgot Password?</p>
+        </Form>
       </Layout>
     </div>
   );
