@@ -1,27 +1,61 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
+import { connect } from 'react-redux';
 
-const About = () => {
+const About = ({ isAuth }) => {
+  console.log(isAuth);
+  const notLoggedInContent = (
+    <>
+      <p>
+        <b>Are you interested in using our services?</b>
+      </p>
+      <p>
+        For physiotherapists: Please contact us and request a demo or ask us any
+        questions.
+      </p>
+      <p>
+        For clients: Contact us for any questions or tell your physiotherapist
+        about us.
+      </p>
+    </>
+  );
+
   return (
     <div>
       <Layout>
         <h1>About</h1>
-        <b>Who we are</b>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut npm enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-        <b>Our mission</b>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        <b>Contact us</b>
-        email@email.com
-        <b>Work with us</b>
-        Introduce yourself - careers@email.com
+        <p>
+          PyshIO is an app for pysiotherapists and their clients. Our aim is to
+          make it easier for pysiotherapists to share their services to clients
+          in a digital world.
+        </p>
+        <h3>Our mission</h3>
+        <p>
+          Due to the global pandemic many countries impose restrictions on
+          physical contact, functioning of training and medical facilities.This
+          makes it difficult for many to keep in shape, but also receive
+          necessary treatments such as physiotherapy. Our app attempts to solve
+          this issue. It allows personal trainers and physiotherapists to
+          continue providing their services and follow up with their customers
+          regardless of the local restrictions.
+        </p>
+        {!isAuth && notLoggedInContent}
+        <h3>Contact</h3>
+        <p>
+          <a href="mailto:contact@phys.io">contact@phys.io</a>
+        </p>
+        <h3>Work with us</h3>
+        <p>
+          Introduce yourself -{' '}
+          <a href="mailto:career@phys.io">career@phys.io</a>
+        </p>
       </Layout>
     </div>
   );
 };
 
-export default About;
+const mapStateToProps = (state) => ({
+  isAuth: state.authReducer.isAuth,
+});
+
+export default connect(mapStateToProps)(About);
