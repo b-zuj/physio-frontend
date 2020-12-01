@@ -31,7 +31,19 @@
   max-width: 800px;
   padding: 0;
   margin: 0;
-  margin-left: auto;
+  /* margin-left: auto; */
+}
+
+.frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 10px;
+}
+
+img {
+  height: 40px;
 }
 
 .navbarContainer li {
