@@ -53,15 +53,16 @@ const Input = props => {
   const error = props.errors[props.elementConfig.name];
   return (
     <div className={classes.Input}>
-      {error && <p className={classes.errorMessage}>{error}</p>}
-      {inputElement}
-      <div className={classes.labelsContainer}>
+      <div className={classes.labelsContainer} data-type={props.elementType}>
+        {error && <span className={classes.errorMessage}>{error}</span>}
+        {inputElement}
         <label
           className={
             inputElement.props.value
               ? [classes.Label, classes.LabelTop].join(' ')
               : classes.Label
           }
+          htmlFor={inputElement.props.id}
         >
           {props.label}
         </label>

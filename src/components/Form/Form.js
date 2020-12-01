@@ -42,7 +42,7 @@ const Form = props => {
         />
       ))}
       {btn ? (
-        <Button type="submit" actionStyle="create">
+        <Button type="submit" actionStyle="login">
           {btn}
         </Button>
       ) : (

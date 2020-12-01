@@ -13,7 +13,7 @@ const AssignedExercises = props => {
   }
   return (
     <div className={classes.addedExercises}>
-      <p className={classes.addExerciseTitle}>Assigned Exercises:</p>
+      <p className={classes.addExerciseTitle}>Assigned Exercises</p>
       {list}
     </div>
   );

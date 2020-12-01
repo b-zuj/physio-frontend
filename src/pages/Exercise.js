@@ -7,9 +7,8 @@ import Button from '../components/Button/Button';
 import axios from '../utils/axios';
 import Layout from '../components/Layout/Layout';
 import Video from '../components/Video/Video';
-import classes from './styles/Exercise.module.css';
 
-const Exercise = (props) => {
+const Exercise = props => {
   const { userType } = props;
   const [exercise, setExercise] = useState();
   const videoUrl = exercise?.media && exercise.media; // change later for dynamic vidoes
@@ -25,9 +24,7 @@ const Exercise = (props) => {
 
   const exerciseJsx = exercise && (
     <>
-      <div className={videoUrl ? classes.videoContainer : null}>
-        <Video url={videoUrl} />
-      </div>
+      <Video url={videoUrl} />
       <h2>{exercise.title}</h2>
       <p>{exercise.description}</p>
       <Link to={`/exercise/create?edit=true&exerciseId=${id}`}>
@@ -39,7 +36,7 @@ const Exercise = (props) => {
   return <Layout>{exerciseJsx}</Layout>;
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userType: state.authReducer.user.userType,
 });
 
