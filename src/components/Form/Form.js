@@ -6,7 +6,7 @@ import classes from './Form.module.css';
 
 import { objToArray } from '../../utils/formHelpers';
 
-const Form = props => {
+const Form = (props) => {
   const {
     submitHandler,
     changedHandler,
@@ -22,6 +22,9 @@ const Form = props => {
     case 'login':
       attachedClasses = [...attachedClasses, classes['login-form']];
       break;
+    case 'account':
+      attachedClasses = [...attachedClasses, classes['account-form']];
+      break;
 
     default:
       break;
@@ -29,7 +32,7 @@ const Form = props => {
   return (
     <form className={attachedClasses.join(' ')} onSubmit={submitHandler}>
       {heading && <h3>{heading}</h3>}
-      {formElementsArray.map(el => (
+      {formElementsArray.map((el) => (
         <Input
           key={el.id}
           elementType={el.config.elementType}
