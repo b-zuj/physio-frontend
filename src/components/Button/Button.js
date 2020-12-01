@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Button.module.css';
 
-const Button = (props) => {
+const Button = props => {
   let attachedClasses = [classes.basic];
 
   switch (props.actionStyle) {
@@ -19,6 +19,9 @@ const Button = (props) => {
       break;
     case 'create':
       attachedClasses = [...attachedClasses, classes.create];
+      break;
+    case 'login':
+      attachedClasses = [...attachedClasses, classes.create, classes.login];
       break;
     case 'cancel':
       attachedClasses = [...attachedClasses, classes.cancel];

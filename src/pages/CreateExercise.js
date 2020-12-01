@@ -11,6 +11,7 @@ import {
 import Layout from '../components/Layout/Layout';
 import Form from '../components/Form/Form';
 import Button from '../components/Button/Button';
+import Video from '../components/Video/Video';
 
 import { useQuery } from '../hooks/useQuery';
 import * as errorsActions from '../redux/actions/errors';
@@ -30,7 +31,6 @@ const CreateExercise = props => {
       elementType: 'input',
       elementConfig: {
         type: 'text',
-        placeholder: 'Title',
         name: 'title',
         id: 'title',
       },
@@ -41,7 +41,6 @@ const CreateExercise = props => {
       elementType: 'input',
       elementConfig: {
         type: 'text',
-        placeholder: 'Video Url',
         name: 'media',
         id: 'media',
       },
@@ -51,10 +50,10 @@ const CreateExercise = props => {
     description: {
       elementType: 'textarea',
       elementConfig: {
-        placeholder: 'Description',
         name: 'description',
         id: 'description',
       },
+      label: 'Description',
       value: '',
     },
   });
@@ -96,19 +95,29 @@ const CreateExercise = props => {
   };
   return (
     <Layout>
-      <h3>{editMode ? `Editing Exercise` : 'Create new Exercise'}</h3>
-      <Form
-        submitHandler={submitHandler}
-        changedHandler={e => changedHandler(e, 'value', setFormElements)}
-        formElements={formElements}
-      />
-      <div className={classes.actionsContainer}>
-        <Button actionStyle="cancel" action={() => history.goBack()}>
-          Cancel
-        </Button>
-        <Button action={submitHandler} actionStyle="create">
-          Save
-        </Button>
+      <h1 className={classes.heading}>
+        {editMode ? `Editing Exercise` : 'Create new Exercise'}
+      </h1>
+      <div className={classes.wrapper}>
+        <Form
+          submitHandler={submitHandler}
+          changedHandler={e => changedHandler(e, 'value', setFormElements)}
+          formElements={formElements}
+        />
+        {formElements.media.value?.length > 7 && (
+          <>
+            <h3 className={classes.videoTitle}>Video preview</h3>
+            <Video url={formElements.media.value} />
+          </>
+        )}
+        <div className={classes.actionsContainer}>
+          <Button actionStyle="cancel" action={() => history.goBack()}>
+            Cancel
+          </Button>
+          <Button action={submitHandler} actionStyle="create">
+            Save
+          </Button>
+        </div>
       </div>
     </Layout>
   );

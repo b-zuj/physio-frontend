@@ -25,7 +25,6 @@ const CreateSession = props => {
       elementType: 'input',
       elementConfig: {
         type: 'text',
-        placeholder: 'Title',
         name: 'title',
         id: 'title',
       },
@@ -35,10 +34,10 @@ const CreateSession = props => {
     description: {
       elementType: 'textarea',
       elementConfig: {
-        placeholder: 'Description',
         name: 'description',
         id: 'description',
       },
+      label: 'Description',
       value: '',
     },
   });
@@ -137,7 +136,7 @@ const CreateSession = props => {
             </Button>
           </div>
         </div>
-        <aside className={classes.allExercisesListContainer}>
+        <aside className={classes.asideExercises}>
           <AsideExercisesList />
         </aside>
       </div>

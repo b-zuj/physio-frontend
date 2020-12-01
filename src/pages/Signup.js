@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { changedHandler, createFormData } from '../utils';
+
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../components/Layout/Layout';
-import Input from '../components/Input/Input';
-import Button from '../components/Button/Button';
+import Form from '../components/Form/Form';
 
-import checkValidity from '../utils/formValidation';
 import * as authActions from '../redux/actions/auth';
 import * as errorsActions from '../redux/actions/errors';
 
@@ -16,7 +16,6 @@ const Signup = props => {
       elementType: 'input',
       elementConfig: {
         type: 'text',
-        placeholder: 'Your Name',
         name: 'name',
         id: 'name',
       },
@@ -27,7 +26,6 @@ const Signup = props => {
       elementType: 'input',
       elementConfig: {
         type: 'email',
-        placeholder: 'Your Email',
         name: 'email',
         id: 'email',
       },
@@ -38,7 +36,6 @@ const Signup = props => {
       elementType: 'input',
       elementConfig: {
         type: 'password',
-        placeholder: 'Passwrod',
         name: 'password',
         id: 'password',
       },
@@ -49,7 +46,6 @@ const Signup = props => {
       elementType: 'input',
       elementConfig: {
         type: 'password',
-        placeholder: 'Confirm Passwrod',
         name: 'confirmPassword',
         id: 'confirmPassword',
       },
@@ -80,70 +76,30 @@ const Signup = props => {
 
   const submitHandler = e => {
     e.preventDefault();
+    try {
+      const formData = createFormData(formElements, null, 'signup');
+      delete formData.confirmPassword;
 
-    const formData = {};
-    for (let key in formElements) {
-      formData[formElements[key].elementConfig.name] = formElements[key].value;
+      props.cleanFormError();
+
+      if (formData.pro) return props.signupClient(formData);
+      props.signup(formData);
+    } catch (error) {
+      props.addFormError(error);
     }
-    const errors = checkValidity(formData, 'signup');
-
-    if (Object.keys(errors).length !== 0) {
-      return props.addFormError(
-        'Invalid credentials. Please check email or password and try again.'
-      );
-    }
-    props.cleanFormError();
-    delete formData.confirmPassword;
-    if (formData.pro) return props.signupClient(formData);
-    props.signup(formData);
   };
-
-  // Handle change value
-  const updateState = (identifier, targetToUpdate, value) => {
-    setFormElements(prevState => ({
-      ...prevState,
-      [identifier]: {
-        ...prevState[identifier],
-        [targetToUpdate]: value,
-      },
-    }));
-  };
-
-  const changedHandler = e => {
-    updateState(e.target.name, 'value', e.target.value);
-  };
-
-  // Map over object to create array
-  const formElementsArray = [];
-
-  for (let key in formElements) {
-    formElementsArray.push({
-      id: key,
-      config: formElements[key],
-    });
-  }
 
   return (
     <div>
       <Layout>
-        <h1>Signup Page</h1>
-        {props.errorMessage && <span>{props.errorMessage}</span>}
-        <form onSubmit={submitHandler}>
-          {formElementsArray.map(el => (
-            <Input
-              key={el.id}
-              elementType={el.config.elementType}
-              elementConfig={el.config.elementConfig}
-              value={el.config.value}
-              changed={changedHandler}
-              label={el.config.label}
-              invalid={el.config.error}
-            />
-          ))}
-          <Button type="submit" action={submitHandler} actionStyle="create">
-            Signup
-          </Button>
-        </form>
+        <Form
+          submitHandler={submitHandler}
+          changedHandler={e => changedHandler(e, 'value', setFormElements)}
+          formElements={formElements}
+          heading="Signup"
+          addedClassName="login"
+          btn={'Signup'}
+        />
       </Layout>
     </div>
   );
