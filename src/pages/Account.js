@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import Input from '../components/Input/Input';
 import checkValidity from '../utils/formValidation';
 import Button from '../components/Button/Button';
+import { changedHandler, createFormData } from '../utils';
+import Form from '../components/Form/Form';
 
 import * as errorsActions from '../redux/actions/errors';
 import * as accountActions from '../redux/actions/account';
@@ -42,75 +44,82 @@ const Account = (props) => {
     },
   });
 
-  // Submit:
   const submitHandler = (e) => {
     e.preventDefault();
-
-    const formData = {};
-    for (let key in formElements) {
-      formData[key] = formElements[key].value;
+    try {
+      const formData = createFormData(formElements, null, 'account');
+      props.cleanFormError();
+      // props.login(formData);
+      // console.log(formData.name);
+      const accountData = JSON.parse(JSON.stringify(user));
+      accountData.name = formData.name;
+      accountData.email = formData.email;
+      updateAccount(accountData);
+      // console.log(accountData);
+    } catch (error) {
+      props.addFormError(error);
     }
-
-    const errors = checkValidity(formData, 'account');
-
-    if (Object.keys(errors).length !== 0) {
-      return addFormError(errors);
-    }
-
-    const accountData = JSON.parse(JSON.stringify(user));
-    accountData.name = formData.name;
-    accountData.email = formData.email;
-    updateAccount(accountData);
-
-    cleanFormError();
   };
 
-  // Handle change value
-  const updateState = (identifier, targetToUpdate, value) => {
-    setFormElements((prevState) => ({
-      ...prevState,
-      [identifier]: {
-        ...prevState[identifier],
-        [targetToUpdate]: value,
-      },
-    }));
-  };
+  // Submit:
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
 
-  const changedHandler = (e) => {
-    updateState(e.target.name, 'value', e.target.value);
-  };
+  //   const formData = {};
+  //   for (let key in formElements) {
+  //     formData[key] = formElements[key].value;
+  //   }
 
-  // Map over object to create array
-  const formElementsArray = [];
+  //   const errors = checkValidity(formData, 'account');
 
-  for (let key in formElements) {
-    formElementsArray.push({
-      id: key,
-      config: formElements[key],
-    });
-  }
+  //   if (Object.keys(errors).length !== 0) {
+  //     return addFormError(errors);
+  //   }
+
+  //   const accountData = JSON.parse(JSON.stringify(user));
+  //   accountData.name = formData.name;
+  //   accountData.email = formData.email;
+  //   updateAccount(accountData);
+
+  //   cleanFormError();
+  // };
+
+  // // Handle change value
+  // const updateState = (identifier, targetToUpdate, value) => {
+  //   setFormElements((prevState) => ({
+  //     ...prevState,
+  //     [identifier]: {
+  //       ...prevState[identifier],
+  //       [targetToUpdate]: value,
+  //     },
+  //   }));
+  // };
+
+  // const changedHandler = (e) => {
+  //   updateState(e.target.name, 'value', e.target.value);
+  // };
+
+  // // Map over object to create array
+  // const formElementsArray = [];
+
+  // for (let key in formElements) {
+  //   formElementsArray.push({
+  //     id: key,
+  //     config: formElements[key],
+  //   });
+  // }
 
   return (
     <div>
       <Layout>
-        <h1>Account</h1>
-        {errorMessage && <span>{errorMessage}</span>}
-        <form>
-          {formElementsArray.map((el) => (
-            <Input
-              key={el.id}
-              elementType={el.config.elementType}
-              elementConfig={el.config.elementConfig}
-              value={el.config.value}
-              changed={changedHandler}
-              label={el.config.label}
-              invalid={el.config.error}
-            />
-          ))}
-          <Button type="submit" action={submitHandler} actionStyle="create">
-            Update account
-          </Button>
-        </form>
+        <Form
+          submitHandler={submitHandler}
+          changedHandler={(e) => changedHandler(e, 'value', setFormElements)}
+          formElements={formElements}
+          heading="Account"
+          addedClassName="account"
+          btn={'Update account'}
+        ></Form>
       </Layout>
     </div>
   );
