@@ -8,8 +8,8 @@ import styles from './Navbar.module.css';
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
 
-const Navbar = props => {
-  const { isAuth } = props;
+const Navbar = (props) => {
+  const { isAuth, user } = props;
   const history = useHistory();
 
   const activeStyles = {
@@ -20,6 +20,12 @@ const Navbar = props => {
     if (isAuth) {
       return (
         <>
+          <li>
+            <div className={styles.navNameContainer}>
+              <div className={styles.navNameSmall}>Logged in as</div>
+              <div className={styles.navName}>{user.name}</div>
+            </div>
+          </li>
           <li>
             <NavLink activeStyle={activeStyles} to="/dashboard">
               Dashboard
@@ -60,11 +66,21 @@ const Navbar = props => {
   return (
     <div className={styles.navbarContainer}>
       {isAuth && (
-        <button className={styles.goBack} onClick={goToPrevPage}>
-          <ArrowBack />
-        </button>
+        <>
+          <button className={styles.goBack} onClick={goToPrevPage}>
+            <ArrowBack />
+          </button>
+        </>
       )}
       <ul>
+        {/* {isAuth && (
+          <li>
+            <div className={styles.navNameContainer}>
+              <div className={styles.navNameSmall}>Logged in as</div>
+              <div className={styles.navName}>{user.name}</div>
+            </div>
+          </li>
+        )} */}
         {renderAuth()}
         <li>
           <NavLink activeStyle={activeStyles} to="/about">
@@ -83,14 +99,15 @@ const Navbar = props => {
   );
 };
 
-const mapStateToPros = state => {
+const mapStateToPros = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
     session: state.sessionReducer,
     formErrors: state.errorReducer.formErrors,
+    user: state.authReducer.user,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(authActions.logout()),
     cleanFormError: () => dispatch(errorActions.cleanFormError()),
