@@ -8,7 +8,7 @@ import styles from './Navbar.module.css';
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
 
-const Navbar = (props) => {
+const Navbar = props => {
   const { isAuth } = props;
   const history = useHistory();
 
@@ -83,13 +83,14 @@ const Navbar = (props) => {
   );
 };
 
-const mapStateToPros = (state) => {
+const mapStateToPros = state => {
   return {
     isAuth: state.authReducer.isAuth,
+    session: state.sessionReducer,
     formErrors: state.errorReducer.formErrors,
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(authActions.logout()),
     cleanFormError: () => dispatch(errorActions.cleanFormError()),

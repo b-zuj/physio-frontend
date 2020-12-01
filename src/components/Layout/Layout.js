@@ -5,21 +5,21 @@ import Navbar from './Navbar/Navbar';
 import styles from './Layout.module.css';
 import Spinner from '../Spinner/Spinner';
 
-const Layout = (props) => {
+const Layout = props => {
   return (
     <div className={styles.app}>
       <Navbar />
-      {props.isLoading ? (
-        <Spinner />
-      ) : (
-        <main className={styles.main}>{props.children}</main>
-      )}
+
+      <main className={styles.main}>
+        {props.isLoading ? <Spinner /> : props.children}
+      </main>
+
       <Footer />
     </div>
   );
 };
 
-const mapStateToPros = (state) => {
+const mapStateToPros = state => {
   return {
     isLoading: state.authReducer.isLoading,
   };
