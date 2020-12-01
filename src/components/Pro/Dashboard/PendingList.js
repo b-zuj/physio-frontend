@@ -3,10 +3,10 @@ import React from 'react';
 import Client from './ClientList/Client';
 import styles from './PendingList.module.css';
 
-const PendingList = (props) => {
+const PendingList = props => {
   const { invitations } = props;
 
-  const clientEntries = invitations.map((invitation) => (
+  const clientEntries = invitations.map(invitation => (
     <Client
       key={invitation._id}
       client={{ _id: invitation._id, name: invitation.email }}
