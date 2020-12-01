@@ -15,9 +15,8 @@ const AsideExercisesList = (props) => {
       fetchAllExercises();
     }
   }, []);
-
   const exercisesList = exercises.map((e) => (
-    <ListedExercise key={e._id} exercise={e} flag="add" dashboard />
+    <ListedExercise key={e._id} exercise={e} flag="add" dashboard={dashboard} />
   ));
 
   return (
