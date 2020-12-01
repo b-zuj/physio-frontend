@@ -11,7 +11,19 @@
   height: 60px;
   background-color: #003049;
 }
-.navbarContainer ul {
+
+.navbarContainer .leftList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  max-width: 800px;
+  padding: 0;
+  margin: 0;
+  /* margin-left: auto; */
+}
+
+.navbarContainer .rightList {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -58,9 +70,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  /* vertical-align: auto; */
-  /* text-align: center; */
 }
 
 .navNameSmall {
