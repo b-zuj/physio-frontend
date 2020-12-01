@@ -2,80 +2,82 @@ import Cookies from 'js-cookie';
 import axios from '../../utils/axios';
 
 import * as exercisesActions from './exercises';
+import * as errorsActions from './errors';
 
-export function login(credentials) {
-  return async (dispatch) => {
+export const signup = credentials => async dispatch => {
+  const response = await axios.post('/auth/signup', credentials);
+  const { user } = response.data.data;
+  dispatch(loadUserData(user));
+};
+
+export const login = credentials => async dispatch => {
+  try {
+    dispatch(isLoading(true));
+    const response = await axios.post('/auth/login', credentials);
+    const { user } = response.data.data;
+    const userPopulatedData = await dispatch(
+      fetchUserData(user._id, user.userType)
+    );
+    dispatch(loadUserData(userPopulatedData));
+    dispatch(isLoading(false));
+  } catch (error) {
+    dispatch(isLoading(false));
+    dispatch(errorsActions.addGeneralError(error.message));
+  }
+};
+
+export const tryToAutoLog = () => async dispatch => {
+  if (Cookies.get('auth')) {
+    dispatch(isLoading(true));
     try {
-      const response = await axios.post('/auth/login', credentials);
-      const { user } = response.data.data;
+      const response = await axios.get('/auth/login');
+      const { data } = response;
       const userPopulatedData = await dispatch(
-        fetchUserData(user._id, user.userType)
+        fetchUserData(data._id, data.userType)
       );
-      dispatch(exercisesActions.getAll());
+
       dispatch(loadUserData(userPopulatedData));
-    } catch (error) {}
-  };
-}
-
-export const tryToAutoLog = () => {
-  return async (dispatch) => {
-    if (Cookies.get('auth')) {
-      dispatch(isLoading(true));
-      try {
-        const response = await axios.get('/auth/login');
-        const { data } = response;
-        const userPopulatedData = await dispatch(
-          fetchUserData(data._id, data.userType)
-        );
-        dispatch(exercisesActions.getAll());
-
-        dispatch(loadUserData(userPopulatedData));
-        dispatch(isLoading(false));
-      } catch (error) {
-        dispatch(isLoading(false));
-      }
+      dispatch(isLoading(false));
+    } catch (error) {
+      dispatch(isLoading(false));
+      dispatch(errorsActions.addGeneralError(error.message));
     }
-  };
+  }
 };
 
-export const fetchUserData = (_id, userType) => {
-  return async () => {
-    if (userType === 'pro') {
-      const userResponse = await axios.get(`/pros/${_id}`);
-      if (userResponse.status === 200) return userResponse.data;
+export const fetchUserData = (_id, userType) => async dispatch => {
+  if (userType === 'pro') {
+    const userResponse = await axios.get(`/pros/${_id}`);
+    if (userResponse.status === 200) {
+      dispatch(exercisesActions.getAll());
+      return userResponse.data;
     }
-    if (userType === 'client') {
-      const userResponse = await axios.get(`/clients/${_id}`);
-      if (userResponse.status === 200) return userResponse.data;
-    }
-  };
+  }
+  if (userType === 'client') {
+    const userResponse = await axios.get(`/clients/${_id}`);
+    if (userResponse.status === 200) return userResponse.data;
+  }
 };
 
-export function loadUserData(user) {
-  return { type: 'LOAD_DATA', payload: user };
-}
+export const loadUserData = user => ({ type: 'LOAD_DATA', payload: user });
 
-export function logout() {
+export const logout = () => {
   Cookies.remove('auth');
   return { type: 'LOGOUT' };
-}
+};
 
-export function signup(credentials) {
-  // {email, name, password}
-  return async (dispatch) => {
-    const response = await axios.post('/auth/signup', credentials);
-    const { user } = response.data.data;
-    dispatch(loadUserData(user));
-  };
-}
+export const signupClient = credentials => async dispatch => {
+  try {
+    dispatch(isLoading(true));
 
-export function signupClient(credentials) {
-  // {email, name, password, pro}
-  return async (dispatch) => {
     const response = await axios.post('/auth/client/signup', credentials);
     const { user } = response.data.data;
     dispatch(loadUserData(user));
-  };
-}
+    dispatch(isLoading(false));
+  } catch (error) {
+    dispatch(isLoading(false));
+    dispatch(errorsActions.addGeneralError(error.message));
+  }
+};
 
-export const isLoading = (bool) => ({ type: 'IS_LOADING', payload: bool });
+export const isLoading = bool => ({ type: 'IS_LOADING', payload: bool });

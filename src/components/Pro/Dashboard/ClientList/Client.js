@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { ArrowRight, Cancel } from '@material-ui/icons';
+import { ArrowRight } from '@material-ui/icons';
 
 import styles from './ClientList.module.css';
 import Button from '../../../Button/Button';
@@ -29,7 +29,7 @@ const Client = ({ client, invitation, cancelInvite }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  cancelInvite: (id) => dispatch(clientActions.cancelInvite(id)),
+const mapDispatchToProps = dispatch => ({
+  cancelInvite: id => dispatch(clientActions.cancelInvite(id)),
 });
 export default connect(null, mapDispatchToProps)(Client);

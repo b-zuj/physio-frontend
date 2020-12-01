@@ -20,7 +20,7 @@ const sessionReducer = (state = InitialState, action) => {
     case 'REMOVE_EXERCISE':
       const updatedExercises = [...state.exercises];
       const index = updatedExercises.findIndex(
-        (e) => e.exercise._id === action.payload.exercise._id
+        e => e.exercise._id === action.payload.exercise._id
       );
       updatedExercises.splice(index, 1);
       return {
@@ -29,7 +29,7 @@ const sessionReducer = (state = InitialState, action) => {
       };
     case 'ADD_DESCRIPTION':
       return { ...state, ...action.payload };
-    case 'CLEAN':
+    case 'CLEAN_SESSION':
       return {
         title: '',
         description: '',

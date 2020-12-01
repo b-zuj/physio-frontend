@@ -1,7 +1,7 @@
 import axios from '../../utils/axios';
 import * as authActions from './auth';
 import * as errorActions from './errors';
-export const getAll = () => async (dispatch) => {
+export const getAll = () => async dispatch => {
   try {
     dispatch(authActions.isLoading(true));
     const response = await axios.get('/exercises/');
@@ -12,8 +12,8 @@ export const getAll = () => async (dispatch) => {
   }
 };
 
-export const saveExercise = (exerciseData) => {
-  return async (dispatch) => {
+export const saveExercise = exerciseData => {
+  return async dispatch => {
     try {
       const response = await axios.post('/exercises', exerciseData);
       if (response.status === 200) {
@@ -25,7 +25,7 @@ export const saveExercise = (exerciseData) => {
   };
 };
 export const updateExercise = (exerciseData, exerciseId) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const response = await axios.put(
         `/exercises/${exerciseId}`,
@@ -39,10 +39,9 @@ export const updateExercise = (exerciseData, exerciseId) => {
     }
   };
 };
-export const deleteExercise = (exerciseId) => {
-  return async (dispatch) => {
+export const deleteExercise = exerciseId => {
+  return async dispatch => {
     try {
-      console.log('delete this', exerciseId);
       const response = await axios.delete(`/exercises/${exerciseId}`);
       if (response.status === 200) {
         dispatch(authActions.tryToAutoLog());
@@ -53,7 +52,7 @@ export const deleteExercise = (exerciseId) => {
   };
 };
 
-export const loadExercisesToState = (exercisesList) => ({
+export const loadExercisesToState = exercisesList => ({
   type: 'LOAD_NEW_DATA',
   payload: exercisesList,
 });
