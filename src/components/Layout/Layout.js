@@ -8,7 +8,8 @@ import Spinner from '../Spinner/Spinner';
 
 import * as errorActions from '../../redux/actions/errors';
 
-const Layout = props => {
+const Layout = (props) => {
+  const { type } = props;
   const location = useLocation();
   useEffect(() => {
     if (
@@ -24,7 +25,7 @@ const Layout = props => {
     <div className={styles.app}>
       <Navbar />
 
-      <main className={styles.main}>
+      <main className={type === 'text' ? styles.textPage : styles.main}>
         {props.isLoading ? <Spinner /> : props.children}
       </main>
 
@@ -33,12 +34,12 @@ const Layout = props => {
   );
 };
 
-const mapStateToPros = state => {
+const mapStateToPros = (state) => {
   return {
     isLoading: state.authReducer.isLoading,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     cleanFormError: () => dispatch(errorActions.cleanFormError()),
   };

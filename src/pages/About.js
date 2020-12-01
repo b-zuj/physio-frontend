@@ -22,7 +22,7 @@ const About = ({ isAuth }) => {
 
   return (
     <div>
-      <Layout>
+      <Layout type="text">
         <h1>About</h1>
         <p>
           PyshIO is an app for pysiotherapists and their clients. Our aim is to
