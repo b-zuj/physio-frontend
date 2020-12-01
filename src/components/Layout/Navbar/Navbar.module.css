@@ -70,11 +70,11 @@ img {
   border: none;
   background-color: transparent;
   color: #fcbf49;
-  padding: 10px;
   cursor: pointer;
 }
 
 .exitToApp {
+  padding: 10px;
   padding-right: 15px;
 }
 
@@ -83,15 +83,17 @@ img {
 }
 
 .goBack {
+  padding: 10px;
   display: flex;
   align-items: center;
+  padding-right: 5px;
 }
 
 .navNameContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .navNameSmall {
