@@ -26,8 +26,8 @@ const Button = props => {
     case 'cancel':
       attachedClasses = [...attachedClasses, classes.cancel];
       break;
-    case 'link':
-      attachedClasses = [...attachedClasses, classes.default];
+    case 'invite':
+      attachedClasses = [...attachedClasses, classes.invite];
       break;
     case 'lowPriority':
       attachedClasses = [...attachedClasses, classes.lowPriority];
