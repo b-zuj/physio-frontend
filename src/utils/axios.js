@@ -19,9 +19,9 @@ customAxios.interceptors.response.use(
     return res;
   },
   error => {
-    const customErrorMessage = error.response?.data?.error.message;
+    const customErrorMessage = error.response?.data?.error;
     console.log({ customErrorMessage });
-    return Promise.resolve(customErrorMessage ? customErrorMessage : { error });
+    throw customErrorMessage ? customErrorMessage : { error };
   }
 );
 

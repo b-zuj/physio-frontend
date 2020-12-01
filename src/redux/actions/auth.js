@@ -32,6 +32,9 @@ export const tryToAutoLog = () => async dispatch => {
     try {
       const response = await axios.get('/auth/login');
       const { data } = response;
+      if (!data) {
+        console.log(response);
+      }
       const userPopulatedData = await dispatch(
         fetchUserData(data._id, data.userType)
       );
@@ -40,7 +43,7 @@ export const tryToAutoLog = () => async dispatch => {
       dispatch(isLoading(false));
     } catch (error) {
       dispatch(isLoading(false));
-      dispatch(errorsActions.addGeneralError(error.message));
+      dispatch(errorsActions.addGeneralError(error));
     }
   }
 };
