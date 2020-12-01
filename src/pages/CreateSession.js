@@ -19,7 +19,7 @@ import Button from '../components/Button/Button';
 import * as errorsActions from '../redux/actions/errors';
 import * as sessionActions from '../redux/actions/session';
 
-const CreateSession = (props) => {
+const CreateSession = props => {
   const [formElements, setFormElements] = useState({
     title: {
       elementType: 'input',
@@ -57,6 +57,7 @@ const CreateSession = (props) => {
   useEffect(() => {
     // EDIT MODE - get session and update form
     if (editMode) {
+      // eslint-disable-next-line
       session = findById(client.sessions, sessionId);
       props.storeSession(session);
       const initialValues = {
@@ -71,7 +72,7 @@ const CreateSession = (props) => {
   }, []);
 
   // Submit:
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     try {
       const additionalFields = { client: client._id };
@@ -84,7 +85,7 @@ const CreateSession = (props) => {
 
       props.cleanFormError();
 
-      const exercisesData = props.session.exercises.map((e) => ({
+      const exercisesData = props.session.exercises.map(e => ({
         exercise: e.exercise._id,
         comment: e.comment,
       }));
@@ -117,7 +118,7 @@ const CreateSession = (props) => {
         <div className={classes.formContainer}>
           <Form
             submitHandler={submitHandler}
-            changedHandler={(e) => changedHandler(e, 'value', setFormElements)}
+            changedHandler={e => changedHandler(e, 'value', setFormElements)}
             formElements={formElements}
           />
           <AssignedExercises exercises={session.exercises} />
@@ -144,18 +145,18 @@ const CreateSession = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   clients: state.authReducer.user.clients,
   formError: state.errorReducer.formErrors,
   session: state.sessionReducer,
 });
-const mapDispatchToProps = (dispatch) => ({
-  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+const mapDispatchToProps = dispatch => ({
+  addFormError: message => dispatch(errorsActions.addFormError(message)),
   cleanFormError: () => dispatch(errorsActions.cleanFormError()),
-  saveSession: (data) => dispatch(sessionActions.saveSession(data)),
+  saveSession: data => dispatch(sessionActions.saveSession(data)),
   updateSession: (data, sessionId) =>
     dispatch(sessionActions.updateSession(data, sessionId)),
-  storeSession: (session) => dispatch(sessionActions.storeSession(session)),
+  storeSession: session => dispatch(sessionActions.storeSession(session)),
   cleanState: () => dispatch(sessionActions.cleanState()),
 });
 

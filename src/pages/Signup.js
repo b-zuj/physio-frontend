@@ -10,7 +10,7 @@ import checkValidity from '../utils/formValidation';
 import * as authActions from '../redux/actions/auth';
 import * as errorsActions from '../redux/actions/errors';
 
-const Signup = (props) => {
+const Signup = props => {
   const [formElements, setFormElements] = useState({
     name: {
       elementType: 'input',
@@ -63,7 +63,7 @@ const Signup = (props) => {
   useEffect(() => {
     if (query.get('user') === 'client' && query.get('token')) {
       const token = query.get('token');
-      setFormElements((prevState) => ({
+      setFormElements(prevState => ({
         ...prevState,
         proInput: {
           elementType: 'input',
@@ -76,9 +76,9 @@ const Signup = (props) => {
         },
       }));
     }
-  }, []);
+  }, [query]);
 
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
 
     const formData = {};
@@ -100,7 +100,7 @@ const Signup = (props) => {
 
   // Handle change value
   const updateState = (identifier, targetToUpdate, value) => {
-    setFormElements((prevState) => ({
+    setFormElements(prevState => ({
       ...prevState,
       [identifier]: {
         ...prevState[identifier],
@@ -109,7 +109,7 @@ const Signup = (props) => {
     }));
   };
 
-  const changedHandler = (e) => {
+  const changedHandler = e => {
     updateState(e.target.name, 'value', e.target.value);
   };
 
@@ -129,7 +129,7 @@ const Signup = (props) => {
         <h1>Signup Page</h1>
         {props.errorMessage && <span>{props.errorMessage}</span>}
         <form onSubmit={submitHandler}>
-          {formElementsArray.map((el) => (
+          {formElementsArray.map(el => (
             <Input
               key={el.id}
               elementType={el.config.elementType}
@@ -149,14 +149,13 @@ const Signup = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   errorMessage: state.authReducer.error,
 });
-const mapDispatchToProps = (dispatch) => ({
-  signup: (credentials) => dispatch(authActions.signup(credentials)),
-  signupClient: (credentials) =>
-    dispatch(authActions.signupClient(credentials)),
-  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+const mapDispatchToProps = dispatch => ({
+  signup: credentials => dispatch(authActions.signup(credentials)),
+  signupClient: credentials => dispatch(authActions.signupClient(credentials)),
+  addFormError: message => dispatch(errorsActions.addFormError(message)),
   cleanFormError: () => dispatch(errorsActions.cleanFormError()),
 });
 

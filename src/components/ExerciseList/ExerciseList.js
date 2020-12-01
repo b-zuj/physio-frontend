@@ -1,20 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './ExerciseList.module.css';
-import Button from '../Button/Button';
-import classes from './ExerciseList.module.css';
 import Exercise from './Exercise';
 
-const ExcerciseList = (props) => {
+const ExcerciseList = props => {
   const { exercises } = props;
-  console.log(exercises);
   const renderExercises = () => {
     if (!exercises || exercises.length < 1) {
       return 'No exercises';
     }
-    console.log(exercises);
-    return exercises.map((e) => (
-      <Exercise key={e.exercise._id} exerciseData={e} exerciseMode={props.exerciseMode ? true : false}/>
+    return exercises.map(e => (
+      <Exercise
+        key={e.exercise._id}
+        exerciseData={e}
+        exerciseMode={props.exerciseMode ? true : false}
+      />
     ));
   };
 
