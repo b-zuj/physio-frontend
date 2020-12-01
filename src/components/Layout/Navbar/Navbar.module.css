@@ -53,3 +53,22 @@
   align-items: center;
   padding: 10px 10px;
 }
+
+.navNameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* vertical-align: auto; */
+  /* text-align: center; */
+}
+
+.navNameSmall {
+  font-size: x-small;
+  color: #eae2b7;
+}
+
+.navName {
+  font-size: small;
+  color: #eae2b7;
+}
