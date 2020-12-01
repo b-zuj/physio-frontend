@@ -1,9 +1,15 @@
 .pendingList {
-  margin: 0 20px;
-  width: 90%;
-  max-width: 300px;
+  margin-top: 40px;
+  width: 100%;
 }
 .pendingList ul {
   list-style: none;
   padding-left: 0;
+}
+
+@media (min-width: 800px) {
+  .pendingList {
+    width: 40%;
+    margin: 40px auto;
+  }
 }

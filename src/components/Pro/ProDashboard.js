@@ -6,7 +6,7 @@ import PendingList from './Dashboard/PendingList';
 import AsideExercisesList from '../AsideExercisesList/AsideExercisesList';
 import classes from './ProDashboard.module.css';
 
-const ProDashboard = (props) => {
+const ProDashboard = props => {
   const { clients, invitations } = props;
 
   return (
@@ -15,7 +15,7 @@ const ProDashboard = (props) => {
         <ClientList title="Active Clients" clients={clients} />
         <PendingList invitations={invitations} />
       </div>
-      <div>
+      <div className={classes.dashboardExercises}>
         <h3>Your Exercises</h3>
         <AsideExercisesList dashboard />
       </div>
@@ -23,7 +23,7 @@ const ProDashboard = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   clients: state.authReducer.user.clients,
   invitations: state.authReducer.user.invitations,
 });

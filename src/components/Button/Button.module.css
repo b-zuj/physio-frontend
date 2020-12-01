@@ -9,6 +9,7 @@ colors {
   --font-active: #fcbf49;
 }
 .basic {
+  display: inline-block;
   padding: 5px;
   margin-left: 0;
   background-color: transparent;
@@ -21,7 +22,7 @@ colors {
 }
 
 .basic svg {
-  display: inline-block;
+  display: block;
   padding: 0;
 }
 
@@ -70,28 +71,15 @@ colors {
   color: var(--secondary-color);
   /* border: 1px solid; */
 }
+.cancel svg {
+  color: var(--secondary-color);
+  /* border: 1px solid; */
+}
 
 .cancel:hover {
   color: var(--secondary-color-darker);
   background-color: var(--secondary-color-transparent);
   border: 1px solid;
-}
-
-.default {
-  color: black;
-  background-color: var(--grey);
-  vertical-align: middle;
-  border: 1px solid var(--grey);
-}
-
-.default svg {
-  font-size: 1.6em;
-  vertical-align: middle;
-}
-
-.default:hover {
-  color: black;
-  background-color: var(--grey-light);
 }
 
 .lowPriority {
@@ -104,14 +92,19 @@ colors {
   background-color: var(--grey-transparent);
 }
 .details {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
   color: var(--blue-color);
+  padding: 10px;
+  font-size: 1.6em;
 }
 
 .login {
   margin-top: 30px;
+}
+
+.invite {
+  padding: 10px;
+  color: #4caf50;
+}
+.invite svg {
+  font-size: 3em;
 }
