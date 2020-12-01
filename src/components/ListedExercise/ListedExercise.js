@@ -22,7 +22,6 @@ const ListedExercise = (props) => {
   } = props;
 
   let assignedOrNot;
-
   const disabled =
     asignedExercises.findIndex((e) => e.exercise._id === exercise._id) > -1
       ? true
