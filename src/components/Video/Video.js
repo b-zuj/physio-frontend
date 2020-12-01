@@ -9,7 +9,6 @@ const Video = ({ url }) => {
     );
   }
 
-  console.log(videoUrl);
   return (
     <>
       {videoUrl && (

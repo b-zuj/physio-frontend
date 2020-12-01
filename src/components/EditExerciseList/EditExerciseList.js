@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './EditExerciseList.module.css';
 
-const EditExerciseList = (props) => {
+const EditExerciseList = props => {
   const [exercises, setExercises] = useState(props.exercises);
 
-  const removeExercise = (exerciseId) => {
-    // const newExercises = JSON.parse(JSON.stringify(exercises));
+  const removeExercise = exerciseId => {
     const newExercises = exercises.filter(
-      (exercise) => exercise.id !== exerciseId
+      exercise => exercise.id !== exerciseId
     );
     setExercises(newExercises);
-    console.log(exerciseId);
   };
 
   const renderExercises = () => {
     if (!exercises || exercises.length < 1) {
       return 'No exercises';
     }
-    return exercises.map((exercise) => (
+    return exercises.map(exercise => (
       <div key={exercise.id} className={styles.exercise}>
         <div>
           <b>{exercise.title}</b>
