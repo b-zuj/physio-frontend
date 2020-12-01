@@ -16,15 +16,14 @@ const Navbar = (props) => {
     color: '#f77f00',
   };
 
-  const renderAuth = () => {
+  const renderLeft = () => {
     if (isAuth) {
       return (
         <>
           <li>
-            <div className={styles.navNameContainer}>
-              <div className={styles.navNameSmall}>Logged in as</div>
-              <div className={styles.navName}>{user.name}</div>
-            </div>
+            <button className={styles.goBack} onClick={goToPrevPage}>
+              <ArrowBack />
+            </button>
           </li>
           <li>
             <NavLink activeStyle={activeStyles} to="/dashboard">
@@ -35,6 +34,31 @@ const Navbar = (props) => {
             <NavLink activeStyle={activeStyles} to="/account">
               Account
             </NavLink>
+          </li>
+          <li>
+            <NavLink activeStyle={activeStyles} to="/about">
+              About
+            </NavLink>
+          </li>
+        </>
+      );
+    }
+  };
+
+  const renderRight = () => {
+    if (isAuth) {
+      return (
+        <>
+          <li>
+            <div className={styles.navNameContainer}>
+              <div className={styles.navNameSmall}>Logged in as</div>
+              <div className={styles.navName}>{user.name}</div>
+            </div>
+          </li>
+          <li>
+            <button className={styles.exitToApp} onClick={handleLogout}>
+              {<ExitToApp />}
+            </button>
           </li>
         </>
       );
@@ -51,6 +75,11 @@ const Navbar = (props) => {
             Signup
           </NavLink>
         </li>
+        <li>
+          <NavLink activeStyle={activeStyles} to="/about">
+            About
+          </NavLink>
+        </li>
       </>
     );
   };
@@ -65,36 +94,8 @@ const Navbar = (props) => {
   };
   return (
     <div className={styles.navbarContainer}>
-      {isAuth && (
-        <>
-          <button className={styles.goBack} onClick={goToPrevPage}>
-            <ArrowBack />
-          </button>
-        </>
-      )}
-      <ul>
-        {/* {isAuth && (
-          <li>
-            <div className={styles.navNameContainer}>
-              <div className={styles.navNameSmall}>Logged in as</div>
-              <div className={styles.navName}>{user.name}</div>
-            </div>
-          </li>
-        )} */}
-        {renderAuth()}
-        <li>
-          <NavLink activeStyle={activeStyles} to="/about">
-            About
-          </NavLink>
-        </li>
-        {isAuth && (
-          <li>
-            <button className={styles.exitToApp} onClick={handleLogout}>
-              {<ExitToApp />}
-            </button>
-          </li>
-        )}
-      </ul>
+      <ul className={styles.leftList}>{renderLeft()}</ul>
+      <ul className={styles.rightList}>{renderRight()}</ul>
     </div>
   );
 };
