@@ -85,6 +85,21 @@ const Navbar = (props) => {
     );
   };
 
+  const renderLogo = () => {
+    if (isAuth) {
+      return (
+        <NavLink activeStyle={activeStyles} to="/dashboard">
+          <img src={logo} alt="pysIO logo" />
+        </NavLink>
+      );
+    }
+    return (
+      <NavLink activeStyle={activeStyles} to="/">
+        <img src={logo} alt="pysIO logo" />
+      </NavLink>
+    );
+  };
+
   const goToPrevPage = () => {
     Object.keys(props.formErrors).length !== 0 && props.cleanFormError('');
     history.goBack();
@@ -95,11 +110,9 @@ const Navbar = (props) => {
   };
   return (
     <div className={styles.navbarContainer}>
-      <div className={styles.frame}>
-        <img src={logo} alt="pysIO logo" />
-      </div>
       <ul className={styles.leftList}>{renderLeft()}</ul>
       <ul className={styles.rightList}>{renderRight()}</ul>
+      <div className={styles.frame}>{renderLogo()}</div>
     </div>
   );
 };
