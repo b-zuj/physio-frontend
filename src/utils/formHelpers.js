@@ -1,7 +1,7 @@
 import { formValidation } from '.';
 
 export const changedHandler = (e, changedProp, cb) => {
-  cb((prevState) => ({
+  cb(prevState => ({
     ...prevState,
     [e.target.name]: {
       ...prevState[e.target.name],
@@ -10,7 +10,7 @@ export const changedHandler = (e, changedProp, cb) => {
   }));
 };
 
-export const objToArray = (formElements) => {
+export const objToArray = formElements => {
   const formElementsArray = [];
 
   for (let key in formElements) {

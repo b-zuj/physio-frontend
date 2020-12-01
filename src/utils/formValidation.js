@@ -16,9 +16,9 @@ const validate = (values, page) => {
   }
   if (page === 'signup') {
     if (!values.confirmPassword) {
-      errors.password = 'Please confirm your password';
+      errors.confirmPassword = 'Please confirm your password';
     } else if (values.confirmPassword !== values.password) {
-      errors.password = 'Password is incorrect. Please confirm Your password.';
+      errors.confirmPassword = 'Confirm Password does not match.';
     }
     if (!values.name) {
       errors.name = 'Name is required';

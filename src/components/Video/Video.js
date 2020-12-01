@@ -1,5 +1,7 @@
 import React from 'react';
 
+import classes from './Video.module.css';
+
 const Video = ({ url }) => {
   let videoUrl = url;
   if (url?.match('https://youtu.be/')) {
@@ -10,7 +12,7 @@ const Video = ({ url }) => {
   }
 
   return (
-    <>
+    <div className={classes.videoContainer}>
       {videoUrl && (
         <iframe
           src={videoUrl}
@@ -20,7 +22,7 @@ const Video = ({ url }) => {
           allowFullScreen
         ></iframe>
       )}
-    </>
+    </div>
   );
 };
 

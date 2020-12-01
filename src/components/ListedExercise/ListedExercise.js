@@ -10,7 +10,7 @@ import * as exerciseActions from '../../redux/actions/exercises';
 import Button from '../Button/Button';
 import classes from './ListedExercise.module.css';
 
-const ListedExercise = (props) => {
+const ListedExercise = props => {
   const {
     exercise,
     flag,
@@ -23,7 +23,7 @@ const ListedExercise = (props) => {
 
   let assignedOrNot;
   const disabled =
-    asignedExercises.findIndex((e) => e.exercise._id === exercise._id) > -1
+    asignedExercises.findIndex(e => e.exercise._id === exercise._id) > -1
       ? true
       : false;
 
@@ -40,7 +40,7 @@ const ListedExercise = (props) => {
           </Button>
         </Link>
         <Button
-          action={() => addExercise(exercise)}
+          // action={() => addExercise(exercise)}
           actionStyle="add"
           isDisabled={disabled}
         >
@@ -77,7 +77,10 @@ const ListedExercise = (props) => {
   }
 
   return (
-    <div className={classes.exercise}>
+    <div
+      className={classes.exercise}
+      onClick={e => flag === 'add' && !disabled && addExercise(exercise)}
+    >
       <p className={classes.title}>
         {exercise.title ? exercise.title : exercise.exercise.title}
       </p>
@@ -85,14 +88,13 @@ const ListedExercise = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   asignedExercises: state.sessionReducer.exercises,
 });
-const mapDispatchToProps = (dispatch) => ({
-  addExercise: (exercise) => dispatch(sessionActions.addExercise(exercise)),
-  removeExercise: (exercise) =>
-    dispatch(sessionActions.removeExercise(exercise)),
-  deleteExercise: (exerciseId) =>
+const mapDispatchToProps = dispatch => ({
+  addExercise: exercise => dispatch(sessionActions.addExercise(exercise)),
+  removeExercise: exercise => dispatch(sessionActions.removeExercise(exercise)),
+  deleteExercise: exerciseId =>
     dispatch(exerciseActions.deleteExercise(exerciseId)),
 });
 
