@@ -42,7 +42,7 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
     const proName = (
       <>
         <h3>Session creator</h3>
-        <p>{session.pro.name}</p>
+        <p>{session && session.pro?.name}</p>
       </>
     );
 
@@ -73,7 +73,6 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
             </Button>
           )}
         </div>
-
       </>
     );
   };

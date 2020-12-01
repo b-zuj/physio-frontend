@@ -19,14 +19,16 @@ export const updateSession = (sessionData, sessionId) => {
     }
   };
 };
-export const getSession = sessionId => {
-  return async dispatch => {
-    const response = await axios.get(`/sessions/${sessionId}`);
-    if (response.status === 200) {
-      dispatch(storeSession(response.data));
-    }
-  };
+export const getSession = sessionId => async dispatch => {
+  dispatch(authActions.isLoading(true));
+
+  const response = await axios.get(`/sessions/${sessionId}`);
+  if (response.status === 200) {
+    dispatch(storeSession(response.data));
+  }
+  dispatch(authActions.isLoading(false));
 };
+
 export const deleteSession = sessionId => {
   return async dispatch => {
     const response = await axios.delete(`/sessions/${sessionId}`);
