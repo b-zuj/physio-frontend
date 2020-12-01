@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import Layout from '../components/Layout/Layout';
 import { useParams } from 'react-router-dom';
@@ -9,13 +10,14 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
 
 import * as sessionActions from '../redux/actions/session';
+import classes from './styles/Session.module.css';
 
-const Session = ({ getSession, session, userType }) => {
+const Session = ({ getSession, session, userType, deleteSession }) => {
   const { id } = useParams();
   const query = useQuery();
   const clientId = query.get('client');
   const exerciseMode = query.get('exerciseMode');
-
+  const history = useHistory();
   useEffect(() => {
     getSession(id);
   }, [getSession, id]);
@@ -31,6 +33,11 @@ const Session = ({ getSession, session, userType }) => {
         <p>{session.description}</p>
       </>
     );
+
+    const handleDeleteSession = id => {
+      history.goBack();
+      deleteSession(id);
+    };
 
     const proName = (
       <>
@@ -48,17 +55,25 @@ const Session = ({ getSession, session, userType }) => {
           exercises={session.exercises}
           exerciseMode={exerciseMode === 'true' && true}
         />
-        <Link
-          to={`/session/create?edit=true&sessionId=${
-            session._id
-          }&client=${clientId}${
-            exerciseMode === 'true' ? '&exerciseMode=true' : ''
-          }`}
-        >
+        <div className={classes.actionsContainer}>
+          <Link
+            to={`/session/create?edit=true&sessionId=${
+              session._id
+            }&client=${clientId}${
+              exerciseMode === 'true' ? '&exerciseMode=true' : ''
+            }`}
+          >
+            {userType === 'pro' && (
+              <Button actionStyle="create">Edit session</Button>
+            )}
+          </Link>
           {userType === 'pro' && (
-            <Button actionStyle="create">Edit session</Button>
+            <Button actionStyle="delete" action={() => handleDeleteSession(id)}>
+              Delete session
+            </Button>
           )}
-        </Link>
+        </div>
+
       </>
     );
   };
@@ -70,12 +85,13 @@ const Session = ({ getSession, session, userType }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   session: state.sessionReducer,
   userType: state.authReducer.user.userType,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getSession: (id) => dispatch(sessionActions.getSession(id)),
+const mapDispatchToProps = dispatch => ({
+  getSession: id => dispatch(sessionActions.getSession(id)),
+  deleteSession: id => dispatch(sessionActions.deleteSession(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Session);

@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Edit, AddBox, Delete } from '@material-ui/icons';
 
-import * as actions from '../../redux/actions/session';
+import * as sessionActions from '../../redux/actions/session';
+import * as exerciseActions from '../../redux/actions/exercises';
 
 import Button from '../Button/Button';
 import classes from './ListedExercise.module.css';
@@ -15,11 +16,12 @@ const ListedExercise = (props) => {
     flag,
     addExercise,
     removeExercise,
+    deleteExercise,
     asignedExercises,
+    dashboard,
   } = props;
 
   let assignedOrNot;
-
   const disabled =
     asignedExercises.findIndex((e) => e.exercise._id === exercise._id) > -1
       ? true
@@ -56,6 +58,24 @@ const ListedExercise = (props) => {
     );
   }
 
+  if (dashboard) {
+    assignedOrNot = (
+      <>
+        <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
+          <Button actionStyle="editSvg">
+            <Edit color="inherit" />
+          </Button>
+        </Link>
+        <Button
+          action={() => deleteExercise(exercise._id)}
+          actionStyle="delete"
+        >
+          <Delete />
+        </Button>
+      </>
+    );
+  }
+
   return (
     <div className={classes.exercise}>
       <p className={classes.title}>
@@ -69,8 +89,11 @@ const mapStateToProps = (state) => ({
   asignedExercises: state.sessionReducer.exercises,
 });
 const mapDispatchToProps = (dispatch) => ({
-  addExercise: (exercise) => dispatch(actions.addExercise(exercise)),
-  removeExercise: (exercise) => dispatch(actions.removeExercise(exercise)),
+  addExercise: (exercise) => dispatch(sessionActions.addExercise(exercise)),
+  removeExercise: (exercise) =>
+    dispatch(sessionActions.removeExercise(exercise)),
+  deleteExercise: (exerciseId) =>
+    dispatch(exerciseActions.deleteExercise(exerciseId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListedExercise);

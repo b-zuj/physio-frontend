@@ -1,7 +1,7 @@
 import axios from '../../utils/axios';
 import * as authActions from './auth';
 import * as errorActions from './errors';
-export const getAll = () => async (dispatch) => {
+export const getAll = () => async dispatch => {
   try {
     dispatch(authActions.isLoading(true));
     const response = await axios.get('/exercises/');
@@ -12,8 +12,8 @@ export const getAll = () => async (dispatch) => {
   }
 };
 
-export const saveExercise = (exerciseData) => {
-  return async (dispatch) => {
+export const saveExercise = exerciseData => {
+  return async dispatch => {
     try {
       const response = await axios.post('/exercises', exerciseData);
       if (response.status === 200) {
@@ -25,7 +25,7 @@ export const saveExercise = (exerciseData) => {
   };
 };
 export const updateExercise = (exerciseData, exerciseId) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const response = await axios.put(
         `/exercises/${exerciseId}`,
@@ -39,8 +39,20 @@ export const updateExercise = (exerciseData, exerciseId) => {
     }
   };
 };
+export const deleteExercise = exerciseId => {
+  return async dispatch => {
+    try {
+      const response = await axios.delete(`/exercises/${exerciseId}`);
+      if (response.status === 200) {
+        dispatch(authActions.tryToAutoLog());
+      }
+    } catch (error) {
+      dispatch(errorActions.addCreateError({ message: error.message }));
+    }
+  };
+};
 
-export const loadExercisesToState = (exercisesList) => ({
+export const loadExercisesToState = exercisesList => ({
   type: 'LOAD_NEW_DATA',
   payload: exercisesList,
 });

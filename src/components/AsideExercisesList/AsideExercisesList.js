@@ -7,35 +7,36 @@ import classes from './AsideExercisesList.module.css';
 import ListedExercise from '../ListedExercise/ListedExercise';
 import Button from '../Button/Button';
 
-const AsideExercisesList = (props) => {
-  const { fetchAllExercises, exercises } = props;
+const AsideExercisesList = props => {
+  const { fetchAllExercises, exercises, dashboard } = props;
 
   useEffect(() => {
     if (exercises.length < 1) {
       fetchAllExercises();
     }
-  }, []);
-
-  const exercisesList = exercises.map((e) => (
-    <ListedExercise key={e._id} exercise={e} flag="add" />
+  }, [fetchAllExercises, exercises.length]);
+  const exercisesList = exercises.map(e => (
+    <ListedExercise key={e._id} exercise={e} flag="add" dashboard={dashboard} />
   ));
 
   return (
     <>
-      <p className={classes.header}>Your Exercises</p>
+      <div>
+        {!dashboard && <p className={classes.header}>Your Exercises</p>}
+        <Link to="/exercise/create">
+          <Button actionStyle="create">Create New Exercise >>></Button>
+        </Link>
+      </div>
       {exercisesList}
-      <Link to="/exercise/create">
-        <Button actionStyle="create">Create New Exercise >>></Button>
-      </Link>
     </>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   exercises: state.exercisesReducer,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchAllExercises: () => dispatch(actions.getAll()),
 });
 

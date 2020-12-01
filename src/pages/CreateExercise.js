@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
@@ -18,7 +18,8 @@ import * as exercisesActions from '../redux/actions/exercises';
 
 import classes from './styles/CreateExercise.module.css';
 
-const CreateExercise = (props) => {
+const CreateExercise = props => {
+  const { exercises } = props;
   const history = useHistory();
   const query = useQuery();
   const exerciseId = query.get('exerciseId');
@@ -59,14 +60,15 @@ const CreateExercise = (props) => {
   });
 
   let exercise;
-  useEffect(() => {
+  useLayoutEffect(() => {
     // EDIT MODE - get exercise and update form
     if (editMode) {
-      // eslint-disable-next-line
-      if (props.exercises.length === 0) {
+      if (exercises.length === 0) {
         return history.goBack();
       }
+      // eslint-disable-next-line
       exercise = findById(props.exercises, exerciseId);
+
       const initialValues = {
         title: exercise.title,
         description: exercise.description,
@@ -74,9 +76,9 @@ const CreateExercise = (props) => {
       };
       editModeInitValues(formElements, initialValues, setFormElements);
     }
-  }, []);
+  }, [exercises.length]);
 
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     try {
       const formData = createFormData(formElements, null, 'exercise');
@@ -97,7 +99,7 @@ const CreateExercise = (props) => {
       <h3>{editMode ? `Editing Exercise` : 'Create new Exercise'}</h3>
       <Form
         submitHandler={submitHandler}
-        changedHandler={(e) => changedHandler(e, 'value', setFormElements)}
+        changedHandler={e => changedHandler(e, 'value', setFormElements)}
         formElements={formElements}
       />
       <div className={classes.actionsContainer}>
@@ -111,14 +113,14 @@ const CreateExercise = (props) => {
     </Layout>
   );
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   formError: state.errorReducer.formErrors,
   exercises: state.exercisesReducer,
 });
-const mapDispatchToProps = (dispatch) => ({
-  addFormError: (message) => dispatch(errorsActions.addFormError(message)),
+const mapDispatchToProps = dispatch => ({
+  addFormError: message => dispatch(errorsActions.addFormError(message)),
   cleanFormError: () => dispatch(errorsActions.cleanFormError()),
-  saveExercise: (exerciseData) =>
+  saveExercise: exerciseData =>
     dispatch(exercisesActions.saveExercise(exerciseData)),
   updateExercise: (exerciseData, exerciseId) =>
     dispatch(exercisesActions.updateExercise(exerciseData, exerciseId)),

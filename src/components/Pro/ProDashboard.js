@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import ClientList from './Dashboard/ClientList/ClientList';
 import PendingList from './Dashboard/PendingList';
-import Button from '../Button/Button';
+import AsideExercisesList from '../AsideExercisesList/AsideExercisesList';
+import classes from './ProDashboard.module.css';
 
 const ProDashboard = (props) => {
   const { clients, invitations } = props;
 
   return (
     <>
-      <h1>Dashboard</h1>
-      <ClientList title="Active Clients" clients={clients} />
-      <PendingList invitations={invitations} />
-      <br />
-
-      <Link to={`/invite`}>
-        <Button actionStyle="lowPriority">Invite new clients</Button>
-      </Link>
+      <div className={classes.clientsContainer}>
+        <ClientList title="Active Clients" clients={clients} />
+        <PendingList invitations={invitations} />
+      </div>
+      <div>
+        <h3>Your Exercises</h3>
+        <AsideExercisesList dashboard />
+      </div>
     </>
   );
 };
