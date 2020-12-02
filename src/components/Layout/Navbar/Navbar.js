@@ -89,13 +89,13 @@ const Navbar = (props) => {
     if (isAuth) {
       return (
         <NavLink activeStyle={activeStyles} to="/dashboard">
-          <SvgLogo height="40" color="#ff9702" />
+          <SvgLogo height="40" />
         </NavLink>
       );
     }
     return (
       <NavLink activeStyle={activeStyles} to="/">
-        <SvgLogo height="40" color="#ff9702" />
+        <SvgLogo height="40" />
       </NavLink>
     );
   };
