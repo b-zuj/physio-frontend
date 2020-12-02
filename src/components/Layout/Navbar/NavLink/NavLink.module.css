@@ -24,6 +24,6 @@
     padding: 5px 10px;
   }
   .NavLink a {
-    color: #fcbf49;
+    color: var(--font-super-light);
   }
 }
