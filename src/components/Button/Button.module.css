@@ -54,7 +54,7 @@
 }
 
 .editSvg:hover {
-  transform: scale(0.9);
+  transform: scale(1.1);
 }
 
 .create {
@@ -70,32 +70,39 @@
 
 .cancel {
   color: var(--secondary-color);
-  /* border: 1px solid; */
 }
 .cancel svg {
   color: var(--secondary-color);
-  /* border: 1px solid; */
 }
-
 .cancel:hover {
-  color: var(--secondary-color-darker);
-  background-color: var(--secondary-color-transparent);
-  border: 1px solid;
+  transform: scale(1.1);
+}
+.more svg {
+  font-size: 2em;
 }
 
-.lowPriority {
-  color: black;
-  border: 1px solid var(--grey);
-}
-
-.lowPriority:hover {
-  border: 1px solid var(--grey-dark);
-  background-color: var(--grey-transparent);
+.more:hover {
+  transform: scale(1.3);
 }
 .details {
+  padding: 5px 10px;
   color: var(--blue-color);
-  padding: 10px;
-  font-size: 1.6em;
+}
+
+.details svg,
+.exercise svg {
+  margin: auto;
+}
+
+.details p,
+.exercise p {
+  text-align: center;
+  font-size: 0.6em;
+}
+
+.exercise {
+  padding: 5px 10px;
+  color: var(--logo-color);
 }
 
 .login {
@@ -110,6 +117,7 @@
   font-size: 2em;
   margin: auto;
 }
+
 .invite p {
   margin: 0;
   font-size: 0.6em;
