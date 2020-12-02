@@ -2,7 +2,7 @@ import React from 'react';
 import { ExitToApp, ArrowBack } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import logo from '../../../images/logo_transparent_crop2.png';
+import SvgLogo from '../../../images/SvgLogo';
 
 import styles from './Navbar.module.css';
 
@@ -89,13 +89,13 @@ const Navbar = (props) => {
     if (isAuth) {
       return (
         <NavLink activeStyle={activeStyles} to="/dashboard">
-          <img src={logo} alt="pysIO logo" />
+          <SvgLogo height="40" color="#ff9702" />
         </NavLink>
       );
     }
     return (
       <NavLink activeStyle={activeStyles} to="/">
-        <img src={logo} alt="pysIO logo" />
+        <SvgLogo height="40" color="#ff9702" />
       </NavLink>
     );
   };
