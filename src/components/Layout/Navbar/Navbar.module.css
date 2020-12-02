@@ -22,7 +22,7 @@
   text-align: center;
   border: none;
   background-color: transparent;
-  color: #fcbf49;
+  color: var(--navbar-icons);
   cursor: pointer;
 }
 .goBack p {
@@ -39,7 +39,7 @@
 }
 .burger svg {
   font-size: 2em;
-  color: #fcbf49;
+  color: var(--burger);
 }
 
 @media (max-width: 799px) {
