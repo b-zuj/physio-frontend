@@ -2,27 +2,29 @@ import React from 'react';
 import { ArrowBack, Menu, Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
 
-import { NavLink, useHistory } from 'react-router-dom';
-import SvgLogo from '../../../images/SvgLogo';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';
 import links from './links';
 import NavLinks from './NavLinks/NavLinks';
 import LoggedInAs from './LoggedInAs/LoggedInAs';
-// import Button from '../../Button/Button';
 
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
 import classes from './Navbar.module.css';
 
-const Navbar = props => {
+
+const Navbar = (props) => {
+  const location = useLocation();
   const history = useHistory();
 
   const goToPrevPage = () => {
     Object.keys(props.formErrors).length !== 0 && props.cleanFormError('');
     history.goBack();
   };
+
+  const link = props.isAuth ? '/dashboard' : '/';
 
   return (
     <div className={styles.navbarContainer}>
@@ -33,7 +35,9 @@ const Navbar = props => {
         </div>
       )}
       <LoggedInAs />
-      <Logo comp="Navbar" />
+      {location.pathname !== '/' && location.pathname !== '/about' && (
+        <Logo comp="Navbar" link={link} />
+      )}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>

@@ -1,6 +1,11 @@
 .Logo {
   width: 100%;
   height: 100%;
+  color: var(--logo-color);
+}
+
+.Logo a {
+  color: var(--logo-color);
 }
 
 .Logo.Navbar {
