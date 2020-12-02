@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styles from './SvgLogo.module.css';
 
 function SvgLogo(props) {
   return (
