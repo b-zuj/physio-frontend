@@ -64,12 +64,15 @@ const Home = () => {
           <p></p>
           <h3 className={homeStyles.h3}>Are you interested in using PhysIO?</h3>
           <p>
-            For physiotherapists: Please <Link to="/about">contact us</Link> and
-            request a demo or ask us any questions.
+            <b>For physiotherapists:</b><br />
+            <Link to="/signup">Sign up</Link> and start using PhysIO today! <br /> 
+            If you have any questions do not hesitate to <Link to="/about">contact us</Link> and
+            request a demo or ask us anything.
           </p>
           <p>
-            For clients: <Link to="/about">Contact us</Link> for any questions
-            or tell your physiotherapist about us.
+            <b>For clients:</b><br />
+            <Link to="/about">Contact us</Link> for any questions or
+            tell your physiotherapist about us.
           </p>
         </section>
       </article>
