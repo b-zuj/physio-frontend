@@ -2,12 +2,15 @@
   width:100%;
   background-color:  var(--bgc-dark);
   text-align: center;
-  padding-bottom: 20px;
 }
 
+.quoteAuthor {
+
+}
 .logo {
-  width: 40%;
+  width: 30%;
   height: auto;
+  margin-bottom: 2vh;
 }
 
 .article {
@@ -32,9 +35,9 @@
 
 .section {
   /* display: flex; */
-  width: 65%;
+  width: 62%;
   align-self: flex-start;
-  margin-top: -140px;
+  margin-top: -95px;
   /* color: red; */
 
 
@@ -42,4 +45,5 @@
 
 .h3 {
   width: 40%;
+  margin: 0;
 }
