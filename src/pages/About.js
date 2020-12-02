@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
+import styles from './styles/textContent.module.css';
 
 const About = ({ isAuth }) => {
   console.log(isAuth);
@@ -21,7 +22,7 @@ const About = ({ isAuth }) => {
   );
 
   return (
-    <div>
+    <div className={styles.textContent}>
       <Layout type="text">
         <h1>About</h1>
         <p>
