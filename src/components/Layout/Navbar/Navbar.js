@@ -25,6 +25,8 @@ const Navbar = (props) => {
     history.goBack();
   };
 
+  console.log(location.pathname);
+
   return (
     <div className={styles.navbarContainer}>
       <div className={classes.goBack} onClick={goToPrevPage}>
@@ -32,7 +34,8 @@ const Navbar = (props) => {
         <p>GO BACK</p>
       </div>
       <LoggedInAs />
-      <Logo comp="Navbar" />
+      {location.pathname !== '/' && <Logo comp="Navbar" />}
+      {/* <Logo comp="Navbar" /> */}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>
