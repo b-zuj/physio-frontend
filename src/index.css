@@ -2,7 +2,7 @@
   --primary-color: #4caf50;
   --primary-color-darker: #3b8b3e;
   --primary-color-transparent: rgb(76, 175, 80, 0.1);
-  --secondary-color: #ff0000bb;
+  --secondary-color: #ff4f4f;
   --secondary-color-darker: #7c2222;
   --secondary-color-transparent: rgb(216, 73, 29, 0.1);
 
@@ -35,10 +35,6 @@ code {
 
 * {
   box-sizing: border-box;
-
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
 }
 
 h1 {
