@@ -70,15 +70,20 @@ const About = ({ isAuth }) => {
           <br />
           {!isAuth && notLoggedInContent}
         </section>
+
         <div className={styles.contactDiv}>
             <a href="mailto:contact@phys.io"><img className={styles.emailImg} src={email} alt="envelop"/><br />
             contact@phys.io</a>
-          </div>
-        <h3 className={styles.h3}>Work with us</h3>
-        <p>
-          Introduce yourself -{' '}
-          <a href="mailto:career@phys.io">career@phys.io</a>
-        </p>
+        </div>
+        
+        <section className={styles.section}>
+          <h3 className={styles.h3}>Work with us</h3>
+          <p>
+            We are currently looking for a <b>skilled designer</b>!<br/>
+            Introduce yourself -{' '}
+            <a href="mailto:career@phys.io">career@phys.io</a>
+          </p>
+        </section>
       </article>
     </Layout>
   );
