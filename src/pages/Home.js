@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-      <Layout>
+      <Layout type="text">
         <h1>PhysIO</h1>
         <p>
           PyshIO is an app for pysiotherapists and their clients. Our aim is to
