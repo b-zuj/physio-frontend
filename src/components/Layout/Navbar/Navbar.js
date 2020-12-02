@@ -32,7 +32,9 @@ const Navbar = (props) => {
         <p>GO BACK</p>
       </div>
       <LoggedInAs />
-      {location.pathname !== '/' && <Logo comp="Navbar" link={link} />}
+      {location.pathname !== '/' && location.pathname !== '/about' && (
+        <Logo comp="Navbar" link={link} />
+      )}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>

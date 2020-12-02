@@ -14,14 +14,14 @@ const About = ({ isAuth }) => {
     <>
       <h3 className={styles.h3}>Are you interested in using our services?</h3>
       <p>
-        <b>For physiotherapists:</b><br />
-        Please contact us and request a demo or ask us any
-        questions.
+        <b>For physiotherapists:</b>
+        <br />
+        Please contact us and request a demo or ask us any questions.
       </p>
       <p>
-      <b>For clients:</b><br />
-        Contact us for any questions or tell your physiotherapist
-        about us.
+        <b>For clients:</b>
+        <br />
+        Contact us for any questions or tell your physiotherapist about us.
       </p>
     </>
   );
@@ -31,40 +31,47 @@ const About = ({ isAuth }) => {
       <header className={styles.header}>
         <img className={styles.logo} src={logo} alt="logo" />
       </header>
-      
+
       <article className={styles.article}>
-        
-        <img className={styles.ilustration}  src={cycling} alt="cycling" />
-        
+        <img className={styles.ilustration} src={cycling} alt="cycling" />
+
         <section className={styles.section}>
           <h1>About</h1>
           <p>
-            We are Loopers, a group of dedicated web developers embarked on a mission to build
-            PhysIO. The first app dedicated to solve communication issues between 
-            physiotherapists and their clients. <br />
+            We are Loopers, a group of dedicated web developers embarked on a
+            mission to build PhysIO. The first app dedicated to solve
+            communication issues between physiotherapists and their clients.{' '}
+            <br />
             <br />
             <b>Let's take physiotherapy into the digital world.</b>
           </p>
         </section>
 
         <img className={styles.ilustration} src={meditation} alt="meditation" />
-        
+
         <section className={styles.section}>
           <h3 className={styles.h3}>Our mission</h3>
           <p>
             Due to the global pandemic many countries impose restrictions on
-            physical contact, functioning of training and medical facilities. This
-            makes it difficult for many to keep in shape, but also receive
-            necessary treatments such as physiotherapy. Our app attempts to solve
-            this issue. It allows personal trainers and physiotherapists to
-            continue providing their services and follow up with their customers
-            regardless of where you are and what are the local restrictions.
+            physical contact, functioning of training and medical facilities.
+            This makes it difficult for many to keep in shape, but also receive
+            necessary treatments such as physiotherapy. Our app attempts to
+            solve this issue. It allows personal trainers and physiotherapists
+            to continue providing their services and follow up with their
+            customers regardless of where you are and what are the local
+            restrictions.
           </p>
-          <br /><br /><br />
+          <br />
+          <br />
+          <br />
         </section>
 
-        <img className={styles.ilustration} src={paperPlane} alt="paper plane" />
-        
+        <img
+          className={styles.ilustration}
+          src={paperPlane}
+          alt="paper plane"
+        />
+
         <section className={styles.section}>
           <h1>Contact</h1>
           <br />
@@ -72,14 +79,17 @@ const About = ({ isAuth }) => {
         </section>
 
         <div className={styles.contactDiv}>
-            <a href="mailto:contact@phys.io"><img className={styles.emailImg} src={email} alt="envelop"/><br />
-            contact@phys.io</a>
+          <a href="mailto:contact@phys.io">
+            <img className={styles.emailImg} src={email} alt="envelop" />
+            <br />
+            contact@phys.io
+          </a>
         </div>
-        
+
         <section className={styles.section}>
           <h3 className={styles.h3}>Work with us</h3>
           <p>
-            We are currently looking for a <b>skilled designer</b>!<br/>
+            We are currently looking for a <b>skilled designer</b>!<br />
             Introduce yourself -{' '}
             <a href="mailto:career@phys.io">career@phys.io</a>
           </p>
