@@ -3,15 +3,16 @@ import Button from '../../Button/Button';
 
 import { connect } from 'react-redux';
 import * as clientActions from '../../../redux/actions/client';
+import classes from './ClientDetails.module.css';
 
-const ClientDetails = (props) => {
+const ClientDetails = props => {
   const { client } = props;
   const [editMode, setEditMode] = useState(false);
   const [comment, setComment] = useState(client.comment);
   const [textAreaValue, setTextAreaValue] = useState(comment);
   const textAreaRef = React.createRef();
 
-  const onTextAreaChange = (e) => {
+  const onTextAreaChange = e => {
     const { value } = e.target;
     setTextAreaValue(value);
   };
@@ -27,9 +28,11 @@ const ClientDetails = (props) => {
       return (
         <>
           <p>{comment ? comment : 'No comment'}</p>
-          <Button actionStyle="edit" action={() => setEditMode(true)}>
-            Edit
-          </Button>
+          <div className={classes.actionsContainer}>
+            <Button actionStyle="edit" action={() => setEditMode(true)}>
+              Edit
+            </Button>
+          </div>
         </>
       );
     }
@@ -39,23 +42,24 @@ const ClientDetails = (props) => {
           ref={textAreaRef}
           value={textAreaValue}
           onChange={onTextAreaChange}
+          className={classes.textarea}
         />
-        <br />
-        <Button action={() => setEditMode(false)} actionStyle="lowPriority">
-          Discard
-        </Button>
-        <Button action={saveComment} actionStyle="create">
-          Save
-        </Button>
+        <div className={classes.actionsContainer}>
+          <Button action={() => setEditMode(false)} actionStyle="delete">
+            Discard
+          </Button>
+          <Button action={saveComment} actionStyle="create">
+            Save
+          </Button>
+        </div>
       </>
     );
   };
 
   return (
-    <div>
-      <h1>{client.name}</h1>
-      <div>
-        <h3>Client Details</h3>
+    <div className={classes.clientDetails}>
+      <h3 className={classes.headingTitle}>Client Details</h3>
+      <div className={classes.details}>
         <p>
           <b>Name:</b> {client.name}
         </p>
@@ -71,7 +75,7 @@ const ClientDetails = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   updateClient: (client, comment) =>
     dispatch(clientActions.updateClient(client, comment)),
 });

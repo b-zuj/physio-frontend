@@ -22,15 +22,15 @@ const Client = props => {
     }
     return (
       <div className={classes.clientWrapper}>
-        <ClientDetails client={client} />
-        <SessionList
-          title="Assigned sessions:"
-          sessions={client.sessions}
-          clientId={client._id}
-        />
-        <Link to={`/session/create?client=${client._id}`}>
-          <Button actionStyle="create">Create a new session</Button>
-        </Link>
+        <h1 className={classes.headingTitle}>{client.name}</h1>
+        <div className={classes.cardWrapper}>
+          <ClientDetails client={client} />
+          <SessionList
+            title="Assigned sessions:"
+            sessions={client.sessions}
+            clientId={client._id}
+          />
+        </div>
       </div>
     );
   };

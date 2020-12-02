@@ -26,7 +26,7 @@ const Client = ({ client, invitation, cancelInvite }) => {
         </Button>
       ) : (
         <Link to={`/client/${client._id}`}>
-          <Button actionStyle="details">
+          <Button actionStyle="more">
             <ChevronRight fontSize="inherit" />
           </Button>
         </Link>
