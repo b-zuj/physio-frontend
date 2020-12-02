@@ -13,7 +13,7 @@
 .exitToAppNavBar {
   align-items: center;
   padding: 5px 20px;
-  color: #7e7e7e;
+  color: var(--sidebar-icon);
 
   text-decoration: none;
   font-size: 1.3em;
@@ -49,7 +49,7 @@
     display: block;
     padding: 10px;
     text-align: center;
-    color: #fcbf49;
+    color: var(--navbar-icons);
   }
   .exitToAppNavBar p {
     font-size: 0.6rem;
