@@ -11,12 +11,12 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
   const { exercise, comment } = exerciseData;
 
   const exerciseDetails = (
-    <div>
-      <b>{exercise.title}</b>
+    <article className={classes.exercise}>
+      <h4>{exercise.title}</h4>
       {exercise.media && (
-        <div className={classes.videoContainer}>
-          <Video url={exercise.media} />
-        </div>
+        <>
+          <Video url={exercise.media} className={classes.video}/>
+        </>
       )}
       {exercise.description && (
         // <p>{exercise.description}</p>
@@ -30,7 +30,7 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
       <p>
         <i>{comment}</i>
       </p>
-    </div>
+    </article>
   );
 
   const exerciseSummary = (
