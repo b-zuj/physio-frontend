@@ -1,7 +1,11 @@
 import React from 'react';
 import { ArrowBack, Menu, Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
+
+import { NavLink, useHistory } from 'react-router-dom';
+import SvgLogo from '../../../images/SvgLogo';
 import { useHistory } from 'react-router-dom';
+
 
 import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';

@@ -16,6 +16,11 @@
   --grey: rgb(230, 230, 230);
   --grey-light: rgb(211, 211, 211);
   --grey-transparent: rgb(128, 128, 128, 0.1);
+
+  --client-list-icons: #fcbf49;
+  --list-line: rgba(204, 204, 204, 0.4);
+
+  --logo-color: #ff9702;
 }
 
 body {
