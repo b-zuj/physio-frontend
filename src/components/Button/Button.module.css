@@ -1,4 +1,4 @@
-colors {
+/* colors {
   --primary-color: #4caf50;
   --secondary-color: #aa2f2f;
   --blue-color: #2196f3;
@@ -7,7 +7,8 @@ colors {
   --font-dark: #003049;
   --bgc-dark: #003049;
   --font-active: #fcbf49;
-}
+} */
+
 .basic {
   display: inline-block;
   padding: 5px;
@@ -103,7 +104,7 @@ colors {
 
 .invite {
   padding: 10px;
-  color: #4caf50;
+  color: var(--primary-color);
 }
 .invite svg {
   font-size: 3em;
