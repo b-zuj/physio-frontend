@@ -4,6 +4,10 @@
   color: var(--logo-color);
 }
 
+.Logo a {
+  color: var(--logo-color);
+}
+
 .Logo.Navbar {
   position: absolute;
   left: 50%;
