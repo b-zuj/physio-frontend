@@ -33,7 +33,6 @@ const Navbar = (props) => {
       </div>
       <LoggedInAs />
       {location.pathname !== '/' && <Logo comp="Navbar" />}
-      {/* <Logo comp="Navbar" /> */}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>
