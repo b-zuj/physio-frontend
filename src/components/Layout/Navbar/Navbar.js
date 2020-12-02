@@ -6,13 +6,13 @@ import { useHistory } from 'react-router-dom';
 import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';
 import links from './links';
-import DrawerBurger from './DrawerBurger/DrawerBurger';
 import NavLinks from './NavLinks/NavLinks';
 import LoggedInAs from './LoggedInAs/LoggedInAs';
 // import Button from '../../Button/Button';
 
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
+import classes from './Navbar.module.css';
 
 const Navbar = props => {
   const history = useHistory();
@@ -24,6 +24,10 @@ const Navbar = props => {
 
   return (
     <div className={styles.navbarContainer}>
+      <div className={classes.goBack} onClick={goToPrevPage}>
+        <ArrowBack />
+        <p>GO BACK</p>
+      </div>
       <LoggedInAs />
       <Logo comp="Navbar" />
       <nav className={styles.DesktopOnly}>

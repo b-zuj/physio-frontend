@@ -37,6 +37,7 @@ const NavLinks = ({ isAuth, logout }) => {
   const logoutBtnTopNav = isAuth && (
     <li onClick={handleLogout} className={classes.exitToAppNavBar}>
       <ExitToApp />
+      <p>LOGOUT</p>
     </li>
   );
 

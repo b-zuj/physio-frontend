@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-@media (min-width: 370px) {
+@media (min-width: 800px) {
   .navNameContainer {
     display: flex;
   }
