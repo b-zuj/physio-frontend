@@ -14,10 +14,17 @@ const Home = () => {
         <img className={homeStyles.logo} src={logo} alt="logo" />
       </header>
       <article className={homeStyles.article}>
+        {/* <cite>Rest is not the answer.<br />
+        Activity and therapy help healing most.</cite><br />
+        <p className={homeStyles.quoteAuthor}>― Joerg Teichmann</p> */}
+
+
         <img className={homeStyles.ilustration} src={bellbar} alt="woman lifting" />
         
         <section className={homeStyles.section}>
-          <h3 >What is PhysIO?</h3>
+          <p></p>
+          <h3 className={homeStyles.h3}>What is PhysIO?</h3>
+          <p></p>
           <p>
             PyshIO is an app for pysiotherapists and their clients. Our goal is to
             make it easier for pysiotherapists to provide their services to clients
