@@ -8,7 +8,12 @@ import Button from '../Button/Button';
 import classes from './ExerciseList.module.css';
 
 const Exercise = ({ exerciseData, exerciseMode, userType }) => {
-  const { exercise, comment } = exerciseData;
+  const { exercise } = exerciseData;
+
+  let buttonToggle = false
+  if (userType === 'pro' & !exerciseMode) {
+    buttonToggle = true
+  }
 
   const exerciseDetails = (
     <article className={classes.exercise}>
@@ -27,9 +32,9 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
           {exercise.description}
         </details>
       )}
-      <p>
+      {/* <p>
         <i>{comment}</i>
-      </p>
+      </p> */}
     </article>
   );
 
@@ -39,16 +44,16 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
       {exercise.description && (
         <p className={classes.exerciseDescription}>{exercise.description}</p>
       )}
-      <p>
+      {/* <p>
         <i>{comment}</i>
-      </p>
+      </p> */}
     </div>
   );
 
   return (
     <div className={classes.exercise}>
       {exerciseMode ? exerciseDetails : exerciseSummary}
-      {userType === 'pro' && (
+      {buttonToggle && (
         <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
           <Button actionStyle="edit">Edit</Button>
         </Link>
