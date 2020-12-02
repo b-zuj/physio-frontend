@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 import { NavLink, useHistory } from 'react-router-dom';
 import SvgLogo from '../../../images/SvgLogo';
-import { useHistory } from 'react-router-dom';
-
 
 import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';
@@ -18,7 +16,7 @@ import LoggedInAs from './LoggedInAs/LoggedInAs';
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
 
-const Navbar = props => {
+const Navbar = (props) => {
   const history = useHistory();
 
   const goToPrevPage = () => {
@@ -40,7 +38,7 @@ const Navbar = props => {
   );
 };
 
-const mapStateToPros = state => {
+const mapStateToPros = (state) => {
   return {
     isAuth: state.authReducer.isAuth,
     session: state.sessionReducer,
@@ -48,7 +46,7 @@ const mapStateToPros = state => {
     user: state.authReducer.user,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(authActions.logout()),
     cleanFormError: () => dispatch(errorActions.cleanFormError()),
