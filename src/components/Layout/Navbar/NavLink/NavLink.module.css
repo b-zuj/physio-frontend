@@ -1,0 +1,29 @@
+.NavLink {
+  display: block;
+  padding: 5px 20px;
+  color: #757575;
+  text-decoration: none;
+  font-size: 1.3em;
+  transition: 0.1s ease-out;
+  box-sizing: border-box;
+}
+
+.NavLink:hover {
+  color: var(--font-active);
+}
+
+.NavLink a {
+  color: inherit;
+  color: #7e7e7e;
+  text-decoration: none;
+}
+
+@media (min-width: 800px) {
+  .NavLink {
+    font-size: 1em;
+    padding: 5px 10px;
+  }
+  .NavLink a {
+    color: var(--font-super-light);
+  }
+}
