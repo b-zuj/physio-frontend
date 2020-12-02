@@ -5,12 +5,9 @@ import classes from './NavLink.module.css';
 const NavItem = ({ link, exact, children }) => {
   let attachedClasses = classes.NavLink;
 
-  const activeStyles = {
-    color: '#f77f00',
-  };
   return (
     <li className={attachedClasses}>
-      <NavLink exact={exact} to={link} activeStyle={activeStyles}>
+      <NavLink exact={exact} to={link} activeClassName={classes.activeLink}>
         {children}
       </NavLink>
     </li>
