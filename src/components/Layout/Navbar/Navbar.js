@@ -1,105 +1,43 @@
 import React from 'react';
-import { ExitToApp, ArrowBack } from '@material-ui/icons';
+import { ArrowBack, Menu, Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
-import logo from '../../../images/logo_transparent_crop2.png';
 
+import { NavLink, useHistory } from 'react-router-dom';
+import SvgLogo from '../../../images/SvgLogo';
+
+import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';
+import links from './links';
+import NavLinks from './NavLinks/NavLinks';
+import LoggedInAs from './LoggedInAs/LoggedInAs';
+// import Button from '../../Button/Button';
 
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
+import classes from './Navbar.module.css';
 
 const Navbar = (props) => {
-  const { isAuth, user } = props;
   const history = useHistory();
-
-  const activeStyles = {
-    color: '#f77f00',
-  };
-
-  const renderLeft = () => {
-    if (isAuth) {
-      return (
-        <>
-          <li>
-            <button className={styles.goBack} onClick={goToPrevPage}>
-              <ArrowBack />
-            </button>
-          </li>
-          <li>
-            <NavLink activeStyle={activeStyles} to="/dashboard">
-              Dashboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeStyle={activeStyles} to="/account">
-              Account
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeStyle={activeStyles} to="/about">
-              About
-            </NavLink>
-          </li>
-        </>
-      );
-    }
-  };
-
-  const renderRight = () => {
-    if (isAuth) {
-      return (
-        <>
-          <li>
-            <div className={styles.navNameContainer}>
-              <div className={styles.navNameSmall}>Logged in as</div>
-              <div className={styles.navName}>{user.name}</div>
-            </div>
-          </li>
-          <li>
-            <button className={styles.exitToApp} onClick={handleLogout}>
-              {<ExitToApp />}
-            </button>
-          </li>
-        </>
-      );
-    }
-    return (
-      <>
-        <li>
-          <NavLink activeStyle={activeStyles} to="/login">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeStyle={activeStyles} to="/signup">
-            Signup
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeStyle={activeStyles} to="/about">
-            About
-          </NavLink>
-        </li>
-      </>
-    );
-  };
 
   const goToPrevPage = () => {
     Object.keys(props.formErrors).length !== 0 && props.cleanFormError('');
     history.goBack();
   };
-  const handleLogout = () => {
-    props.logout();
-    history.push('/');
-  };
+
   return (
     <div className={styles.navbarContainer}>
-      <div className={styles.frame}>
-        <img src={logo} alt="pysIO logo" />
+      <div className={classes.goBack} onClick={goToPrevPage}>
+        <ArrowBack />
+        <p>GO BACK</p>
       </div>
-      <ul className={styles.leftList}>{renderLeft()}</ul>
-      <ul className={styles.rightList}>{renderRight()}</ul>
+      <LoggedInAs />
+      <Logo comp="Navbar" />
+      <nav className={styles.DesktopOnly}>
+        <NavLinks links={links} />
+      </nav>
+      <div className={styles.burger} onClick={props.toggleDrawer}>
+        {props.open ? <Close /> : <Menu />}
+      </div>
     </div>
   );
 };

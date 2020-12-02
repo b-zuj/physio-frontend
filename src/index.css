@@ -2,7 +2,7 @@
   --primary-color: #4caf50;
   --primary-color-darker: #3b8b3e;
   --primary-color-transparent: rgb(76, 175, 80, 0.1);
-  --secondary-color: #ff0000bb;
+  --secondary-color: #ff4f4f;
   --secondary-color-darker: #7c2222;
   --secondary-color-transparent: rgb(216, 73, 29, 0.1);
 
@@ -16,6 +16,11 @@
   --grey: rgb(230, 230, 230);
   --grey-light: rgb(211, 211, 211);
   --grey-transparent: rgb(128, 128, 128, 0.1);
+
+  --client-list-icons: #fcbf49;
+  --list-line: rgba(204, 204, 204, 0.4);
+
+  --logo-color: #ff9702;
 }
 
 body {
@@ -35,10 +40,6 @@ code {
 
 * {
   box-sizing: border-box;
-
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
 }
 
 h1 {
@@ -72,4 +73,8 @@ button {
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
 }

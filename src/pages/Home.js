@@ -1,36 +1,67 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { Link } from 'react-router-dom';
+import styles from './styles/textContent.module.css';
+import homeStyles from './styles/Home.module.css';
+import bellbar from '../images/bellbar.png';
+import yoga from '../images/yoga.png';
+import logo from '../images/logo.svg';
 
 const Home = () => {
   return (
-    <div>
-      <Layout>
-        <h1>PhysIO</h1>
-        <p>
-          PyshIO is an app for pysiotherapists and their clients. Our aim is to
-          make it easier for pysiotherapists to share their services to clients
-          in a digital world.
-        </p>
-        <p>
-          Already a user? <Link to="/login">Log in</Link>
-        </p>
-        <p>
-          New user? <Link to="/signup">Sign up</Link>
-        </p>
-        <p>
-          <b>Are you interested in using our services?</b>
-        </p>
-        <p>
-          For physiotherapists: Please <Link to="/about">contact us</Link> and
-          request a demo or ask us any questions.
-        </p>
-        <p>
-          For clients: <Link to="/about">Contact us</Link> for any questions or
-          tell your physiotherapist about us.
-        </p>
-      </Layout>
-    </div>
+    <Layout type="text">
+      <header className={homeStyles.header}>
+        <img className={homeStyles.logo} src={logo} alt="logo" />
+      </header>
+      <article className={homeStyles.article}>
+        {/* <cite>Rest is not the answer.<br />
+        Activity and therapy help healing most.</cite><br />
+        <p className={homeStyles.quoteAuthor}>― Joerg Teichmann</p> */}
+
+
+        <img className={homeStyles.ilustration} src={bellbar} alt="woman lifting" />
+        
+        <section className={homeStyles.section}>
+          <p></p>
+          <h3 className={homeStyles.h3}>What is PhysIO?</h3>
+          <p></p>
+          <p>
+            PyshIO is an app for pysiotherapists and their clients. Our goal is to
+            make it easier for pysiotherapists to provide their services to clients
+            in a digital world. 
+          </p>
+          <p>
+            Using PhysIO allows you to keep in touch with your clients wherever they
+            are and despite any epidemiological restrictions. PhysIO is also great 
+            continuation of in-person visits. 
+          </p>
+        </section>
+
+        <div className={homeStyles.divCard}>
+          <p>
+          <b>Already a user? <Link to="/login">Log in</Link></b>
+          </p>
+          <p>
+            <b>Are you a physiotherapis and want to use our app? <Link to="/signup">Sign up</Link></b>
+          </p>
+        </div>
+
+        <img className={homeStyles.ilustration} src={yoga} alt="woman lifting" />
+       
+        <section className={homeStyles.section}>
+          <p></p>
+          <h3 className={homeStyles.h3}>Are you interested in using PhysIO?</h3>
+          <p>
+            For physiotherapists: Please <Link to="/about">contact us</Link> and
+            request a demo or ask us any questions.
+          </p>
+          <p>
+            For clients: <Link to="/about">Contact us</Link> for any questions or
+            tell your physiotherapist about us.
+          </p>
+        </section>
+      </article>
+    </Layout>
   );
 };
 

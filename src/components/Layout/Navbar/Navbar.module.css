@@ -6,102 +6,55 @@
   color: #eae2b7;
 }
 .navbarContainer {
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-  background-color: #003049;
+  box-sizing: border-box;
   position: relative;
-  /* z-index: 10; */
-}
-
-.navbarContainer .leftList {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 60px;
-  max-width: 800px;
-  padding: 0;
-  margin: 0;
-  z-index: 20;
-  /* margin-left: auto; */
-}
-
-.navbarContainer .rightList {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 60px;
-  max-width: 800px;
-  padding: 0;
-  margin: 0;
-  z-index: 20;
-  /* margin-left: auto; */
-}
-
-.frame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0 20px;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 10;
+  height: 60px;
+  align-items: center;
+  background-color: #003049;
 }
 
-img {
-  height: 40px;
-}
-
-.navbarContainer li {
-  list-style: none;
-}
-
-.navbarContainer a {
-  padding: 5px 10px;
-  color: #eae2b7;
-  text-decoration: none;
-}
-.active {
-  color: #f77f00;
-}
-
-.exitToApp,
 .goBack {
+  padding: 10px;
+  margin-right: 20px;
+  text-align: center;
   border: none;
   background-color: transparent;
   color: #fcbf49;
   cursor: pointer;
 }
-
-.exitToApp {
-  padding: 10px;
-  padding-right: 15px;
+.goBack p {
+  margin: 0;
+  font-size: 0.6em;
 }
 
-.exitToApp svg {
-  vertical-align: middle;
+.burger {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+.burger svg {
+  font-size: 2em;
+  color: #fcbf49;
 }
 
-.goBack {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  padding-right: 5px;
+@media (max-width: 799px) {
+  .DesktopOnly {
+    display: none;
+  }
+  .smDevices {
+    display: none;
+  }
 }
-
-.navNameContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 5px;
-}
-
-.navNameSmall {
-  font-size: x-small;
-  color: #eae2b7;
-}
-
-.navName {
-  font-size: small;
-  color: #eae2b7;
+@media (min-width: 799px) {
+  .burger {
+    display: none;
+  }
+  .navbarContainer nav {
+    margin: 0 0 0 auto;
+  }
 }
