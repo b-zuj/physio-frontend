@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { Link } from 'react-router-dom';
 import styles from './styles/textContent.module.css';
-import homeStyles from './styles/Home.module.css'
+import homeStyles from './styles/Home.module.css';
 import bellbar from '../images/bellbar.png';
 import yoga from '../images/yoga.png';
-import logo from '../images/logo_transparent.png';
+import logo from '../images/logo.svg';
 
 const Home = () => {
   return (
@@ -35,13 +35,16 @@ const Home = () => {
             are and despite any epidemiological restrictions. PhysIO is also great 
             continuation of in-person visits. 
           </p>
-          <p>
-            Already a user? <Link to="/login">Log in</Link>
-          </p>
-          <p>
-            Are you a physiotherapis and want to use our app? <Link to="/signup">Sign up</Link>
-          </p>
         </section>
+
+        <div className={homeStyles.divCard}>
+          <p>
+          <b>Already a user? <Link to="/login">Log in</Link></b>
+          </p>
+          <p>
+            <b>Are you a physiotherapis and want to use our app? <Link to="/signup">Sign up</Link></b>
+          </p>
+        </div>
 
         <img className={homeStyles.ilustration} src={yoga} alt="woman lifting" />
        
