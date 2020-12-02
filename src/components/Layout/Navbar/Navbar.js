@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowBack, Menu, Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
 
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import SvgLogo from '../../../images/SvgLogo';
 
 import Logo from '../../shared/Logo/Logo';
@@ -17,6 +17,7 @@ import * as errorActions from '../../../redux/actions/errors';
 import classes from './Navbar.module.css';
 
 const Navbar = (props) => {
+  const location = useLocation();
   const history = useHistory();
 
   const goToPrevPage = () => {
@@ -31,7 +32,7 @@ const Navbar = (props) => {
         <p>GO BACK</p>
       </div>
       <LoggedInAs />
-      <Logo comp="Navbar" />
+      {!location.pathname === '/' && <Logo comp="Navbar" />}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>
