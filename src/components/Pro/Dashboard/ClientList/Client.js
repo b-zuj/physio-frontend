@@ -18,7 +18,9 @@ const Client = ({ client, invitation, cancelInvite }) => {
     <li className={styles.client}>
       <div className={styles.clientData}>
         <AccountCircleRounded />
-        <span>{client.name}</span>
+        <Link to={`/client/${client._id}`}>
+          <span>{client.name}</span>
+        </Link>
       </div>
       {invitation ? (
         <Button actionStyle="cancel" action={() => cancelInvite(client._id)}>

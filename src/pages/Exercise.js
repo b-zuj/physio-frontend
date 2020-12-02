@@ -7,6 +7,7 @@ import Button from '../components/Button/Button';
 import axios from '../utils/axios';
 import Layout from '../components/Layout/Layout';
 import Video from '../components/Video/Video';
+import styles from './styles/Exercise.module.css';
 
 const Exercise = props => {
   const { userType } = props;
@@ -23,14 +24,14 @@ const Exercise = props => {
   }, [id]);
 
   const exerciseJsx = exercise && (
-    <>
+    <article className={styles.exercise_article}>
       <Video url={videoUrl} />
-      <h2>{exercise.title}</h2>
-      <p>{exercise.description}</p>
+      <h2 className={styles.exercise_title}>{exercise.title}</h2>
+      <p className={styles.exercise_description}>{exercise.description}</p>
       <Link to={`/exercise/create?edit=true&exerciseId=${id}`}>
         {userType === 'pro' && <Button actionStyle="edit">Edit</Button>}
       </Link>
-    </>
+    </article>
   );
 
   return <Layout>{exerciseJsx}</Layout>;
