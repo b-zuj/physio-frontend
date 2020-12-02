@@ -107,5 +107,21 @@
   color: var(--primary-color);
 }
 .invite svg {
-  font-size: 3em;
+  font-size: 2em;
+  margin: auto;
+}
+.invite p {
+  margin: 0;
+  font-size: 0.6em;
+}
+
+.cardActive {
+  padding: 10px 30px 20px;
+  color: white;
+  background-color: var(--primary-color);
+}
+.cardInactive {
+  padding: 10px 30px 20px;
+  color: black;
+  /* background-color: var(--primary-color); */
 }

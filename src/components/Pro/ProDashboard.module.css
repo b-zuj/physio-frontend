@@ -1,24 +1,45 @@
+.proDashWrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 100px auto 0;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: var(--card-shadow);
+  z-index: 100;
+}
+.cardsBtns {
+  position: absolute;
+  height: 43px;
+  top: -43px;
+  left: 40px;
+  background-color: #ddd;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
 .clientsContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
   max-width: 400px;
+  background-color: #fff;
 }
 
 .heading {
   margin-top: 30px;
   text-align: center;
 }
-
 .dashboardExercises {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 @media (min-width: 800px) {
   .clientsContainer {
     max-width: none;
     flex-wrap: nowrap;
+    padding-bottom: 50px;
   }
 }

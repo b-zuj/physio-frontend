@@ -15,12 +15,16 @@ const NavLinks = ({ isAuth, logout }) => {
   let navLinks;
   if (isAuth) {
     navLinks = links.authorized.map(l => (
-      <NavLink link={l.path}>{l.text}</NavLink>
+      <NavLink key={l.text} link={l.path}>
+        {l.text}
+      </NavLink>
     ));
   }
   if (!isAuth) {
     navLinks = links.notAuthorized.map(l => (
-      <NavLink link={l.path}>{l.text}</NavLink>
+      <NavLink key={l.text} exact={l.exact} link={l.path}>
+        {l.text}
+      </NavLink>
     ));
   }
 
