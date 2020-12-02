@@ -5,7 +5,6 @@
 .clientList {
   margin: 0;
   padding: 0;
-  /* width: 300px; */
 }
 
 .heading {
@@ -14,7 +13,7 @@
   margin-top: 40px;
   padding: 0 20px;
   align-items: center;
-  border-bottom: 1px solid rgba(204, 204, 204, 0.4);
+  border-bottom: 1px solid var(--list-line);
 }
 
 .client {
@@ -23,12 +22,11 @@
   align-items: center;
   padding: 12px 20px;
   height: 70px;
-  /* margin: 20px 0; */
-  border-bottom: 1px solid rgba(204, 204, 204, 0.4);
+  border-bottom: 1px solid var(--list-line);
 }
 
 .client svg {
-  color: #fcbf49;
+  color: var(--client-list-icons);
 }
 
 .clientData {
@@ -37,13 +35,8 @@
 }
 .clientData svg {
   margin-right: 20px;
-  color: #fcbf49;
+  color: var(--client-list-icons);
 }
-
-/* 
-color: #f77f00;
-color: #fcbf49; 
-*/
 
 @media (min-width: 800px) {
   .activeClientsContainer {
