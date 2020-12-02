@@ -1,10 +1,11 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { Link } from 'react-router-dom';
+import styles from './styles/textContent.module.css';
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.textContent}>
       <Layout type="text">
         <h1>PhysIO</h1>
         <p>
