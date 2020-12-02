@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../../Button/Button';
+
+import { PersonAddRounded } from '@material-ui/icons';
 
 import styles from './ClientList.module.css';
+import Button from '../../../Button/Button';
 import Client from './Client';
 import classes from './ClientList.module.css';
 
-const ClientList = (props) => {
+const ClientList = props => {
   const { title, clients } = props;
 
-  const clientEntries = clients.map((client) => (
+  const clientEntries = clients.map(client => (
     <Client key={client._id} client={client} />
   ));
 
@@ -18,11 +20,13 @@ const ClientList = (props) => {
       <div className={classes.heading}>
         <h3>{title}</h3>
         <Link to={`/invite`}>
-          <Button actionStyle="lowPriority">Invite new clients</Button>
+          <Button actionStyle="invite">
+            <PersonAddRounded />
+          </Button>
         </Link>
       </div>
       {clients.length > 0 ? (
-        <div className={styles.clientList}>{clientEntries}</div>
+        <ul className={styles.clientList}>{clientEntries}</ul>
       ) : (
         `No ${title.toLowerCase()}`
       )}
