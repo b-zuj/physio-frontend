@@ -2,15 +2,13 @@ import React from 'react';
 import { ArrowBack, Menu, Close } from '@material-ui/icons';
 import { connect } from 'react-redux';
 
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import SvgLogo from '../../../images/SvgLogo';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Logo from '../../shared/Logo/Logo';
 import styles from './Navbar.module.css';
 import links from './links';
 import NavLinks from './NavLinks/NavLinks';
 import LoggedInAs from './LoggedInAs/LoggedInAs';
-// import Button from '../../Button/Button';
 
 import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
@@ -25,7 +23,7 @@ const Navbar = (props) => {
     history.goBack();
   };
 
-  console.log(location.pathname);
+  const link = props.isAuth ? '/dashboard' : '/';
 
   return (
     <div className={styles.navbarContainer}>
@@ -34,8 +32,7 @@ const Navbar = (props) => {
         <p>GO BACK</p>
       </div>
       <LoggedInAs />
-      {location.pathname !== '/' && <Logo comp="Navbar" />}
-      {/* <Logo comp="Navbar" /> */}
+      {location.pathname !== '/' && <Logo comp="Navbar" link={link} />}
       <nav className={styles.DesktopOnly}>
         <NavLinks links={links} />
       </nav>

@@ -18,36 +18,48 @@ const Home = () => {
         Activity and therapy help healing most.</cite><br />
         <p className={homeStyles.quoteAuthor}>― Joerg Teichmann</p> */}
 
+        <img
+          className={homeStyles.ilustration}
+          src={bellbar}
+          alt="woman lifting"
+        />
 
-        <img className={homeStyles.ilustration} src={bellbar} alt="woman lifting" />
-        
         <section className={homeStyles.section}>
           <p></p>
           <h3 className={homeStyles.h3}>What is PhysIO?</h3>
           <p></p>
           <p>
-            PyshIO is an app for pysiotherapists and their clients. Our goal is to
-            make it easier for pysiotherapists to provide their services to clients
-            in a digital world. 
+            PyshIO is an app for pysiotherapists and their clients. Our goal is
+            to make it easier for pysiotherapists to provide their services to
+            clients in a digital world.
           </p>
           <p>
-            Using PhysIO allows you to keep in touch with your clients wherever they
-            are and despite any epidemiological restrictions. PhysIO is also great 
-            continuation of in-person visits. 
+            Using PhysIO allows you to keep in touch with your clients wherever
+            they are and despite any epidemiological restrictions. PhysIO is
+            also great continuation of in-person visits.
           </p>
         </section>
 
         <div className={homeStyles.divCard}>
           <p>
-          <b>Already a user? <Link to="/login">Log in</Link></b>
+            <b>
+              Already a user? <Link to="/login">Log in</Link>
+            </b>
           </p>
           <p>
-            <b>Are you a physiotherapis and want to use our app? <Link to="/signup">Sign up</Link></b>
+            <b>
+              Are you a physiotherapis and want to use our app?{' '}
+              <Link to="/signup">Sign up</Link>
+            </b>
           </p>
         </div>
 
-        <img className={homeStyles.ilustration} src={yoga} alt="woman lifting" />
-       
+        <img
+          className={homeStyles.ilustration}
+          src={yoga}
+          alt="woman lifting"
+        />
+
         <section className={homeStyles.section}>
           <p></p>
           <h3 className={homeStyles.h3}>Are you interested in using PhysIO?</h3>
