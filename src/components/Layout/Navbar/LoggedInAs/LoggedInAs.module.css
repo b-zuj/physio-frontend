@@ -1,0 +1,29 @@
+.navNameContainer {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.navNameSmall {
+  font-size: x-small;
+}
+
+.navName {
+  font-size: small;
+}
+
+.colorLight {
+  color: #eae2b7;
+}
+.colorDark {
+  color: #f77f00;
+  padding: 0 0 40px;
+  text-align: center;
+}
+
+@media (min-width: 370px) {
+  .navNameContainer {
+    display: flex;
+  }
+}
