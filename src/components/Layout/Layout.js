@@ -9,7 +9,8 @@ import SideDrawer from './Navbar/SideDrawer/SideDrawer';
 
 import * as errorActions from '../../redux/actions/errors';
 
-const Layout = props => {
+const Layout = (props) => {
+  const { type } = props;
   const location = useLocation();
   const [showDrawer, setShowDrawer] = useState(false);
 
@@ -31,7 +32,7 @@ const Layout = props => {
     <div className={styles.app}>
       <Navbar open={showDrawer} toggleDrawer={showDrawerHandler} />
       <SideDrawer open={showDrawer} clicked={showDrawerHandler} />
-      <main className={styles.main}>
+      <main className={type === 'text' ? styles.textPage : styles.main}>
         {props.isLoading ? <Spinner /> : props.children}
       </main>
 
@@ -40,12 +41,12 @@ const Layout = props => {
   );
 };
 
-const mapStateToPros = state => {
+const mapStateToPros = (state) => {
   return {
     isLoading: state.authReducer.isLoading,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     cleanFormError: () => dispatch(errorActions.cleanFormError()),
   };
