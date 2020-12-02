@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './NavLink.module.css';
 
-const NavItem = ({ link, children }) => {
+const NavItem = ({ link, exact, children }) => {
   let attachedClasses = classes.NavLink;
 
   const activeStyles = {
@@ -10,7 +10,7 @@ const NavItem = ({ link, children }) => {
   };
   return (
     <li className={attachedClasses}>
-      <NavLink to={link} activeStyle={activeStyles}>
+      <NavLink exact={exact} to={link} activeStyle={activeStyles}>
         {children}
       </NavLink>
     </li>

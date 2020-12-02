@@ -22,6 +22,7 @@ const ClientList = props => {
         <Link to={`/invite`}>
           <Button actionStyle="invite">
             <PersonAddRounded />
+            <p>Invite New</p>
           </Button>
         </Link>
       </div>

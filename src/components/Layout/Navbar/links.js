@@ -3,6 +3,7 @@ export default {
     {
       path: '/',
       text: 'Home',
+      exact: true,
     },
     {
       path: '/login',

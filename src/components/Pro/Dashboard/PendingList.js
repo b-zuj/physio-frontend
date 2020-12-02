@@ -16,7 +16,7 @@ const PendingList = props => {
 
   return (
     <div className={styles.pendingList}>
-      <h3>Pending clients</h3>
+      <h3 className={styles.pendingListHeading}>Pending clients</h3>
       {invitations.length > 0 ? <ul>{clientEntries}</ul> : 'No pending clients'}
     </div>
   );
