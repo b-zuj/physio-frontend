@@ -1,17 +1,12 @@
 .header {
-  width:100%;
-  background-color:  var(--bgc-dark);
+  width: 100%;
+  background-color: var(--bgc-dark);
   text-align: center;
-  margin-bottom: 3vh;
+  padding: 2vh;
 }
 
-.quoteAuthor {
-
-}
-.logo {
-  width: 30%;
-  height: auto;
-  margin-bottom: 2vh;
+.logoContainer {
+  color: var(--logo-color);
 }
 
 .article {
@@ -26,7 +21,7 @@
   /* box-shadow: 
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px; */
 }
-  
+
 .ilustration {
   width: 70%;
   height: auto;
@@ -77,9 +72,9 @@
     width: 90%;
     margin: 0;
   }
-  
+
   .h3 {
-    width: 90%
+    width: 90%;
   }
 
   .contactDiv {

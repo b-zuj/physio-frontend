@@ -8,6 +8,7 @@ import paperPlane from '../images/paperPlane.png';
 import logo from '../images/logo.svg';
 import email from '../images/email.svg';
 import { Link } from 'react-router-dom';
+import SvgLogo from '../components/shared/Logo/SvgLogo';
 
 const About = ({ isAuth }) => {
   console.log(isAuth);
@@ -31,7 +32,9 @@ const About = ({ isAuth }) => {
     <Layout type="text">
       <header className={styles.header}>
         <Link to="/">
-          <img className={styles.logo} src={logo} alt="logo" />
+          <div className={styles.logoContainer}>
+            <SvgLogo width="35%" />
+          </div>
         </Link>
       </header>
 

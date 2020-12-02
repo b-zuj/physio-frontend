@@ -14,8 +14,12 @@
 
 .NavLink a {
   color: inherit;
-  color: #7e7e7e;
+  color: var(--sidebar-link);
   text-decoration: none;
+}
+
+.NavLink a.activeLink {
+  color: var(--active-link);
 }
 
 @media (min-width: 800px) {

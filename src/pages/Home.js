@@ -6,12 +6,13 @@ import homeStyles from './styles/Home.module.css';
 import bellbar from '../images/bellbar.png';
 import yoga from '../images/yoga.png';
 import logo from '../images/logo.svg';
+import SvgLogo from '../components/shared/Logo/SvgLogo';
 
 const Home = () => {
   return (
     <Layout type="text">
       <header className={homeStyles.header}>
-        <img className={homeStyles.logo} src={logo} alt="logo" />
+        <SvgLogo width="35%" />
       </header>
       <article className={homeStyles.article}>
         {/* <cite>Rest is not the answer.<br />
@@ -64,15 +65,19 @@ const Home = () => {
           <p></p>
           <h3 className={homeStyles.h3}>Are you interested in using PhysIO?</h3>
           <p>
-            <b>For physiotherapists:</b><br />
-            <Link to="/signup">Sign up</Link> and start using PhysIO today! <br /> 
-            If you have any questions do not hesitate to <Link to="/about">contact us</Link> and
-            request a demo or ask us anything.
+            <b>For physiotherapists:</b>
+            <br />
+            <Link to="/signup">Sign up</Link> and start using PhysIO today!{' '}
+            <br />
+            If you have any questions do not hesitate to{' '}
+            <Link to="/about">contact us</Link> and request a demo or ask us
+            anything.
           </p>
           <p>
-            <b>For clients:</b><br />
-            <Link to="/about">Contact us</Link> for any questions or
-            tell your physiotherapist about us.
+            <b>For clients:</b>
+            <br />
+            <Link to="/about">Contact us</Link> for any questions or tell your
+            physiotherapist about us.
           </p>
         </section>
       </article>
