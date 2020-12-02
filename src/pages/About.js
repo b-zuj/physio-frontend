@@ -7,6 +7,7 @@ import cycling from '../images/cycling.png';
 import paperPlane from '../images/paperPlane.png';
 import logo from '../images/logo.svg';
 import email from '../images/email.svg';
+import { Link } from 'react-router-dom';
 
 const About = ({ isAuth }) => {
   console.log(isAuth);
@@ -29,7 +30,9 @@ const About = ({ isAuth }) => {
   return (
     <Layout type="text">
       <header className={styles.header}>
-        <img className={styles.logo} src={logo} alt="logo" />
+        <Link to="/">
+          <img className={styles.logo} src={logo} alt="logo" />
+        </Link>
       </header>
 
       <article className={styles.article}>
