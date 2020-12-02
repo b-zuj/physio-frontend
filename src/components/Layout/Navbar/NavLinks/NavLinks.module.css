@@ -21,8 +21,7 @@
   box-sizing: border-box;
   cursor: pointer;
 }
-.exitToAppSideBar svg,
-.exitToAppNavBar svg {
+.exitToAppSideBar svg {
   margin-left: 7px;
 }
 
@@ -47,10 +46,14 @@
     display: flex;
   }
   .exitToAppNavBar {
-    display: flex;
+    display: block;
+    padding: 10px;
+    text-align: center;
     color: #fcbf49;
-
-    padding: 5px;
+  }
+  .exitToAppNavBar p {
+    font-size: 0.6rem;
+    margin: 0;
   }
   .exitToAppSideBar {
     display: none;
