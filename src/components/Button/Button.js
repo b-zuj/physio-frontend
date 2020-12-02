@@ -38,10 +38,17 @@ const Button = props => {
     case 'go':
       attachedClasses = [...attachedClasses, classes.create];
       break;
+    case 'cardActive':
+      attachedClasses = [...attachedClasses, classes.cardActive];
+      break;
+    case 'cardInactive':
+      attachedClasses = [...attachedClasses, classes.cardInactive];
+      break;
     default:
       break;
   }
-  return (
+
+  const Component = (
     <button
       className={attachedClasses.join(' ')}
       onClick={props.action}
@@ -50,6 +57,8 @@ const Button = props => {
       {props.children}
     </button>
   );
+
+  return Component;
 };
 
 export default Button;

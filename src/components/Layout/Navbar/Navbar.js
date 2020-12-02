@@ -16,7 +16,7 @@ import * as authActions from '../../../redux/actions/auth';
 import * as errorActions from '../../../redux/actions/errors';
 import classes from './Navbar.module.css';
 
-const Navbar = (props) => {
+const Navbar = props => {
   const history = useHistory();
 
   const goToPrevPage = () => {
@@ -26,10 +26,12 @@ const Navbar = (props) => {
 
   return (
     <div className={styles.navbarContainer}>
-      <div className={classes.goBack} onClick={goToPrevPage}>
-        <ArrowBack />
-        <p>GO BACK</p>
-      </div>
+      {props.isAuth && (
+        <div className={classes.goBack} onClick={goToPrevPage}>
+          <ArrowBack />
+          <p>GO BACK</p>
+        </div>
+      )}
       <LoggedInAs />
       <Logo comp="Navbar" />
       <nav className={styles.DesktopOnly}>
@@ -42,7 +44,7 @@ const Navbar = (props) => {
   );
 };
 
-const mapStateToPros = (state) => {
+const mapStateToPros = state => {
   return {
     isAuth: state.authReducer.isAuth,
     session: state.sessionReducer,
@@ -50,7 +52,7 @@ const mapStateToPros = (state) => {
     user: state.authReducer.user,
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(authActions.logout()),
     cleanFormError: () => dispatch(errorActions.cleanFormError()),

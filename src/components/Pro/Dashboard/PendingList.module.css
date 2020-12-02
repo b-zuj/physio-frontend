@@ -1,8 +1,16 @@
 .pendingList {
-  margin-top: 40px;
   width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.pendingListHeading {
+  margin: 0;
+  line-height: 62px;
+  border-bottom: 1px solid var(--list-line);
 }
 .pendingList ul {
+  margin: 0;
   list-style: none;
   padding-left: 0;
 }
