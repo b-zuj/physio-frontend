@@ -16,6 +16,8 @@
   --grey: rgb(230, 230, 230);
   --grey-light: rgb(211, 211, 211);
   --grey-transparent: rgb(128, 128, 128, 0.1);
+
+  --logo-color: #ff9702;
 }
 
 body {
