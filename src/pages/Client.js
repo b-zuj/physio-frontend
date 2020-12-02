@@ -8,30 +8,30 @@ import SessionList from '../components/SessionList/SessionList';
 import { Link } from 'react-router-dom';
 import * as clientActions from '../redux/actions/client';
 import Button from '../components/Button/Button';
+import classes from './styles/Client.module.css';
 
-const Client = (props) => {
+const Client = props => {
   let { id } = useParams();
   const { clients } = props;
 
-  const client = clients.find((element) => element._id.toString() === id);
+  const client = clients.find(element => element._id.toString() === id);
 
   const renderClient = () => {
     if (!client) {
       return <h1>No maching client</h1>;
     }
     return (
-      <>
-        <ClientDetails client={client} />
-        <SessionList
-          title="Assigned sessions:"
-          sessions={client.sessions}
-          clientId={client._id}
-        />
-        <br />
-        <Link to={`/session/create?client=${client._id}`}>
-          <Button actionStyle="create">Create a new session</Button>
-        </Link>
-      </>
+      <div className={classes.clientWrapper}>
+        <h1 className={classes.headingTitle}>{client.name}</h1>
+        <div className={classes.cardWrapper}>
+          <ClientDetails client={client} />
+          <SessionList
+            title="Assigned sessions:"
+            sessions={client.sessions}
+            clientId={client._id}
+          />
+        </div>
+      </div>
     );
   };
 
@@ -42,12 +42,12 @@ const Client = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   clients: state.authReducer.user.clients,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateClient: (client) => dispatch(clientActions.updateClient(client)),
+const mapDispatchToProps = dispatch => ({
+  updateClient: client => dispatch(clientActions.updateClient(client)),
   // login: (loginCredentials) => dispatch(authActions.login(loginCredentials)),
 });
 

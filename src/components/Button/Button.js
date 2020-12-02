@@ -29,14 +29,14 @@ const Button = props => {
     case 'invite':
       attachedClasses = [...attachedClasses, classes.invite];
       break;
-    case 'lowPriority':
-      attachedClasses = [...attachedClasses, classes.lowPriority];
+    case 'more':
+      attachedClasses = [...attachedClasses, classes.more];
       break;
     case 'details':
       attachedClasses = [...attachedClasses, classes.details];
       break;
-    case 'go':
-      attachedClasses = [...attachedClasses, classes.create];
+    case 'exercise':
+      attachedClasses = [...attachedClasses, classes.exercise];
       break;
     case 'cardActive':
       attachedClasses = [...attachedClasses, classes.cardActive];

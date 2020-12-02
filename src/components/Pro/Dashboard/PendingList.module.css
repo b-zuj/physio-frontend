@@ -5,7 +5,7 @@
 }
 
 .pendingListHeading {
-  margin: 0;
+  margin: 0 0 0 30px;
   line-height: 62px;
   border-bottom: 1px solid var(--list-line);
 }
