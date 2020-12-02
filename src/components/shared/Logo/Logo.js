@@ -6,12 +6,25 @@ import SvgLogo from './SvgLogo';
 
 const Logo = ({ comp }) => {
   let attachedClasses = classes.Logo;
+
+  let logoHeight = 0;
+  switch (comp) {
+    case 'Navbar':
+      logoHeight = 40;
+      break;
+    default:
+      logoHeight = 50;
+      break;
+  }
   if (comp) {
     attachedClasses = [classes.Logo, classes[comp]].join(' ');
   }
-
-  return <img className={attachedClasses} src={logo} alt="Physio Logo" />;
-  // return <SvgLogo height="40px" />;
+  console.log(attachedClasses);
+  return (
+    <div className={attachedClasses}>
+      <SvgLogo height={logoHeight} />
+    </div>
+  );
 };
 
 export default Logo;
