@@ -15,6 +15,7 @@ const Form = (props) => {
     heading,
     btn,
     children,
+    description,
   } = props;
   const formElementsArray = objToArray(formElements);
   let attachedClasses = [classes.basic];
@@ -25,13 +26,16 @@ const Form = (props) => {
     case 'account':
       attachedClasses = [...attachedClasses, classes['account-form']];
       break;
-
+    case 'invite':
+      attachedClasses = [...attachedClasses, classes['invite-form']];
+      break;
     default:
       break;
   }
   return (
     <form className={attachedClasses.join(' ')} onSubmit={submitHandler}>
       {heading && <h3>{heading}</h3>}
+      {description && <p>{description}</p>}
       {formElementsArray.map((el) => (
         <Input
           key={el.id}
