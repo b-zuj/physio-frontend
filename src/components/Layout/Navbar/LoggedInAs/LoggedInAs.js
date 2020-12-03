@@ -6,11 +6,13 @@ import styles from './LoggedInAs.module.css';
 
 const LoggedInAs = ({ user, comp, isAuth }) => {
   const attachedStyles =
-    comp === 'SideDrawer' ? styles.colorDark : styles.colorLight;
+    comp === 'SideDrawer'
+      ? [styles.colorDark, styles.navNameContainerSideDrawer]
+      : [styles.colorLight];
   return (
     isAuth && (
       <Link to="/account">
-        <div className={[styles.navNameContainer, attachedStyles].join(' ')}>
+        <div className={[styles.navNameContainer, ...attachedStyles].join(' ')}>
           <div className={styles.navNameSmall}>Logged in as</div>
           <div className={styles.navName}>{user.name}</div>
         </div>

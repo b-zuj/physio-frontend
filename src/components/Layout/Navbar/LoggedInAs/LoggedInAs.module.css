@@ -5,6 +5,10 @@
   margin-right: 5px;
 }
 
+.navNameContainerSideDrawer {
+  display: block;
+}
+
 .navNameSmall {
   font-size: x-small;
 }
