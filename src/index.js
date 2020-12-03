@@ -4,7 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import './colorThemes/default.css';
-// import './colorThemes/palette.css';
+// import './colorThemes/palette-red2.css';
+
 
 import './index.css';
 import App from './App';

@@ -6,16 +6,16 @@
   --one: #fcbf49;
   --one-dark: #f77f00;
 
-  --footer-nav-background: #003049;
+  --footer-nav-background: #a5a5a5;
 
-  --primary-color: #4caf50;
-  --primary-color-darker: #3b8b3e;
-  --primary-color-transparent: rgb(76, 175, 80, 0.1);
-  --secondary-color: #ff4f4f;
-  --secondary-color-darker: #7c2222;
-  --secondary-color-transparent: rgb(216, 73, 29, 0.1);
+  --primary-color: #134074;
+  /* --primary-color-darker: #3b8b3e; */
+  /* --primary-color-transparent: rgb(76, 175, 80, 0.1); */
+  /* --secondary-color: #ff4f4f; */
+  /* --secondary-color-darker: #7c2222; */
+  /* --secondary-color-transparent: rgb(216, 73, 29, 0.1); */
 
-  --blue-color: #2196f3;
+  /* --blue-color: #2196f3; */
 
   /* Spesific colors */
   --font-super-light: var(--one-light);
