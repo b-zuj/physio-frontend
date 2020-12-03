@@ -1,37 +1,3 @@
-:root {
-  --primary-color: #4caf50;
-  --primary-color-darker: #3b8b3e;
-  --primary-color-transparent: rgb(76, 175, 80, 0.1);
-  --secondary-color: #ff4f4f;
-  --secondary-color-darker: #7c2222;
-  --secondary-color-transparent: rgb(216, 73, 29, 0.1);
-
-  --blue-color: #2196f3;
-  --font-super-light: #eae2b7;
-  --font-light: #4888aa;
-  --font-dark: #003049;
-  --bgc-dark: #003049;
-  --font-active: #fcbf49;
-  --active-link: #f77f00;
-  --grey-dark: rgb(128, 128, 128);
-  --grey: rgb(230, 230, 230);
-  --grey-light: rgb(211, 211, 211);
-  --grey-transparent: rgb(128, 128, 128, 0.1);
-
-  --navbar-icons: #fcbf49;
-  --burger: #fcbf49;
-  --sidebar-icon: #7e7e7e;
-  --sidebar-link: #7e7e7e;
-
-  --client-list-icons: #fcbf49;
-  --list-line: rgba(204, 204, 204, 0.4);
-
-  --logo-color: #ff9702;
-
-  --card-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
-    rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
