@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import './colorThemes/default.css';
 // import './colorThemes/palette-red2.css';
 
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
