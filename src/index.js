@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import './colorThemes/default.css';
+// import './colorThemes/default.css';
+import './colorThemes/palette.css';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
