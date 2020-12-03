@@ -82,6 +82,7 @@ const Exercise = ({ exerciseData, exerciseMode, userType, order }) => {
           <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
             <Button actionStyle="editSvg">
               <Edit />
+              <p></p>
             </Button>
           </Link>
         </div>

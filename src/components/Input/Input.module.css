@@ -30,7 +30,7 @@
 }
 
 .InputElement:focus {
-  border-color: #6b2737;
+  border-color: var(--one-dark);
 }
 .InputElement:focus + .Label {
   font-size: 0.7em;
