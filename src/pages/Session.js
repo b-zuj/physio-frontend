@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Layout from '../components/Layout/Layout';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '../hooks/useQuery';
 import ExcerciseList from '../components/ExerciseList/ExerciseList';
-import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
+import { useQuery } from '../hooks/useQuery';
 
 import * as sessionActions from '../redux/actions/session';
 import classes from './styles/Session.module.css';
@@ -22,16 +22,21 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
     getSession(id);
   }, [getSession, id]);
 
+  let buttonToggle = false
+  if (userType === 'pro' & exerciseMode) {
+    buttonToggle = true
+  }
+
   const renderSession = () => {
     if (!session) {
       return 'No matching session';
     }
 
     const description = (
-      <>
-        <h3>Description</h3>
-        <p>{session.description}</p>
-      </>
+      <section className={classes.description_section}>
+        <h3 className={classes.session_h3}>Description</h3>
+        <p className={classes.session_p}>{session.description}</p>
+      </section>
     );
 
     const handleDeleteSession = id => {
@@ -41,14 +46,16 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
 
     const proName = (
       <>
-        <h3>Session creator</h3>
-        <p>{session && session.pro?.name}</p>
+        <h3 className={classes.session_h3}>Session creator</h3>
+        <p className={classes.session_p}>{session && session.pro?.name}</p>
       </>
     );
-
+    
+    
     return (
       <>
-        <h1>Session: {session.title}</h1>
+      <h1 className={classes.title}>Session: {session.title}</h1>
+      <article className={classes.session_article}>
         {session.description && description}
         {userType === 'client' && proName}
         <ExcerciseList
@@ -63,24 +70,25 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
               exerciseMode === 'true' ? '&exerciseMode=true' : ''
             }`}
           >
-            {userType === 'pro' && (
+            {buttonToggle && (
               <Button actionStyle="create">Edit session</Button>
             )}
           </Link>
-          {userType === 'pro' && (
+          {buttonToggle && (
             <Button actionStyle="delete" action={() => handleDeleteSession(id)}>
               Delete session
             </Button>
           )}
         </div>
-      </>
+      </article>
+</>
     );
   };
 
   return (
-    <div>
+    <>
       <Layout>{renderSession()}</Layout>
-    </div>
+    </>
   );
 };
 
