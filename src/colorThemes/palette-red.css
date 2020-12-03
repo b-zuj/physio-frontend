@@ -1,21 +1,21 @@
 :root {
   /* Main colors */
-  --logo-color: #ff9702;
+  --logo-color: #7d3b43;
 
-  --one-light: #ebdd92;
-  --one: #fcbf49;
-  --one-dark: #f77f00;
+  --one-light: #8f4f4f;
+  --one: #7d3b43;
+  --one-dark: #6b2737;
 
-  --footer-nav-background: #003049;
+  --footer-nav-background: #a5a5a5;
 
-  --primary-color: #4caf50;
-  --primary-color-darker: #3b8b3e;
-  --primary-color-transparent: rgb(76, 175, 80, 0.1);
-  --secondary-color: #ff4f4f;
-  --secondary-color-darker: #7c2222;
-  --secondary-color-transparent: rgb(216, 73, 29, 0.1);
+  --primary-color: #134074;
+  /* --primary-color-darker: #3b8b3e; */
+  /* --primary-color-transparent: rgb(76, 175, 80, 0.1); */
+  /* --secondary-color: #ff4f4f; */
+  /* --secondary-color-darker: #7c2222; */
+  /* --secondary-color-transparent: rgb(216, 73, 29, 0.1); */
 
-  --blue-color: #2196f3;
+  /* --blue-color: #2196f3; */
 
   /* Spesific colors */
   --font-super-light: var(--one-light);
