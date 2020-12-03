@@ -43,3 +43,10 @@
     padding-bottom: 50px;
   }
 }
+
+@media (min-width: 500px) {
+  .clientsContainer {
+    border-radius: 0;
+    
+  }
+}

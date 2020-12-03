@@ -81,9 +81,11 @@ const ListedExercise = props => {
       className={classes.exercise}
       onClick={e => flag === 'add' && !disabled && addExercise(exercise)}
     >
-      <p className={classes.title}>
-        {exercise.title ? exercise.title : exercise.exercise.title}
-      </p>
+      <Link to={`/exercise/${exercise._id}`}>
+        <p className={classes.title}>
+          {exercise.title ? exercise.title : exercise.exercise.title}
+        </p>
+      </Link>
       <div className={classes.actions}>{assignedOrNot}</div>
     </div>
   );
