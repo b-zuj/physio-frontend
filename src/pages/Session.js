@@ -11,7 +11,6 @@ import { useQuery } from '../hooks/useQuery';
 
 import * as sessionActions from '../redux/actions/session';
 import classes from './styles/Session.module.css';
-import { BatteryChargingFullRounded } from '@material-ui/icons';
 
 const Session = ({ getSession, session, userType, deleteSession }) => {
   const { id } = useParams();
