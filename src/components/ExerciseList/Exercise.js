@@ -8,15 +8,20 @@ import Button from '../Button/Button';
 import classes from './ExerciseList.module.css';
 
 const Exercise = ({ exerciseData, exerciseMode, userType }) => {
-  const { exercise, comment } = exerciseData;
+  const { exercise } = exerciseData;
+
+  let buttonToggle = false
+  if (userType === 'pro' & !exerciseMode) {
+    buttonToggle = true
+  }
 
   const exerciseDetails = (
-    <div>
-      <b>{exercise.title}</b>
+    <article className={classes.exercise}>
+      <h4>{exercise.title}</h4>
       {exercise.media && (
-        <div className={classes.videoContainer}>
-          <Video url={exercise.media} />
-        </div>
+        <>
+          <Video url={exercise.media} className={classes.video}/>
+        </>
       )}
       {exercise.description && (
         // <p>{exercise.description}</p>
@@ -27,10 +32,10 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
           {exercise.description}
         </details>
       )}
-      <p>
+      {/* <p>
         <i>{comment}</i>
-      </p>
-    </div>
+      </p> */}
+    </article>
   );
 
   const exerciseSummary = (
@@ -39,16 +44,16 @@ const Exercise = ({ exerciseData, exerciseMode, userType }) => {
       {exercise.description && (
         <p className={classes.exerciseDescription}>{exercise.description}</p>
       )}
-      <p>
+      {/* <p>
         <i>{comment}</i>
-      </p>
+      </p> */}
     </div>
   );
 
   return (
     <div className={classes.exercise}>
       {exerciseMode ? exerciseDetails : exerciseSummary}
-      {userType === 'pro' && (
+      {buttonToggle && (
         <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
           <Button actionStyle="edit">Edit</Button>
         </Link>

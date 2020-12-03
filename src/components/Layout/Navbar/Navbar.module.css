@@ -25,6 +25,7 @@
   color: var(--navbar-icons);
   cursor: pointer;
 }
+
 .goBack p {
   margin: 0;
   font-size: 0.6em;
@@ -37,6 +38,7 @@
   transform: translateY(-50%);
   z-index: 1000;
 }
+
 .burger svg {
   font-size: 2em;
   color: var(--burger);
