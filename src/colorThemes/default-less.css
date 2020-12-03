@@ -32,12 +32,14 @@
   --grey-transparent: rgb(128, 128, 128, 0.1);
   --buttons-background: var(--grey);
 
+  --exercise-button: var(--one-dark);
+
   --navbar-background: var(--footer-nav-background);
   --navbar-icons: #fff;
   --burger: #fff;
   --sidebar-icon: #7e7e7e;
   --sidebar-link: #7e7e7e;
-  --logged-in-as-light: var(--one-light);
+  --logged-in-as-light: var(--one);
   --logged-in-as-dark: var(--one-dark);
   --sidebar-logo: var(--two);
 
