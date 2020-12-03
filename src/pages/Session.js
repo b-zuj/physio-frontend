@@ -11,6 +11,7 @@ import { useQuery } from '../hooks/useQuery';
 
 import * as sessionActions from '../redux/actions/session';
 import classes from './styles/Session.module.css';
+import { BatteryChargingFullRounded } from '@material-ui/icons';
 
 const Session = ({ getSession, session, userType, deleteSession }) => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
   }, [getSession, id]);
 
   let buttonToggle = false
-  if (userType === 'pro' & exerciseMode) {
+  if (userType === 'pro' & !exerciseMode) {
     buttonToggle = true
   }
 
