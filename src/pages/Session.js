@@ -11,7 +11,6 @@ import { useQuery } from '../hooks/useQuery';
 
 import * as sessionActions from '../redux/actions/session';
 import classes from './styles/Session.module.css';
-import { BatteryChargingFullRounded } from '@material-ui/icons';
 
 const Session = ({ getSession, session, userType, deleteSession }) => {
   const { id } = useParams();
@@ -23,9 +22,9 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
     getSession(id);
   }, [getSession, id]);
 
-  let buttonToggle = false
-  if (userType === 'pro' & !exerciseMode) {
-    buttonToggle = true
+  let buttonToggle = false;
+  if ((userType === 'pro') & !exerciseMode) {
+    buttonToggle = true;
   }
 
   const renderSession = () => {
@@ -37,6 +36,11 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
       <section className={classes.description_section}>
         <h3 className={classes.session_h3}>Description</h3>
         <p className={classes.session_p}>{session.description}</p>
+        {userType === 'client' && (
+          <p className={classes.session_p}>
+            Created by {session && session.pro?.name}
+          </p>
+        )}
       </section>
     );
 
@@ -45,44 +49,39 @@ const Session = ({ getSession, session, userType, deleteSession }) => {
       deleteSession(id);
     };
 
-    const proName = (
-      <>
-        <h3 className={classes.session_h3}>Session creator</h3>
-        <p className={classes.session_p}>{session && session.pro?.name}</p>
-      </>
-    );
-    
-    
     return (
       <>
-      <h1 className={classes.title}>Session: {session.title}</h1>
-      <article className={classes.session_article}>
-        {session.description && description}
-        {userType === 'client' && proName}
-        <ExcerciseList
-          exercises={session.exercises}
-          exerciseMode={exerciseMode === 'true' && true}
-        />
-        <div className={classes.actionsContainer}>
-          <Link
-            to={`/session/create?edit=true&sessionId=${
-              session._id
-            }&client=${clientId}${
-              exerciseMode === 'true' ? '&exerciseMode=true' : ''
-            }`}
-          >
+        <h1 className={classes.title}>Session: {session.title}</h1>
+        <article className={classes.session_article}>
+          {session.description && description}
+
+          <ExcerciseList
+            exercises={session.exercises}
+            exerciseMode={exerciseMode === 'true' && true}
+          />
+          <div className={classes.actionsContainer}>
             {buttonToggle && (
-              <Button actionStyle="create">Edit session</Button>
+              <Button
+                actionStyle="delete"
+                action={() => handleDeleteSession(id)}
+              >
+                Delete session
+              </Button>
             )}
-          </Link>
-          {buttonToggle && (
-            <Button actionStyle="delete" action={() => handleDeleteSession(id)}>
-              Delete session
-            </Button>
-          )}
-        </div>
-      </article>
-</>
+            <Link
+              to={`/session/create?edit=true&sessionId=${
+                session._id
+              }&client=${clientId}${
+                exerciseMode === 'true' ? '&exerciseMode=true' : ''
+              }`}
+            >
+              {buttonToggle && (
+                <Button actionStyle="create">Edit session</Button>
+              )}
+            </Link>
+          </div>
+        </article>
+      </>
     );
   };
 
