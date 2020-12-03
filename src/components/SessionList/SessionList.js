@@ -12,7 +12,7 @@ const SessionList = props => {
   const clientExersiceMode = (
     <Button actionStyle="exercise">
       <Assignment />
-      <p>Exercise</p>
+      <p>Exercises</p>
     </Button>
   );
 
@@ -36,12 +36,14 @@ const SessionList = props => {
           >
             {userType === 'client' ? clientExersiceMode : proExersiceMode}
           </Link>
-          <Link to={`/session/${session._id}?client=${clientId}`}>
-            <Button actionStyle="details">
-              <List />
-              <p> Details</p>
-            </Button>
-          </Link>
+          {userType === 'pro' && (
+            <Link to={`/session/${session._id}?client=${clientId}`}>
+              <Button actionStyle="details">
+                <List />
+                <p>Details</p>
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
     ));
