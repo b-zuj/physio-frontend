@@ -3,7 +3,7 @@
   max-width: 900px;
   margin: 100px auto 0;
   background-color: #fff;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
   box-shadow: var(--card-shadow);
   z-index: 100;
 }
@@ -37,9 +37,13 @@
 }
 
 @media (min-width: 800px) {
+  .proDashWrapper {
+    border-radius: 5px;
+  }
   .clientsContainer {
     max-width: none;
     flex-wrap: nowrap;
     padding-bottom: 50px;
+    border-radius: 5px;
   }
 }
