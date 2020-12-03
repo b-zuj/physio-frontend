@@ -39,6 +39,7 @@
   --sidebar-link: #7e7e7e;
   --logged-in-as-light: var(--one-light);
   --logged-in-as-dark: var(--one-dark);
+  --sidebar-logo: var(--two);
 
   --session-heading: var(--two);
 

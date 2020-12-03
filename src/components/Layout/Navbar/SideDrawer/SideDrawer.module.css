@@ -29,4 +29,5 @@
 .Logo {
   max-width: 125px;
   margin: 0 auto 32px;
+  color: var(--sidebar-logo);
 }
