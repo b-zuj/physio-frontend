@@ -13,7 +13,7 @@
   height: 43px;
   top: -43px;
   left: 40px;
-  background-color: #ddd;
+  background-color: var(--buttons-background);
   border-radius: 3px 3px 0 0;
   overflow: hidden;
 }
