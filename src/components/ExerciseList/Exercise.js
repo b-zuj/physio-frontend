@@ -1,73 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-import Video from '../Video/Video';
 
+import { ExpandMoreRounded, ExpandLessRounded, Edit } from '@material-ui/icons';
+
+import Video from '../Video/Video';
 import Button from '../Button/Button';
 import classes from './ExerciseList.module.css';
 
-const Exercise = ({ exerciseData, exerciseMode, userType }) => {
+const Exercise = ({ exerciseData, exerciseMode, userType, order }) => {
   const { exercise } = exerciseData;
+  const [expanded, setExpanded] = useState(false);
 
-  let buttonToggle = false
-  if (userType === 'pro' & !exerciseMode) {
-    buttonToggle = true
+  let buttonToggle = false;
+  if ((userType === 'pro') & !exerciseMode) {
+    buttonToggle = true;
   }
 
+  const summaryText =
+    exercise.description.length > 80
+      ? exercise.description.slice(0, 80).concat('...')
+      : exercise.description;
+  const fullText = exercise.description;
+
+  const toggleText = () => setExpanded(!expanded);
+
   const exerciseDetails = (
-    <article className={classes.exercise}>
-      <h4>{exercise.title}</h4>
+    <>
       {exercise.media && (
-        <>
-          <Video url={exercise.media} className={classes.video}/>
-        </>
+        <div className={classes.videoContainer}>
+          <Video url={exercise.media} className={classes.video} />
+        </div>
       )}
+      <Link to={`/exercise/${exercise._id}`}>
+        <h4 className={classes.exerciseHeading}>{exercise.title}</h4>
+      </Link>
       {exercise.description && (
-        // <p>{exercise.description}</p>
-        <details>
-          <summary className={classes.exerciseDescription}>
-            {exercise.description}
-          </summary>
-          {exercise.description}
-        </details>
+        <div className={classes.description} onClick={toggleText}>
+          <p>{expanded ? fullText : summaryText}</p>
+        </div>
       )}
-      {/* <p>
-        <i>{comment}</i>
-      </p> */}
-    </article>
+      <div className={classes.actionContainer}>
+        {expanded ? (
+          <ExpandLessRounded onClick={toggleText} />
+        ) : (
+          <ExpandMoreRounded onClick={toggleText} />
+        )}
+      </div>
+    </>
   );
 
   const exerciseSummary = (
     <div>
-      <b>{exercise.title}</b>
-      {exercise.description && (
-        <p className={classes.exerciseDescription}>{exercise.description}</p>
+      {exercise.media && (
+        <div className={classes.videoContainer}>
+          <Video url={exercise.media} className={classes.video} />
+        </div>
       )}
-      {/* <p>
-        <i>{comment}</i>
-      </p> */}
+      <Link to={`/exercise/${exercise._id}`}>
+        <h4 className={classes.exerciseHeading}>{exercise.title}</h4>
+      </Link>
+      {exercise.description && (
+        <div className={classes.description} onClick={toggleText}>
+          <p>{expanded ? fullText : summaryText}</p>
+        </div>
+      )}
+      <div className={classes.actionContainer}>
+        {expanded ? (
+          <ExpandLessRounded onClick={toggleText} />
+        ) : (
+          <ExpandMoreRounded onClick={toggleText} />
+        )}
+      </div>
     </div>
   );
 
   return (
     <div className={classes.exercise}>
-      {exerciseMode ? exerciseDetails : exerciseSummary}
       {buttonToggle && (
-        <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
-          <Button actionStyle="edit">Edit</Button>
-        </Link>
+        <div className={classes.editActionContainer}>
+          <Link to={`/exercise/create?edit=true&exerciseId=${exercise._id}`}>
+            <Button actionStyle="editSvg">
+              <Edit />
+            </Button>
+          </Link>
+        </div>
       )}
-      {!exerciseMode && (
+      {/* {!exerciseMode && (
         <Link to={`/exercise/${exercise._id}`}>
           <Button actionStyle="link">Details</Button>
         </Link>
-      )}
+      )} */}
+      {exerciseMode && <div className={classes.order}>{order}</div>}
+      {exerciseMode ? exerciseDetails : exerciseSummary}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userType: state.authReducer.user.userType,
 });
 
