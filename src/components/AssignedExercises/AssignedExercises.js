@@ -11,6 +11,7 @@ const AssignedExercises = props => {
       <ListedExercise exercise={e} key={e.exercise._id} flag="remove" />
     ));
   }
+
   return (
     <div className={classes.addedExercises}>
       <p className={classes.addExerciseTitle}>Assigned Exercises</p>
