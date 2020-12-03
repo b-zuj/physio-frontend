@@ -18,10 +18,10 @@
 }
 
 .colorLight {
-  color: #eae2b7;
+  color: var(--logged-in-as-light);
 }
 .colorDark {
-  color: #f77f00;
+  color: var(--logged-in-as-dark);
   padding: 0 0 40px;
   text-align: center;
 }

@@ -2,8 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  color: #eae2b7;
-  background-color: #003049;
+  color: var(--footer-color);
+  background-color: var(--footer-background);
   padding: 5px;
 }
 
