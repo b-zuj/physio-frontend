@@ -5,7 +5,6 @@ import styles from './styles/About.module.css';
 import meditation from '../images/meditation.png';
 import cycling from '../images/cycling.png';
 import paperPlane from '../images/paperPlane.png';
-import logo from '../images/logo.svg';
 import email from '../images/email.svg';
 import { Link } from 'react-router-dom';
 import SvgLogo from '../components/shared/Logo/SvgLogo';
@@ -28,10 +27,12 @@ const About = ({ isAuth }) => {
     </>
   );
 
+  const logoLink = isAuth ? '/dashboard' : '/';
+
   return (
     <Layout type="text">
       <header className={styles.header}>
-        <Link to="/">
+        <Link to={logoLink}>
           <div className={styles.logoContainer}>
             <SvgLogo width="35%" />
           </div>
