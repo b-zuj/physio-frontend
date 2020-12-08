@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
  
-This project was created by [Maciej Glowacki](https://github.com/MaciejGL), [Stian Klasbu](https://github.com/mountwebs), and [Barbara Zujewska](https://github.com/b-zuj). The goal of the app is to make it easier for physiotherapists to provide their services to clients in a digital world.
+This project was created by [Maciej Glowacki](https://github.com/MaciejGL), [Stian Klasbu](https://github.com/mountwebs), and [Barbara Zujewska](https://github.com/b-zuj).
 
 ## What is PhysIO
 PhysIO was our final project at the School of Applied Technology - we used 2 weeks to create an MVP that attempts to solve the covid-related issue. We chose to focus on the limited access to health care where due to lockdowns and physical contact restrictions many less urgent health issues are being overlooked. This is a big problem in physiotherapy where caretakers often send a list of exercises to their patients with at best a confusing illustration and a short description. Many patients have trouble following those instructions and as a result, their health suffers. This is why we decide to create PhysIO which allows physiotherapists to send their patients more customized workout plans with informative videos. 
