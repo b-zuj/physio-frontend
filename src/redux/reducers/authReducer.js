@@ -1,12 +1,23 @@
 const InitialState = {
-  something: "Best state ever",
+  isAuth: false,
+  isLoading: false,
 };
 
 const authReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case "LOGIN":
-      console.log(action.payload);
-      return state;
+    case 'LOAD_DATA':
+      return {
+        ...state,
+        isAuth: true,
+        user: action.payload,
+      };
+    case 'LOGOUT':
+      return InitialState;
+    case 'IS_LOADING':
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
     default: {
       return state;
     }
