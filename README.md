@@ -17,4 +17,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Together with [React](https://reactjs.org/) we used [Redux](https://redux.js.org/).
 
 ## API Reference
-The blog is using custom backend created as a part of this project - https://github.com/MaciejGL/final-project-backend
+The blog is using custom backend created as a part of this project - https://github.com/b-zuj/physio-backend
